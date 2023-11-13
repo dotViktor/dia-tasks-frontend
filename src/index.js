@@ -1,20 +1,17 @@
-import React from 'react';
+import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import RouteSettings from './routes/RouteSettings';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { BrowserRouter } from 'react-router-dom';
+import ManagerPageComponent from "./pages/managerPage/ManagerPageComponent.js";
+import LoginPage from './pages/loginPage/LoginPage.js';
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <div>Hello world!</div>,
-  },
-]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <RouterProvider router={router}/>
+  <React.StrictMode>
+    <BrowserRouter>
+      <LoginPage/>
+      {/* <ManagerPageComponent/> */}
+    </BrowserRouter>
+  </React.StrictMode>
 );
