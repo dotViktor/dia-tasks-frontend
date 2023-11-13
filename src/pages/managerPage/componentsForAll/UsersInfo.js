@@ -11,7 +11,7 @@ const User = ({ user }) => {
       <span className="user-image">{initials}</span>
       <div className="user-details">
         <h3>{user.name}</h3>
-        <p>@{user.email}</p>
+        <p>{user.email}</p>
       </div>
     </div>
   );
