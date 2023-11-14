@@ -1,5 +1,6 @@
 import React from "react";
 import Task from "../componentsForAll/TasksInfo";
+import { Link } from "react-router-dom";
 import "./TasksManager.css";
 
 // Example user
@@ -11,17 +12,32 @@ const exampleTask2 = {
   id: 2,
   name: "Write a 16-page essay about WW1.",
 };
+const exampleTask3 = {
+  id: 3,
+  name: "Make a compression algorithm.",
+};
 
 const UsersManager = () => {
   // List of tasks
-  const tasks = [exampleTask, exampleTask2];
+  const tasks = [exampleTask, exampleTask2, exampleTask3];
 
   return (
     <div className="tasks-list">
       {tasks.map((task) => (
-        <Task key={task.id} task={task} />
+        <Link
+          key={task.id}
+          to={`../createAddEditTasksPage/CreateAddEditTasks.js?id=${task.id}`}
+          className="custom-link"
+        >
+          <Task task={task} />
+        </Link>
       ))}
-      <button id="add-task-bt">Add</button>
+      <Link
+        to="/createAddEditTasksPage/CreateAddEditTasks"
+        className="custom-link"
+      >
+        <button className="custom-button">Add</button>
+      </Link>
     </div>
   );
 };
