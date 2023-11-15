@@ -7,7 +7,7 @@ export default function AdminScreen(){
         <div className="main-container">
             <div className="inner-container">
                 <div>
-                    <Link to="createAddEditTasks"/>
+                    <Link to="/createAddEditTasks"/>
                     <label>Task 1:</label>
                     <p>Here is one of the Tasks that have to be done until the next week!</p>
                     <span>Sasho Petrov</span>
