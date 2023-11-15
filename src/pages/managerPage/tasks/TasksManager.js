@@ -32,10 +32,7 @@ const UsersManager = () => {
           <Task task={task} />
         </Link>
       ))}
-      <Link
-        to="/createAddEditTasksPage/CreateAddEditTasks"
-        className="custom-link"
-      >
+      <Link to="/CreateAddEditTasks" className="custom-link">
         <button className="custom-button">Add</button>
       </Link>
     </div>
