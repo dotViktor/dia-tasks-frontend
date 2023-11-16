@@ -6,10 +6,12 @@ import '../registrationPage/RegistrationComponent.css';
 export default function RegistrationPage(){
     const [email,setEmail] = useState()
     const [password ,setPassword] = useState()
+    const [name,setName] = useState()
+    // axios.defaults.withCredentials = true;
     const navigate = useNavigate();
     const handleSubmit = (event) => {
         event.preventDefault()
-        axios.post('inputTheBackendEndPointHere',{email,password})
+        axios.post('http://localhost:7777/users/register',{email,password,name})
         .then(response => {
             navigate('/login')
         })
@@ -32,6 +34,16 @@ export default function RegistrationPage(){
                             autoComplete="off"
                             name="email"
                             onChange={(e) => setEmail(e.target.value)}
+                        /><br></br>
+                         <label htmlFor="name">
+                            <strong>Name:</strong>
+                        </label>
+                        <input
+                            type="text"
+                            placeholder="Enter name..."
+                            autoComplete="off"
+                            name="name"
+                            onChange={(e) => setName(e.target.value)}
                         /><br></br>
                         <label htmlFor="password">
                             <strong>Password:</strong>

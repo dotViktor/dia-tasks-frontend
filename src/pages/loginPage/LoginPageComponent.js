@@ -62,10 +62,10 @@ function LoginPage() {
     // navigate your page. It's all about navigation.
     //-------------------------
 
-    axios.defaults.withCredentials = true;
+    // axios.defaults.withCredentials = true;
     const handleSubmit = (event) => {
         event.preventDefault()
-        axios.post('inputTheBackendEndPointHere', { email, password })
+        axios.post('http://localhost:7777/users/login', { email, password })
             .then(response => {
                 if (response.data.Status === "Success") {
                     if (response.data.role === "admin") {
