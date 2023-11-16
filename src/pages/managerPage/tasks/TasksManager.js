@@ -16,7 +16,6 @@ const exampleTask3 = {
   id: 3,
   name: "Make a compression algorithm.",
 };
-
 const UsersManager = () => {
   // List of tasks
   const tasks = [exampleTask, exampleTask2, exampleTask3];
@@ -26,13 +25,13 @@ const UsersManager = () => {
       {tasks.map((task) => (
         <Link
           key={task.id}
-          to={`../createAddEditTasksPage/CreateAddEditTasks.js?id=${task.id}`}
+          to={`/createAddEditTasks?id=${task.id}`}
           className="custom-link"
         >
           <Task task={task} />
         </Link>
       ))}
-      <Link to="/CreateAddEditTasks" className="custom-link">
+      <Link to="/createAddEditTasks" className="custom-link">
         <button className="custom-button">Add</button>
       </Link>
     </div>
