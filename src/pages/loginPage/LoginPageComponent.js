@@ -2,8 +2,6 @@ import axios from 'axios';
 import "../loginPage/LoginPage.css";
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useState } from 'react';
-import ClientTasks from '../clientComponents/ClientTasks.js';
-import ManagerPage from '../managerPage/ManagerPageComponent.js'
 
 
 
@@ -77,7 +75,7 @@ function LoginPage() {
                 }
             })
             .catch(err => console.log(err))
-    }
+     }
 
 
     return (

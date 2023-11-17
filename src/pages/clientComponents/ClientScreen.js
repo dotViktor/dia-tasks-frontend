@@ -1,7 +1,6 @@
 import React,{useEffect,useState} from "react";
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, Link} from 'react-router-dom';
 import axios from "axios";
-import LoginPage from "../loginPage/LoginPageComponent";
 
 export default function ClientTasks(){
 
@@ -26,6 +25,19 @@ export default function ClientTasks(){
         <div>
             <h2>Clients Tasks</h2>
             <p>{succcess}</p>
+            <Link to='/clientTask'>
+                <ul>
+                    <li>
+                        Task 1
+                    </li>
+                    <li>
+                        Task 1
+                    </li>
+                    <li>
+                        Task 1
+                    </li>
+                </ul>
+            </Link>
         </div>
     )
 }

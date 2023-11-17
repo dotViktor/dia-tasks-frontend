@@ -8,6 +8,7 @@ import AdminScreen from "../managerComponents/AdminScreen.js";
 import CreateAddEditTasks from "./createAddEditTasksPage/CreateAddEditTasks.js";
 
 
+
 // const router = createBrowserRouter([
 //     {
 //         path: "/tasksManager",
@@ -42,9 +43,8 @@ export default function ManagerPageComponent() {
         <div className="App">
             <Navbar />
             <Routes>
-                <Route path="/" element={<AdminScreen/>}>
-                    <Route path="/createAddEditTasks" element={<CreateAddEditTasks/>}/>
-                </Route>    
+                <Route path="/" element={<AdminScreen/>}/>
+                <Route path="/createAddEditTasks" element={<CreateAddEditTasks/>}/>
                 <Route path="/tasksManager" element={<TaskManager/>}/>
                 <Route path="/usersManager" element={<UsersManager/>}/>
            </Routes>
