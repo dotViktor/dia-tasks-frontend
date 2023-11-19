@@ -21,6 +21,7 @@ export default function Navbar() {
                 <li>
                     <NavLink to="/usersManager">Users</NavLink>
                 </li>
+              
             </ul>
         </nav>
     )
