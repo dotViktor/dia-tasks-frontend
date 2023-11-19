@@ -14,10 +14,10 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
         {/* <RouteSettings/> */}
-        {/* <ClientPage/> */}
+        <ClientPage/>
         {/* <LoginPage/> */}
         {/* <RegistrationPage/> */}
-        <ManagerPageComponent/>   
+        {/* <ManagerPageComponent/>    */}
       {/* <CreateAddEditTasks/> */}
     </BrowserRouter>
 );

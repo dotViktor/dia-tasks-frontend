@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import './TaskDescription.css';
 import SubtaskDescription from '../tasksPage/subtaskComponents/SubtaskDescription'
 
 export default function TaskDescription() {
