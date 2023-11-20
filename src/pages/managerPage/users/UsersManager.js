@@ -3,7 +3,7 @@ import axios from "axios";
 import User from "../componentsForAll/UsersInfo";
 import "./UsersManager.css";
 
-export default function UsersManager () {
+const UsersManager = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
@@ -21,3 +21,4 @@ export default function UsersManager () {
     </div>
   );
 };
+export default UsersManager;

@@ -65,16 +65,34 @@ function LoginPage() {
         event.preventDefault()
         axios.post('http://localhost:7777/users/login', { email, password })
             .then(response => {
-                if (response.data.Status === "Success") {
-                    if (response.data.role === "admin") {
-                        navigate('/manager')
+
+                //---------------------------------------------------
+                // console.log(response.data.user.role);
+                //---------------------------------------------------
+                
+                if(response.status === 202 || 200){
+                    console.log("Congratulation you have access!");
+                    if(response.data.user.role === "admin"){
+                        navigate('/manager');
                     }
-                    else {
-                        navigate('/client')
+                    else{
+                        navigate('/client');
                     }
+                }else if(response.status === 404){
+                    console.log("Oops! Something went wrong!")
                 }
+
+
+                // if (response.data.Status === "Success") {
+                //     if (response.data.role === "admin") {
+                //         navigate('/manager')
+                //     }
+                //     else {
+                //         navigate('/client')
+                //     }
+                // }
             })
-            .catch(err => console.log(err))
+            .catch(error => console.log(error))
      }
 
 

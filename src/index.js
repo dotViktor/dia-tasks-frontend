@@ -14,8 +14,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
         {/* <RouteSettings/> */}
-        <ClientPage/>
-        {/* <LoginPage/> */}
+        {/* <ClientPage/> */}
+        <LoginPage/>
         {/* <RegistrationPage/> */}
         {/* <ManagerPageComponent/>    */}
       {/* <CreateAddEditTasks/> */}

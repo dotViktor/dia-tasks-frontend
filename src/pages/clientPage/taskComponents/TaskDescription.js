@@ -1,7 +1,19 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import './TaskDescription.css';
 import SubtaskDescription from '../tasksPage/subtaskComponents/SubtaskDescription'
+import ClientScreen from '../../clientComponents/ClientScreen';
+
+// export default function TaskDescription(){
+//     const {taskId} = useParams();
+
+//     return(
+//         <div>
+//             <ClientScreen taskId={taskId}/>
+//         </div>
+//     )
+// }
+
 
 export default function TaskDescription() {
   return (

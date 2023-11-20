@@ -1,22 +1,17 @@
-import React from 'react'
+import React from "react";
+import './ClientScreen.css';
 
-function ClientSingleTasks({task}) {
-    const initials = task.title
-    .split(" ")
-    .map((word) => word.charAt(0).toUpperCase())
-    .join("");
+
+const ClientSingleTask = ({ task }) => {
+
   return (
-    <div >
-        <div>
-            <p>{initials}</p>
-            <p>{task.title}</p>
-            <p>{task.id}</p>
-        </div>
+    <div className="task-box">
+        <h3>{task.title}</h3>
     </div>
-  )
-}
+  );
+};
+export default ClientSingleTask;
 
-export default ClientSingleTasks
 
 // import React from "react";
 
@@ -43,3 +38,4 @@ export default ClientSingleTasks
 //     )
 // }
 // export default ClientSingleTask();
+
