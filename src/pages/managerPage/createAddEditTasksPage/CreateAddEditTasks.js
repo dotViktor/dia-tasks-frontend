@@ -114,6 +114,11 @@ const CreateAddEditTasks = () => {
             <hr></hr>
             <div className="subtasks">
               <h2>Subtasks</h2>
+              {/* <ul className="subtasks-list">
+                {taskData.subtasks.map((subtask) => (
+                  <li key={subtask.id}>{subtask.name}</li>
+                ))}
+              </ul> */}
               <button>Add a subtask</button>
             </div>
           </div>
@@ -121,6 +126,11 @@ const CreateAddEditTasks = () => {
           <div className="col-2">
             <div className="assigned-users">
               <h2>Assigned users</h2>
+              <ul className="users-list">
+                {taskData.users.map((user) => (
+                  <li key={user.id}>{user.name}</li>
+                ))}
+              </ul>
               <button>Add a user</button>
             </div>
           </div>
