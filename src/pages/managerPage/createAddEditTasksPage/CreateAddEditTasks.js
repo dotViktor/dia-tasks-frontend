@@ -73,7 +73,7 @@ const CreateAddEditTasks = () => {
                 <br />
                 <input
                   type="text"
-                  name="taskName"
+                  name="title"
                   value={taskData.title}
                   onChange={handleInputChange}
                 />
@@ -108,9 +108,7 @@ const CreateAddEditTasks = () => {
                 <input
                   type="datetime-local"
                   name="endTime"
-                  value={
-                    taskData.startTime ? taskData.startTime.slice(0, -1) : ""
-                  }
+                  value={taskData.endTime ? taskData.endTime.slice(0, -1) : ""}
                   onChange={handleInputChange}
                 />
               </label>
