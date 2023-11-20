@@ -28,8 +28,6 @@ const CreateAddEditTasks = () => {
               ? response.data[0]
               : null;
 
-          console.log("users:", task?.users);
-
           if (task && task.title) {
             setTaskData(task);
           } else {

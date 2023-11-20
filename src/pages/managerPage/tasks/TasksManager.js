@@ -10,7 +10,7 @@ const TasksManager = () => {
   useEffect(() => {
     axios
       .get("http://localhost:7777/tasks")
-      .then((response) => setTasks(response.data.tasks))
+      .then((response) => setTasks(response.data))
       .catch((err) => console.error(err));
   }, []);
 
