@@ -1,0 +1,22 @@
+form {
+    padding: 20px 40px;
+}
+
+.form-data {
+    display: flex;
+    height: 70vh;
+}
+
+.col-1 {
+    flex: 2;
+    padding: 10px 20px;
+}
+
+.col-2 {
+    flex: 1;
+    padding: 10px 20px;
+}
+
+hr {
+    border: 1px solid black;
+}

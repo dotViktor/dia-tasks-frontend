@@ -27,60 +27,70 @@ const CreateAddEditTasks = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <div className="col-1">
-          <div className="task">
-            <label>
-              Task Name:
-              <input
-                type="text"
-                name="taskName"
-                value={taskData.taskName}
-                onChange={handleInputChange}
-              />
-            </label>
-            <br />
-            <label>
-              Task Description:
-              <input
-                type="text"
-                name="taskDescription"
-                value={taskData.taskName}
-                onChange={handleInputChange}
-              />
-            </label>
-            <br />
-            <label>
-              Start Time:
-              <input
-                type="date"
-                name="startTime"
-                value={taskData.startTime}
-                onChange={handleInputChange}
-              />
-            </label>
-            <label>
-              End Time:
-              <input
-                type="date"
-                name="endTime"
-                value={taskData.startTime}
-                onChange={handleInputChange}
-              />
-            </label>
+        <div className="form-data">
+          <div className="col-1">
+            <div className="task">
+              <label>
+                Task Name:
+                <br />
+                <input
+                  type="text"
+                  name="taskName"
+                  value={taskData.taskName}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <br />
+              <label>
+                Task Description:
+                <br />
+                <input
+                  type="text"
+                  name="taskDescription"
+                  value={taskData.taskName}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <br />
+              <label>
+                Start Time:
+                <br />
+                <input
+                  type="date"
+                  name="startTime"
+                  value={taskData.startTime}
+                  onChange={handleInputChange}
+                />
+              </label>
+              <label>
+                End Time:
+                <br />
+                <input
+                  type="date"
+                  name="endTime"
+                  value={taskData.startTime}
+                  onChange={handleInputChange}
+                />
+              </label>
+            </div>
+            <hr></hr>
+            <div className="subtasks">
+              <h2>Subtasks</h2>
+              <button>Add a subtask</button>
+            </div>
           </div>
-          <div className="subtasks">
-            <h2>Subtasks</h2>
-            <button>Add a subtask</button>
+          <hr></hr>
+          <div className="col-2">
+            <div className="assigned-users">
+              <h2>Assigned users</h2>
+              <button>Add a user</button>
+            </div>
           </div>
         </div>
-        <div className="col-2">
-          <div className="assigned-users">
-            <h2>Assigned users</h2>
-            <button>Add a user</button>
-          </div>
+        <div className="form-buttons">
+          <button type="submit">Create Task</button>
+          <button type="delete">Delete Task</button>
         </div>
-        <button type="submit">Create Task</button>
-        <button type="delete">Delete Task</button>
       </form>
     </>
   );

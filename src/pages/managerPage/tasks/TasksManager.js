@@ -1,24 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Task from "../componentsForAll/TasksInfo";
 import { Link } from "react-router-dom";
 import "./TasksManager.css";
 
-// Example user
-const exampleTask = {
-  id: 1,
-  name: "Convert JPG's to PNG's.",
-};
-const exampleTask2 = {
-  id: 2,
-  name: "Write a 16-page essay about WW1.",
-};
-const exampleTask3 = {
-  id: 3,
-  name: "Make a compression algorithm.",
-};
-const UsersManager = () => {
-  // List of tasks
-  const tasks = [exampleTask, exampleTask2, exampleTask3];
+const TasksManager = () => {
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:7777/tasks")
+      .then((response) => setTasks(response.data.tasks))
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <div className="tasks-list">
@@ -38,4 +32,4 @@ const UsersManager = () => {
   );
 };
 
-export default UsersManager;
+export default TasksManager;
