@@ -11,6 +11,7 @@ const CreateAddEditTasks = () => {
   const id = searchParams.get("id");
   const [showSubtaskForm, setShowSubtaskForm] = useState(false);
 
+  //Assigned users component
   const AssignedUser = ({ user, onUnassign }) => {
     return (
       <div className="user-manager-container">
@@ -25,6 +26,7 @@ const CreateAddEditTasks = () => {
     );
   };
 
+  //Non-assigned users component
   const WTAUser = ({ user, onAssign }) => {
     return (
       <div className="user-manager-container">
@@ -41,6 +43,7 @@ const CreateAddEditTasks = () => {
 
   const [users, setUsers] = useState([]);
 
+  //For all users list
   useEffect(() => {
     axios
       .get("http://localhost:7777/users")
@@ -77,6 +80,7 @@ const CreateAddEditTasks = () => {
     }
   }, [id]);
 
+  //Changing input field values
   const handleInputChange = (e) => {
     const { name, value } = e.target;
 
@@ -88,16 +92,13 @@ const CreateAddEditTasks = () => {
     });
   };
 
+  //Assigning and unassigning users to a task
   const handleAssignUser = (user) => {
     if (!taskData.users.some((assignedUser) => assignedUser.id === user.id)) {
       const updatedUsers = [...taskData.users, user];
       setTaskData((prevTaskData) => ({ ...prevTaskData, users: updatedUsers }));
     }
   };
-
-  useEffect(() => {
-    console.log("Updated taskData.users:", taskData.users);
-  }, [taskData.users]);
 
   const handleUnassignUser = (user) => {
     const updatedUsers = taskData.users.filter(
@@ -106,10 +107,17 @@ const CreateAddEditTasks = () => {
     setTaskData((prevTaskData) => ({ ...prevTaskData, users: updatedUsers }));
   };
 
+  //Console logs users array
+  useEffect(() => {
+    console.log("Updated taskData.users:", taskData.users);
+  }, [taskData.users]);
+
+  //Cancel task edit
   const handleCancel = () => {
     navigate(-1);
   };
 
+  //Task delete
   const handleDelete = () => {
     if (id) {
       axios
@@ -122,6 +130,7 @@ const CreateAddEditTasks = () => {
     }
   };
 
+  //Subtask form show/hide
   const handleShowSubtaskForm = () => {
     setShowSubtaskForm(true);
   };
@@ -130,27 +139,24 @@ const CreateAddEditTasks = () => {
     setShowSubtaskForm(false);
   };
 
+  //Form/task submit
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Submitted Data:", taskData);
 
     if (id) {
-      // If there is an ID, it means you are updating an existing task
       axios
         .put(`http://localhost:7777/tasks/${id}`, taskData)
         .then((response) => {
           console.log("Task updated:", response.data);
-          // Add logic to handle the response, if needed
           navigate(-1);
         })
         .catch((error) => console.error("Update task error:", error));
     } else {
-      // If there is no ID, it means you are creating a new task
       axios
         .post("http://localhost:7777/tasks", taskData)
         .then((response) => {
           console.log("Task created:", response.data);
-          // Add logic to handle the response, if needed
           navigate(-1);
         })
         .catch((error) => console.error("Create task error:", error));
