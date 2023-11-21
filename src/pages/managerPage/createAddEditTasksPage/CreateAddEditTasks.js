@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./CreateAddEditTasks.css";
 
@@ -8,6 +8,43 @@ const CreateAddEditTasks = () => {
   const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get("id");
+
+  const AssignedUser = ({ user, onUnassign }) => {
+    return (
+      <div className="user-manager-container">
+        <h4>{user.name}</h4>
+        <span
+          className="material-symbols-outlined"
+          onClick={() => onUnassign(user)}
+        >
+          close
+        </span>
+      </div>
+    );
+  };
+
+  const WTAUser = ({ user, onAssign }) => {
+    return (
+      <div className="user-manager-container">
+        <h4>{user.name}</h4>
+        <span
+          className="material-symbols-outlined"
+          onClick={() => onAssign(user)}
+        >
+          add
+        </span>
+      </div>
+    );
+  };
+
+  const [users, setUsers] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:7777/users")
+      .then((response) => setUsers(response.data))
+      .catch((err) => console.error(err));
+  }, []);
 
   const [taskData, setTaskData] = useState({
     title: "",
@@ -49,15 +86,61 @@ const CreateAddEditTasks = () => {
     });
   };
 
+  const handleAssignUser = (user) => {
+    if (!taskData.users.some((assignedUser) => assignedUser.id === user.id)) {
+      const updatedUsers = [...taskData.users, user];
+      setTaskData((prevTaskData) => ({ ...prevTaskData, users: updatedUsers }));
+    }
+  };
+
+  const handleUnassignUser = (user) => {
+    const updatedUsers = taskData.users.filter(
+      (assignedUser) => assignedUser.id !== user.id
+    );
+    setTaskData((prevTaskData) => ({ ...prevTaskData, users: updatedUsers }));
+  };
+
   const handleCancel = () => {
-    // Goes back to the previous page when the "Cancel" button is clicked
     navigate(-1);
+  };
+
+  const handleDelete = () => {
+    if (id) {
+      axios
+        .delete(`http://localhost:7777/tasks/${id}`)
+        .then((response) => {
+          console.log("Task deleted:", response.data);
+          <Link path="/tasksManager" />;
+        })
+        .catch((error) => console.error("Delete task error:", error));
+    }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Submitted Data:", taskData);
-    // Add logic to submit the data or update the task
+
+    if (id) {
+      // If there is an ID, it means you are updating an existing task
+      axios
+        .put(`http://localhost:7777/tasks/${id}`, taskData)
+        .then((response) => {
+          console.log("Task updated:", response.data);
+          // Add logic to handle the response, if needed
+          navigate(-1);
+        })
+        .catch((error) => console.error("Update task error:", error));
+    } else {
+      // If there is no ID, it means you are creating a new task
+      axios
+        .post("http://localhost:7777/tasks", taskData)
+        .then((response) => {
+          console.log("Task created:", response.data);
+          // Add logic to handle the response, if needed
+          navigate(-1);
+        })
+        .catch((error) => console.error("Create task error:", error));
+    }
   };
 
   return (
@@ -126,18 +209,40 @@ const CreateAddEditTasks = () => {
           <div className="col-2">
             <div className="assigned-users">
               <h2>Assigned users</h2>
-              <ul className="users-list">
-                {taskData.users.map((user) => (
-                  <li key={user.id}>{user.name}</li>
-                ))}
-              </ul>
-              <button>Add a user</button>
+              {taskData.users.map((user) => (
+                <AssignedUser
+                  key={user.id}
+                  user={user}
+                  onUnassign={handleUnassignUser}
+                />
+              ))}
+              <h2>Waiting to be assigned</h2>
+              <div className="users-without-tasks-list">
+                {users
+                  .filter(
+                    (user) =>
+                      !taskData.users.some(
+                        (assignedUser) => assignedUser.id === user.id
+                      )
+                  )
+                  .map((user) => (
+                    <WTAUser
+                      key={user.id}
+                      user={user}
+                      onAssign={handleAssignUser}
+                    />
+                  ))}
+              </div>
             </div>
           </div>
         </div>
         <div className="form-buttons">
           <button type="submit">{id ? "Update Task" : "Create Task"}</button>
-          {id && <button type="delete">Delete Task</button>}
+          {id && (
+            <button type="delete" onClick={handleDelete}>
+              Delete Task
+            </button>
+          )}
           <button type="button" onClick={handleCancel}>
             Cancel
           </button>

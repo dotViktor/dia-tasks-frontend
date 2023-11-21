@@ -20,3 +20,17 @@ form {
 hr {
     border: 1px solid black;
 }
+
+.user-manager-container {
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 5px 20px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.material-symbols-outlined:hover {
+    cursor: pointer;
+  }  
