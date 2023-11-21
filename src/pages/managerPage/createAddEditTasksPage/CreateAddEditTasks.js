@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./CreateAddEditTasks.css";
+import SubtaskForm from "../componentsForAll/SubtaskForm";
 
 const CreateAddEditTasks = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get("id");
+  const [showSubtaskForm, setShowSubtaskForm] = useState(false);
 
   const AssignedUser = ({ user, onUnassign }) => {
     return (
@@ -93,6 +95,10 @@ const CreateAddEditTasks = () => {
     }
   };
 
+  useEffect(() => {
+    console.log("Updated taskData.users:", taskData.users);
+  }, [taskData.users]);
+
   const handleUnassignUser = (user) => {
     const updatedUsers = taskData.users.filter(
       (assignedUser) => assignedUser.id !== user.id
@@ -114,6 +120,14 @@ const CreateAddEditTasks = () => {
         })
         .catch((error) => console.error("Delete task error:", error));
     }
+  };
+
+  const handleShowSubtaskForm = () => {
+    setShowSubtaskForm(true);
+  };
+
+  const handleCloseSubtaskForm = () => {
+    setShowSubtaskForm(false);
   };
 
   const handleSubmit = (e) => {
@@ -202,7 +216,9 @@ const CreateAddEditTasks = () => {
                   <li key={subtask.id}>{subtask.name}</li>
                 ))}
               </ul> */}
-              <button>Add a subtask</button>
+              <button type="button" onClick={handleShowSubtaskForm}>
+                Add a subtask
+              </button>
             </div>
           </div>
           <hr></hr>
@@ -248,6 +264,11 @@ const CreateAddEditTasks = () => {
           </button>
         </div>
       </form>
+      {showSubtaskForm && (
+        <div className="modal-overlay">
+          <SubtaskForm onClose={handleCloseSubtaskForm} />
+        </div>
+      )}
     </>
   );
 };
