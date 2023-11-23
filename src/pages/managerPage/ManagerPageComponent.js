@@ -38,9 +38,9 @@ import CreateAddEditTasks from "./createAddEditTasksPage/CreateAddEditTasks.js";
 export default function ManagerPageComponent() {
   return (
     <div className="App">
-      <Navbar />
       <Routes>
         <Route path="/createAddEditTasks" element={<CreateAddEditTasks />} />
+        <Route path="/adminScreen" element={<AdminScreen/>}/>
         <Route path="/" element={<AdminScreen />} />
         <Route path="/tasksManager" element={<TaskManager />} />
         <Route path="/usersManager" element={<UsersManager />} />

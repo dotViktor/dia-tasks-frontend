@@ -3,6 +3,7 @@ import axios from "axios";
 import Task from "../componentsForAll/TasksInfo";
 import { Link } from "react-router-dom";
 import "./TasksManager.css";
+import Navbar from "../componentsForAll/Navbar";
 
 const TasksManager = () => {
   const [tasks, setTasks] = useState([]);
@@ -15,20 +16,23 @@ const TasksManager = () => {
   }, []);
 
   return (
-    <div className="tasks-list">
-      {tasks.map((task) => (
-        <Link
-          key={task.id}
-          to={`/createAddEditTasks?id=${task.id}`}
-          className="custom-link"
-        >
-          <Task task={task} />
+    <>
+      <Navbar/>
+      <div className="tasks-list">
+        {tasks.map((task) => (
+          <Link
+            key={task.id}
+            to={`/createAddEditTasks?id=${task.id}`}
+            className="custom-link"
+          >
+            <Task task={task} />
+          </Link>
+        ))}
+        <Link to="/createAddEditTasks" className="custom-link">
+          <button className="custom-button">Add</button>
         </Link>
-      ))}
-      <Link to="/createAddEditTasks" className="custom-link">
-        <button className="custom-button">Add</button>
-      </Link>
-    </div>
+      </div>
+    </>
   );
 };
 

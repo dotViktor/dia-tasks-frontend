@@ -8,7 +8,7 @@ export default function Navbar() {
 
     return(
         <nav>
-            <Link className="title" to="/">Admin Panel</Link>
+            <Link className="title" to="/adminScreen">Admin Panel</Link>
             <div className="menu" onClick={() => {setMenuOpen(!menuOpen)}}>
                 <span></span>
                 <span></span>
@@ -21,6 +21,7 @@ export default function Navbar() {
                 <li>
                     <NavLink to="/usersManager">Users</NavLink>
                 </li>
+              
             </ul>
         </nav>
     )

@@ -3,6 +3,7 @@ import { useLocation, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./CreateAddEditTasks.css";
 import SubtaskForm from "../componentsForAll/SubtaskForm";
+import Navbar from "../componentsForAll/Navbar.js";
 
 const CreateAddEditTasks = () => {
   const location = useLocation();
@@ -299,6 +300,7 @@ const CreateAddEditTasks = () => {
 
   return (
     <>
+      <Navbar path="/navManager" element={<Navbar/>}/>
       <form onSubmit={handleSubmit}>
         <div className="form-data">
           <div className="col-1">
