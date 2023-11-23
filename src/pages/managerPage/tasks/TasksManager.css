@@ -14,6 +14,12 @@
     padding: 20px;
 }
 
-#add-task-bt {
-    right: 0%;
+.custom-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;    
+}
+
+.custom-link:hover {
+    text-decoration: underline;
 }

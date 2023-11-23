@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 const Task = ({ task }) => {
   return (
     <div className="task-container">
-      <h3>{task.name}</h3>
+      <h3>{task.title}</h3>
     </div>
   );
 };

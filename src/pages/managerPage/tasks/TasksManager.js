@@ -1,29 +1,35 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Task from "../componentsForAll/TasksInfo";
+import { Link } from "react-router-dom";
 import "./TasksManager.css";
 
-// Example user
-const exampleTask = {
-  id: 1,
-  name: "Convert JPG's to PNG's.",
-};
-const exampleTask2 = {
-  id: 2,
-  name: "Write a 16-page essay about WW1.",
-};
+const TasksManager = () => {
+  const [tasks, setTasks] = useState([]);
 
-const UsersManager = () => {
-  // List of tasks
-  const tasks = [exampleTask, exampleTask2];
+  useEffect(() => {
+    axios
+      .get("http://localhost:7777/tasks")
+      .then((response) => setTasks(response.data))
+      .catch((err) => console.error(err));
+  }, []);
 
   return (
     <div className="tasks-list">
       {tasks.map((task) => (
-        <Task key={task.id} task={task} />
+        <Link
+          key={task.id}
+          to={`/createAddEditTasks?id=${task.id}`}
+          className="custom-link"
+        >
+          <Task task={task} />
+        </Link>
       ))}
-      <button id="add-task-bt">Add</button>
+      <Link to="/createAddEditTasks" className="custom-link">
+        <button className="custom-button">Add</button>
+      </Link>
     </div>
   );
 };
 
-export default UsersManager;
+export default TasksManager;
