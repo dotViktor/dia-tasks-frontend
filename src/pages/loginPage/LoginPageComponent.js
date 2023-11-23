@@ -1,8 +1,8 @@
 import axios from 'axios';
 import "../loginPage/LoginPage.css";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import React, { useState } from 'react';
-
+import AdminScreen from '../managerComponents/AdminScreen.js';
 
 
 // const AuthContext = createContext();
@@ -51,9 +51,11 @@ import React, { useState } from 'react';
 // };
 
 function LoginPage() {
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const navigate = useNavigate();
+
     //-------------------------
     // this hook gives you access to history objects 
     // and you have access to several functions to 
@@ -65,16 +67,25 @@ function LoginPage() {
         event.preventDefault()
         axios.post('http://localhost:7777/users/login', { email, password })
             .then(response => {
-                if (response.data.Status === "Success") {
-                    if (response.data.role === "admin") {
-                        navigate('/manager')
+
+                //---------------------------------------------------
+                // console.log(response.data.user.role);
+                //---------------------------------------------------
+                
+                if(response.status === 202 || 200){
+                    console.log("Congratulation you have access!");
+                    if(response.data.user.role === "admin"){
+                        navigate("/adminScreen");
                     }
-                    else {
-                        navigate('/client')
+                    else{
+                        navigate('/clientScreen');
                     }
+                }else {
+                    console.log("Oops! Something went wrong!")
                 }
+
             })
-            .catch(err => console.log(err))
+            .catch(error => console.log(error))
      }
 
 

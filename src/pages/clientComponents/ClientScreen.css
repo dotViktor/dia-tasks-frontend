@@ -1,0 +1,31 @@
+.main-client-container{
+    width:100%;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color: azure;
+}
+.inner-client-container{
+    width:70%;
+    height:90%;
+    background-color:rgb(203, 231, 240);
+    border-radius: 15px;
+    display:flex;
+    justify-content:space-evenly;
+    align-items:center;
+    flex-direction: column;
+    border:2px solid black;
+}
+.custom-link{
+    width: 100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:auto;
+    text-decoration: none;
+    color:black;
+}
+.custom-link:hover{
+    cursor:pointer;
+}

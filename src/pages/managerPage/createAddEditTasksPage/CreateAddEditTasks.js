@@ -299,6 +299,7 @@ const CreateAddEditTasks = () => {
 
   return (
     <>
+      <Navbar path="/navManager" element={<Navbar/>}/>
       <form onSubmit={handleSubmit}>
         <div className="form-data">
           <div className="col-1">

@@ -1,45 +1,24 @@
-import React from 'react'
+import React from "react";
+import './ClientSingleTask.css';
+import { Route, Routes, Link } from "react-router-dom";
+import ClientTasks from '../clientPage/taskComponents/TaskDescription';
 
-function ClientSingleTasks({task}) {
-    const initials = task.title
-    .split(" ")
-    .map((word) => word.charAt(0).toUpperCase())
-    .join("");
+
+const ClientSingleTask = ({ task }) => {
+
   return (
-    <div >
-        <div>
-            <p>{initials}</p>
-            <p>{task.title}</p>
-            <p>{task.id}</p>
-        </div>
+    <div className="task-box">
+      
+      <h3>{task.title}</h3>
+        {task.isComplete == "1" ? 
+        <div className="icon-container">
+          <i className="fa-regular fa-circle-check"></i>
+        </div> 
+        : 
+        <div className="icon-container">
+          <i className="fa-regular fa-circle"></i>
+        </div>}
     </div>
-  )
-}
-
-export default ClientSingleTasks
-
-// import React from "react";
-
-// const ClientSingleTask = ({tasks}) => {
-
-//     const initials = tasks.title
-//     .split(" ")
-//     .map((word) => word.charAt(0).toUpperCase())
-//     .join("");
-
-//     function renderTask(t){
-//         return(
-//             <div>
-//                 <p>{initials}</p>
-//                 <p>{t.title}</p>
-//             </div>
-//         )
-//     }
-
-//     return(
-//         <div>
-//             {tasks.map(renderTask)}
-//         </div>
-//     )
-// }
-// export default ClientSingleTask();
+  );
+};
+export default ClientSingleTask;
