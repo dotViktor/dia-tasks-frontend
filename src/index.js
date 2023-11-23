@@ -13,11 +13,11 @@ import ClientPage from './pages/clientPage/ClientPage.js';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <BrowserRouter>
-        {/* <RouteSettings/> */}
+        <RouteSettings/>
         {/* <ClientPage/> */}
-        <LoginPage/>
+        {/* <LoginPage/> */}
         {/* <RegistrationPage/> */}
         {/* <ManagerPageComponent/>    */}
-      {/* <CreateAddEditTasks/> */}
+        {/* <CreateAddEditTasks/> */}
     </BrowserRouter>
 );

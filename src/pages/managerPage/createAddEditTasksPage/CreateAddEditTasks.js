@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./CreateAddEditTasks.css";
+import Navbar from "../componentsForAll/Navbar";
 
 const CreateAddEditTasks = () => {
   const [taskData, setTaskData] = useState({
@@ -27,6 +28,7 @@ const CreateAddEditTasks = () => {
 
   return (
     <>
+      <Navbar path="/navManager" element={<Navbar/>}/>
       <form onSubmit={handleSubmit}>
         <div className="col-1">
           <div className="task">

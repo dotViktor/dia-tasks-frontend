@@ -9,22 +9,23 @@
 .inner-client-container{
     width:70%;
     height:90%;
-    background-color:antiquewhite;
+    background-color:rgb(203, 231, 240);
     border-radius: 15px;
     display:flex;
     justify-content:space-evenly;
     align-items:center;
     flex-direction: column;
-}
-.task-container{
-    width:90%;
-    height:5rem;
     border:2px solid black;
-    display:flex;
-    justify-content:start;
-    align-items:center;
-    border-radius: 10px;
 }
-.task-box h3{
-    padding-left: 1rem;
+.custom-link{
+    width: 100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:auto;
+    text-decoration: none;
+    color:black;
+}
+.custom-link:hover{
+    cursor:pointer;
 }

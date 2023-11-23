@@ -1,8 +1,8 @@
 import axios from 'axios';
 import "../loginPage/LoginPage.css";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import React, { useState } from 'react';
-
+import AdminScreen from '../managerComponents/AdminScreen.js';
 
 
 // const AuthContext = createContext();
@@ -51,9 +51,11 @@ import React, { useState } from 'react';
 // };
 
 function LoginPage() {
-    const [email, setEmail] = useState();
-    const [password, setPassword] = useState();
+    
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const navigate = useNavigate();
+
     //-------------------------
     // this hook gives you access to history objects 
     // and you have access to several functions to 
@@ -73,24 +75,15 @@ function LoginPage() {
                 if(response.status === 202 || 200){
                     console.log("Congratulation you have access!");
                     if(response.data.user.role === "admin"){
-                        navigate('/manager');
+                        navigate("/adminScreen");
                     }
                     else{
-                        navigate('/client');
+                        navigate('/clientScreen');
                     }
-                }else if(response.status === 404){
+                }else {
                     console.log("Oops! Something went wrong!")
                 }
 
-
-                // if (response.data.Status === "Success") {
-                //     if (response.data.role === "admin") {
-                //         navigate('/manager')
-                //     }
-                //     else {
-                //         navigate('/client')
-                //     }
-                // }
             })
             .catch(error => console.log(error))
      }

@@ -1,9 +1,10 @@
-import React from 'react'
+import React,{useState, useEffect} from 'react'
 import { Link, useParams } from 'react-router-dom'
 import './TaskDescription.css';
-import SubtaskDescription from '../tasksPage/subtaskComponents/SubtaskDescription'
-import ClientScreen from '../../clientComponents/ClientScreen';
-
+import NavbarClients from '../navbarClientsFolder/NavbarClients';
+import { useLocation } from 'react-router-dom';
+import RenderSubtasks from '../taskComponents/RenderSubtasks.js';
+import axios from 'axios';
 // export default function TaskDescription(){
 //     const {taskId} = useParams();
 
@@ -16,27 +17,53 @@ import ClientScreen from '../../clientComponents/ClientScreen';
 
 
 export default function TaskDescription() {
-  return (
-    <>
-        <div>
-            <h3>Task 1:</h3>
-            <p>TaskDescription</p>
-            <div>
-                <ul>
-                    <li>
-                        <Link to='/clientSubtask'>Subtask 1</Link>
-                    </li>
-                    <li>
-                        <Link to='/clientSubtask'>Subtask 2</Link>
-                    </li>
-                    <li>
-                        <Link to='/clientSubtask'>Subtask 3</Link>
-                    </li>
-                </ul>
-            </div>
-        </div>
 
-       
-    </>
-  )
+    const location = useLocation();
+    const task = location.state;
+
+    const [subtasks,setSubtasks] = useState([]);
+
+    useEffect(() => {
+        axios
+        .get(`http://localhost:7777/tasks/${task.id}/subtasks`)
+        .then((response) => setSubtasks(response.data))
+        .catch((error) => console.error(error));
+    },[])
+
+    return (
+        <>
+            <NavbarClients path="/navClients" ></NavbarClients>
+            <div className='main-client-container'>
+                <div className='task-content-container'>
+                    <div className='task-header'>
+                        <div >
+                            <h3 className='task-title'>{task.title}</h3>
+                        </div>
+                        <div>
+                            <p className='task-description'>{task.description}</p>
+                        </div>
+                    </div>
+
+                    <div className='task-content'>
+
+                        {subtasks.map((subtask) => (
+                            <Link 
+                            key={subtask.id}
+                            to={`/clientScreen/clientTask/${task.id}/${subtask.id}`}
+                            state={subtask}
+                            className='sub-link'>
+                                <RenderSubtasks subtask={subtask}/>
+                            </Link>
+                        ))}
+
+                    </div>
+                    <div className='btn-sub-container'>
+                        <button className='btn btn-primary'>Done</button>
+                    </div>
+                </div>
+            </div>
+
+
+        </>
+    )
 }
