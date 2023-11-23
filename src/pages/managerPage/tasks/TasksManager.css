@@ -1,0 +1,25 @@
+.tasks-list {
+    padding: 20px;
+    width: fit-content;
+    margin: auto;
+}
+
+.task-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 800px;
+    padding: 20px;
+}
+
+.custom-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;    
+}
+
+.custom-link:hover {
+    text-decoration: underline;
+}
