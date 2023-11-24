@@ -61,7 +61,7 @@ export default function AdminScreen() {
           events={tasks.map((task) => ({
             title: task.title,
             start: task.startTime,
-            end: "2023-11-24T12:00:00.000Z",
+            end: task.endTime,
             extendedProps: {
               id: task.id,
               description: task.description,
