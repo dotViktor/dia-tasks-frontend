@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./SubtaskForms.css";
 
-const SubtaskEditForm = ({ subtask, onSave, onClose }) => {
+const SubtaskEditForm = ({ subtask, onClose }) => {
   const [images, setImages] = useState([]);
   const [notes, setNotes] = useState([]);
 
@@ -61,12 +61,27 @@ const SubtaskEditForm = ({ subtask, onSave, onClose }) => {
     }
   };
 
+  const handleZoomImage = (imagePath) => {
+    window.open(imagePath, "_blank");
+  };
+
   const ImageComponent = ({ image }) => (
     <div key={image.id} className="image-component">
-      <a href={image.imagePath} target="_blank">
-        <img src={image.imagePath} alt="Subtask Image" />
-      </a>
-      <button onClick={() => handleDeleteImage(image.id)}>Delete</button>
+      <img src={image.imagePath} alt="Subtask Image" />
+      <div className="image-overlay">
+        <span
+          className="material-symbols-outlined"
+          onClick={() => handleDeleteImage(image.id)}
+        >
+          delete
+        </span>
+        <span
+          className="material-symbols-outlined"
+          onClick={() => handleZoomImage(image.imagePath)}
+        >
+          zoom_in
+        </span>
+      </div>
     </div>
   );
 
@@ -74,26 +89,44 @@ const SubtaskEditForm = ({ subtask, onSave, onClose }) => {
     <div key={note.id} className="note-component">
       <h3>{note.title}</h3>
       <p>{note.content}</p>
-      <button onClick={() => handleDeleteNote(note.id)}>Delete</button>
+      <div className="note-overlay">
+        <span
+          className="material-symbols-outlined"
+          onClick={() => handleDeleteNote(note.id)}
+        >
+          delete
+        </span>
+      </div>
     </div>
   );
 
   return (
     <div className="subtask-edit-form">
-      <h2>Images:</h2>
-      {images.length === 0 ? (
-        <p>This subtask has no images.</p>
-      ) : (
-        images.map((image) => <ImageComponent image={image} />)
-      )}
-
-      <h2>Notes:</h2>
-      {notes.length === 0 ? (
-        <p>This subtask doesn't have any notes yet.</p>
-      ) : (
-        notes.map((note) => <NoteComponent note={note} />)
-      )}
-
+      <div className="subtask-edit-form-columns">
+        <div className="subtask-edit-form-col-1">
+          <h2>Images:</h2>
+          <hr />
+          <div className="subtask-edit-form-scrollable-container">
+            {images.length === 0 ? (
+              <p>This subtask doesn't have any images yet.</p>
+            ) : (
+              images.map((image) => <ImageComponent image={image} />)
+            )}
+          </div>
+        </div>
+        <hr />
+        <div className="subtask-edit-form-col-2">
+          <h2>Notes:</h2>
+          <hr />
+          <div className="subtask-edit-form-scrollable-container">
+            {notes.length === 0 ? (
+              <p>This subtask doesn't have any notes yet.</p>
+            ) : (
+              notes.map((note) => <NoteComponent note={note} />)
+            )}
+          </div>
+        </div>
+      </div>
       <button type="button" onClick={onClose}>
         Close
       </button>

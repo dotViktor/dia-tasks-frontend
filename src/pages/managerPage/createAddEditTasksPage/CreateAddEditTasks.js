@@ -426,7 +426,6 @@ const CreateAddEditTasks = () => {
           <SubtaskEditForm
             subtask={editingSubtask}
             onClose={() => setEditingSubtask(null)}
-            /*onUpdateSubtask={handleSubtaskChange}*/
           />
         </div>
       )}
