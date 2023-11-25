@@ -35,7 +35,34 @@ hr {
   cursor: pointer;
 }
 
-/* CreateAddEditTasks.css */
+/** Users */
+.assigned-users {
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.wta-users {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+/** Subtasks */
+.subtasks-columns {
+  display: flex;
+}
+
+.subtasks-col-1,
+.subtasks-col-2 {
+  flex: 1;
+  padding: 10px;
+}
+
+.subtasks-scrollable-container {
+  height: 300px;
+  overflow-y: auto;
+}
+
+/*! CreateAddEditTasks.css */
 .modal-overlay {
   position: fixed;
   top: 0;

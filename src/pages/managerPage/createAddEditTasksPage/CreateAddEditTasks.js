@@ -300,7 +300,7 @@ const CreateAddEditTasks = () => {
 
   return (
     <>
-      <Navbar path="/navManager" element={<Navbar/>}/>
+      <Navbar path="/navManager" element={<Navbar />} />
       <form onSubmit={handleSubmit}>
         <div className="form-data">
           <div className="col-1">
@@ -352,30 +352,42 @@ const CreateAddEditTasks = () => {
             </div>
             <hr></hr>
             <div className="subtasks">
-              <h2>Subtasks</h2>
-              {taskData.subtasks &&
-                taskData.subtasks
-                  .filter(
-                    (subtask) => subtask.isComplete !== 1 || !subtask.isComplete
-                  )
-                  .map((subtask) => (
-                    <Subtask
-                      key={subtask.id}
-                      subtask={subtask}
-                      onSubtaskDelete={handleSubtaskDelete}
-                    />
-                  ))}
-              <h2>Completed Subtasks</h2>
-              {taskData.subtasks &&
-                taskData.subtasks
-                  .filter((subtask) => subtask.isComplete === 1)
-                  .map((subtask) => (
-                    <Subtask
-                      key={subtask.id}
-                      subtask={subtask}
-                      onSubtaskDelete={handleSubtaskDelete}
-                    />
-                  ))}
+              <div className="subtasks-columns">
+                <div className="subtasks-col-1">
+                  <h2>Subtasks</h2>
+                  <div className="subtasks-scrollable-container">
+                    {taskData.subtasks &&
+                      taskData.subtasks
+                        .filter(
+                          (subtask) =>
+                            subtask.isComplete !== 1 || !subtask.isComplete
+                        )
+                        .map((subtask) => (
+                          <Subtask
+                            key={subtask.id}
+                            subtask={subtask}
+                            onSubtaskDelete={handleSubtaskDelete}
+                          />
+                        ))}
+                  </div>
+                </div>
+                <hr></hr>
+                <div className="subtasks-col-2">
+                  <h2>Completed Subtasks</h2>
+                  <div className="subtasks-scrollable-container">
+                    {taskData.subtasks &&
+                      taskData.subtasks
+                        .filter((subtask) => subtask.isComplete === 1)
+                        .map((subtask) => (
+                          <Subtask
+                            key={subtask.id}
+                            subtask={subtask}
+                            onSubtaskDelete={handleSubtaskDelete}
+                          />
+                        ))}
+                  </div>
+                </div>
+              </div>
               <button type="button" onClick={handleShowSubtaskForm}>
                 Add a subtask
               </button>
@@ -383,8 +395,8 @@ const CreateAddEditTasks = () => {
           </div>
           <hr></hr>
           <div className="col-2">
+            <h2>Assigned users</h2>
             <div className="assigned-users">
-              <h2>Assigned users</h2>
               {taskData.users.map((user) => (
                 <AssignedUser
                   key={user.id}
@@ -392,23 +404,23 @@ const CreateAddEditTasks = () => {
                   onUnassign={handleUnassignUser}
                 />
               ))}
-              <h2>Waiting to be assigned</h2>
-              <div className="users-without-tasks-list">
-                {users
-                  .filter(
-                    (user) =>
-                      !taskData.users.some(
-                        (assignedUser) => assignedUser.id === user.id
-                      )
-                  )
-                  .map((user) => (
-                    <WTAUser
-                      key={user.id}
-                      user={user}
-                      onAssign={handleAssignUser}
-                    />
-                  ))}
-              </div>
+            </div>
+            <h2>Waiting to be assigned</h2>
+            <div className="wta-users">
+              {users
+                .filter(
+                  (user) =>
+                    !taskData.users.some(
+                      (assignedUser) => assignedUser.id === user.id
+                    )
+                )
+                .map((user) => (
+                  <WTAUser
+                    key={user.id}
+                    user={user}
+                    onAssign={handleAssignUser}
+                  />
+                ))}
             </div>
           </div>
         </div>
