@@ -3,6 +3,7 @@ import { useLocation, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./CreateAddEditTasks.css";
 import SubtaskForm from "../componentsForAll/SubtaskForm";
+import SubtaskEditForm from "../componentsForAll/SubtaskEditForm";
 import Navbar from "../componentsForAll/Navbar.js";
 
 const CreateAddEditTasks = () => {
@@ -11,6 +12,7 @@ const CreateAddEditTasks = () => {
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get("id");
   const [showSubtaskForm, setShowSubtaskForm] = useState(false);
+  const [editingSubtask, setEditingSubtask] = useState(null);
 
   //Assigned users component
   const AssignedUser = ({ user, onUnassign }) => {
@@ -84,37 +86,10 @@ const CreateAddEditTasks = () => {
     deletedSubtasks: [],
   });
 
-  // useEffect(() => {
-  //   // Fetch task details
-  //   if (id) {
-  //     axios
-  //       .get(`http://localhost:7777/tasks/${id}`)
-  //       .then((response) => {
-  //         const task =
-  //           Array.isArray(response.data) && response.data.length > 0
-  //             ? response.data[0]
-  //             : null;
-
-  //         if (task && task.title) {
-  //           setTaskData(task);
-  //         } else {
-  //           console.error("Invalid API response:", response.data);
-  //         }
-  //       })
-  //       .catch((err) => console.error(err));
-
-  //     // Fetch subtasks
-  //     axios
-  //       .get(`http://localhost:7777/tasks/${id}/subtasks`)
-  //       .then((response) => {
-  //         setTaskData((prevTaskData) => ({
-  //           ...prevTaskData,
-  //           subtasks: response.data,
-  //         }));
-  //       })
-  //       .catch((err) => console.error(err));
-  //   }
-  // }, [id]);
+  //Controls what happens when a subtask is clicked
+  const handleSubtaskClick = (subtask) => {
+    setEditingSubtask(subtask);
+  };
 
   //Fetching tasks and subtasks
   useEffect(() => {
@@ -363,11 +338,16 @@ const CreateAddEditTasks = () => {
                             subtask.isComplete !== 1 || !subtask.isComplete
                         )
                         .map((subtask) => (
-                          <Subtask
+                          <div
                             key={subtask.id}
-                            subtask={subtask}
-                            onSubtaskDelete={handleSubtaskDelete}
-                          />
+                            onClick={() => handleSubtaskClick(subtask)}
+                            className="clickable-subtasks"
+                          >
+                            <Subtask
+                              subtask={subtask}
+                              onSubtaskDelete={handleSubtaskDelete}
+                            />
+                          </div>
                         ))}
                   </div>
                 </div>
@@ -379,11 +359,16 @@ const CreateAddEditTasks = () => {
                       taskData.subtasks
                         .filter((subtask) => subtask.isComplete === 1)
                         .map((subtask) => (
-                          <Subtask
+                          <div
                             key={subtask.id}
-                            subtask={subtask}
-                            onSubtaskDelete={handleSubtaskDelete}
-                          />
+                            onClick={() => handleSubtaskClick(subtask)}
+                            className="clickable-subtasks"
+                          >
+                            <Subtask
+                              subtask={subtask}
+                              onSubtaskDelete={handleSubtaskDelete}
+                            />
+                          </div>
                         ))}
                   </div>
                 </div>
@@ -436,6 +421,15 @@ const CreateAddEditTasks = () => {
           </button>
         </div>
       </form>
+      {editingSubtask && (
+        <div className="modal-overlay">
+          <SubtaskEditForm
+            subtask={editingSubtask}
+            onClose={() => setEditingSubtask(null)}
+            /*onUpdateSubtask={handleSubtaskChange}*/
+          />
+        </div>
+      )}
       {showSubtaskForm && (
         <div className="modal-overlay">
           <SubtaskForm

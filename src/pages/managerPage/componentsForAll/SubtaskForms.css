@@ -1,0 +1,20 @@
+.subtask-edit-form {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.image-component {
+  width: 50px;
+  height: auto;
+}
+
+.image-component img {
+  width: 50px;
+}
+
+.note-component {
+  background-color: lightgray;
+  border-radius: 10px;
+  padding: 10px;
+}

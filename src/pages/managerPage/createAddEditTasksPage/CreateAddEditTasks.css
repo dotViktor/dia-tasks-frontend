@@ -62,6 +62,10 @@ hr {
   overflow-y: auto;
 }
 
+.clickable-subtasks {
+  cursor: pointer;
+}
+
 /*! CreateAddEditTasks.css */
 .modal-overlay {
   position: fixed;
