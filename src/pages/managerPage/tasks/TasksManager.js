@@ -29,7 +29,7 @@ const TasksManager = () => {
           </Link>
         ))}
         <Link to="/createAddEditTasks" className="custom-link">
-          <button className="custom-button">Add</button>
+          <button className="custom-button"><span></span>Add</button>
         </Link>
       </div>
     </>

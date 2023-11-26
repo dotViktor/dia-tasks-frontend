@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./SubtaskForms.css";
+import "./SubtaskEditForm.css";
 
 const SubtaskEditForm = ({ subtask, onClose }) => {
   const [images, setImages] = useState([]);
@@ -127,7 +127,8 @@ const SubtaskEditForm = ({ subtask, onClose }) => {
           </div>
         </div>
       </div>
-      <button type="button" onClick={onClose}>
+      <button className="custom-button" type="button" onClick={onClose}>
+        <span></span>
         Close
       </button>
     </div>

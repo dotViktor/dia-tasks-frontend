@@ -276,13 +276,12 @@ const CreateAddEditTasks = () => {
   return (
     <>
       <Navbar path="/navManager" element={<Navbar />} />
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="add-edit-tasks-form">
         <div className="form-data">
           <div className="col-1">
             <div className="task">
               <label>
                 Task Name:
-                <br />
                 <input
                   type="text"
                   name="title"
@@ -290,42 +289,39 @@ const CreateAddEditTasks = () => {
                   onChange={handleInputChange}
                 />
               </label>
-              <br />
               <label>
                 Task Description:
-                <br />
-                <input
-                  type="text"
+                <textarea
                   name="description"
                   value={taskData.description || ""}
                   onChange={handleInputChange}
                 />
               </label>
-              <br />
-              <label>
-                Start Time:
-                <br />
-                <input
-                  type="datetime-local"
-                  name="startTime"
-                  value={
-                    taskData.startTime ? taskData.startTime.slice(0, -1) : ""
-                  }
-                  onChange={handleInputChange}
-                />
-              </label>
-              <label>
-                End Time:
-                <br />
-                <input
-                  type="datetime-local"
-                  name="endTime"
-                  value={taskData.endTime ? taskData.endTime.slice(0, -1) : ""}
-                  onChange={handleInputChange}
-                />
-              </label>
+              <div className="task-datetime">
+                <label>
+                  Start Time:
+                  <input
+                    type="datetime-local"
+                    name="startTime"
+                    value={
+                      taskData.startTime ? taskData.startTime.slice(0, -1) : ""
+                    }
+                    onChange={handleInputChange}
+                  />
+                </label>
+                <label>
+                  End Time:
+                  <input
+                    type="datetime-local"
+                    name="endTime"
+                    value={
+                      taskData.endTime ? taskData.endTime.slice(0, -1) : ""
+                    }
+                    onChange={handleInputChange}
+                  />
+                </label>
+              </div>
             </div>
-            <hr></hr>
             <div className="subtasks">
               <div className="subtasks-columns">
                 <div className="subtasks-col-1">
@@ -351,9 +347,8 @@ const CreateAddEditTasks = () => {
                         ))}
                   </div>
                 </div>
-                <hr></hr>
                 <div className="subtasks-col-2">
-                  <h2>Completed Subtasks</h2>
+                  <h2>Completed subtasks</h2>
                   <div className="subtasks-scrollable-container">
                     {taskData.subtasks &&
                       taskData.subtasks
@@ -373,12 +368,18 @@ const CreateAddEditTasks = () => {
                   </div>
                 </div>
               </div>
-              <button type="button" onClick={handleShowSubtaskForm}>
-                Add a subtask
-              </button>
+              <div className="add-subtasks-button">
+                <button
+                  className="custom-button"
+                  type="button"
+                  onClick={handleShowSubtaskForm}
+                >
+                  <span></span>
+                  Add a subtask
+                </button>
+              </div>
             </div>
           </div>
-          <hr></hr>
           <div className="col-2">
             <h2>Assigned users</h2>
             <div className="assigned-users">
@@ -390,7 +391,7 @@ const CreateAddEditTasks = () => {
                 />
               ))}
             </div>
-            <h2>Waiting to be assigned</h2>
+            <h2>Not assigned</h2>
             <div className="wta-users">
               {users
                 .filter(
@@ -410,13 +411,26 @@ const CreateAddEditTasks = () => {
           </div>
         </div>
         <div className="form-buttons">
-          <button type="submit">{id ? "Update Task" : "Create Task"}</button>
+          <button className="custom-button" type="submit">
+            <span></span>
+            {id ? "Update Task" : "Create Task"}
+          </button>
           {id && (
-            <button type="delete" onClick={handleDelete}>
+            <button
+              className="custom-button"
+              type="delete"
+              onClick={handleDelete}
+            >
+              <span></span>
               Delete Task
             </button>
           )}
-          <button type="button" onClick={handleCancel}>
+          <button
+            className="custom-button"
+            type="button"
+            onClick={handleCancel}
+          >
+            <span></span>
             Cancel
           </button>
         </div>

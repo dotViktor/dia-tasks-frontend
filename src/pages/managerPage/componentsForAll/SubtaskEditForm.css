@@ -1,4 +1,3 @@
-/*! SubtaskEditForm.js */
 .subtask-edit-form {
   background-color: white;
   border-radius: 10px;
@@ -92,5 +91,3 @@
 .image-component:hover .material-symbols-outlined {
   visibility: visible;
 }
-
-/*! SubtaskForm.js */

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./SubtaskForms.css";
+import "../createAddEditTasksPage/CreateAddEditTasks.css";
 
 const SubtaskForm = ({ taskParentID, onClose, onAddSubtask }) => {
   const [subtaskData, setSubtaskData] = useState({
@@ -48,7 +48,6 @@ const SubtaskForm = ({ taskParentID, onClose, onAddSubtask }) => {
       <form onSubmit={handleSubmit}>
         <label>
           Subtask Name:
-          <br />
           <input
             type="text"
             name="title"
@@ -56,42 +55,43 @@ const SubtaskForm = ({ taskParentID, onClose, onAddSubtask }) => {
             onChange={handleInputChange}
           />
         </label>
-        <br />
         <label>
           Subtask Description:
-          <br />
           <textarea
             name="description"
             value={subtaskData.description}
             onChange={handleInputChange}
           />
         </label>
-        <br />
-        <label>
-          Number of Images:
-          <br />
-          <input
-            type="number"
-            name="requiredImages"
-            value={subtaskData.requiredImages}
-            onChange={handleInputChange}
-          />
-        </label>
-        <br />
-        <label>
-          Number of Notes (At least 1):
-          <br />
-          <input
-            type="number"
-            name="requiredNotes"
-            value={subtaskData.requiredNotes}
-            onChange={handleInputChange}
-          />
-        </label>
-        <br />
-        <button type="submit">Add Subtask</button>
+        <div className="subtask-form-number-fields">
+          <label>
+            Number of Images:
+            <input
+              type="number"
+              name="requiredImages"
+              value={subtaskData.requiredImages}
+              onChange={handleInputChange}
+            />
+          </label>
+          <label>
+            Number of Notes (At least 1):
+            <input
+              type="number"
+              name="requiredNotes"
+              value={subtaskData.requiredNotes}
+              onChange={handleInputChange}
+            />
+          </label>
+        </div>
+        <div className="subtask-form-buttons">
+          <button className="custom-button" type="submit">
+            <span></span>Add Subtask
+          </button>
+          <button className="custom-button" onClick={onClose}>
+            <span></span>Close
+          </button>
+        </div>
       </form>
-      <button onClick={onClose}>Close</button>
     </div>
   );
 };
