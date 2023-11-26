@@ -1,60 +1,18 @@
 import axios from 'axios';
 import "../loginPage/LoginPage.css";
-import { Link, useNavigate} from 'react-router-dom';
-import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
 import AdminScreen from '../managerComponents/AdminScreen.js';
+import { jwtDecode } from "jwt-decode";
 
 
-// const AuthContext = createContext();
-// export default function LoginPage(){
-
-
-//     const [email, setEmail] = useState('');
-//     const [password, setPassword] = useState('');
-//     // const [isLoggedIn, setIsLoggedIn] = useState(false);
-//     const [role, setRole] = useState('');
-//     const [error, setError] = useState(null);
-//     const {setIsLoggedIn} = useContext(AuthContext);
-
-//     const handleLoggin = async () => {
-//         try {
-//             const response = await axios.post('...here is the addres for the backend login end point', {
-//                 email,
-//                 password
-//             });
-
-//             const { role } = response.data; //Backend returns me the role of the current user
-//             setIsLoggedIn(true);
-//             setRole(role);
-//         }
-//         catch (error) {
-//             setError('Invalid username or password!');
-//         }
-//     };
-//     return (
-//         <div className="main-login-container">
-//             <div className="inner-login-container">
-//                 <div className="login-title">
-//                     <h1>Tasks.Do</h1>
-//                 </div>
-//                 <form className="form-login">
-//                     <label>Email:</label>
-//                     <input type="email" onChange={(e) => setEmail(e.target.value)} placeholder="Enter email..." value={email} /><br></br>
-//                     <label>Password:</label>
-//                     <input type="text" onChange={(e) => setPassword(e.target.value)} placeholder="Enter password..." value={password} /><br></br>
-//                     <button onClick={handleLoggin} className="btn btn-primary">Submit</button>
-//                     {error && <p style={{ color: 'red' }}>{error}</p>}
-//                 </form>
-//             </div>
-//         </div>
-//     )
-// };
 
 function LoginPage() {
-    
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+
 
     //-------------------------
     // this hook gives you access to history objects 
@@ -71,22 +29,30 @@ function LoginPage() {
                 //---------------------------------------------------
                 // console.log(response.data.user.role);
                 //---------------------------------------------------
-                
-                if(response.status === 202 || 200){
+
+                if (response.status === 202 || 200) {
                     console.log("Congratulation you have access!");
-                    if(response.data.user.role === "admin"){
+
+                    // console.log(jwtDecode(response.data.token));
+                    // const token = response.data.token;
+                    // const decoded = jwtDecode(token);
+                    // localStorage.setItem(token.user);
+                    // console.log(decoded);
+                    // console.log(token.user);
+
+                    if (response.data.user.role === "admin") {
                         navigate("/adminScreen");
                     }
-                    else{
+                    else {
                         navigate('/clientScreen');
                     }
-                }else {
+                } else {
                     console.log("Oops! Something went wrong!")
                 }
 
             })
             .catch(error => console.log(error))
-     }
+    }
 
 
     return (
@@ -118,6 +84,7 @@ function LoginPage() {
                         name="password"
                         placeholder="Enter password..."
                         value={password}
+                        className='input-pass'
                         onChange={(e) => setPassword(e.target.value)}
                     />
                     <br></br>
@@ -132,3 +99,5 @@ function LoginPage() {
     );
 };
 export default LoginPage;
+
+

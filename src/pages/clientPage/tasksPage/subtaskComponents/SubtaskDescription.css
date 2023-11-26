@@ -28,3 +28,25 @@
 .sub-description{
     font-size:1.5rem;
 }
+.form-content input[type=file]::file-selector-button {
+    padding:13px 18px;
+    border-radius: 5px;
+    background-color: green;
+    font-size:1.2rem;
+    color:white;
+    border:unset;
+
+}
+.form-content input[type=file]::file-selector-button:hover{
+    cursor:pointer;
+}
+.upload-btn{
+    padding:13px 18px;
+    margin-left:2rem;
+    border-radius: 5px;
+    background-color: green;
+    font-size:1.2rem;
+    color:white;
+    border:unset;
+}
+  

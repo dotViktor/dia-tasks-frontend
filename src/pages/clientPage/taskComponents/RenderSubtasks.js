@@ -6,11 +6,11 @@ export default function RenderSubtasks({ subtask }) {
         <div className='subtask-box'>
             {subtask.isComplete == "1" ?
                 <div className='sub-icon-box'>
-                    <i class="fa-regular fa-square-check"></i>
+                    <i className="fa-regular fa-square-check"></i>
                 </div>
                 :
                 <div className='sub-icon-box'>
-                    <i class="fa-regular fa-square"></i>
+                    <i className="fa-regular fa-square"></i>
                 </div>
             }
             <h2 className='sub-title'>

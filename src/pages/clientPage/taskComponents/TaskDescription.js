@@ -30,6 +30,10 @@ export default function TaskDescription() {
         .catch((error) => console.error(error));
     },[])
 
+
+    const handleClick = () => {
+        window.history.back();
+    }
     return (
         <>
             <NavbarClients path="/navClients" ></NavbarClients>
@@ -58,7 +62,7 @@ export default function TaskDescription() {
 
                     </div>
                     <div className='btn-sub-container'>
-                        <button className='btn btn-primary'>Done</button>
+                        <button className='btn btn-primary' onClick={handleClick}>Done</button>
                     </div>
                 </div>
             </div>
