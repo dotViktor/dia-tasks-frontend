@@ -3,6 +3,7 @@ import "../loginPage/LoginPage.css";
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import AdminScreen from '../managerComponents/AdminScreen.js';
+import ClientScreen from '../clientComponents/ClientScreen.js';
 import { jwtDecode } from "jwt-decode";
 
 
@@ -11,9 +12,11 @@ function LoginPage() {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [userName, setUserName] = useState('');
     const navigate = useNavigate();
 
 
+ 
     //-------------------------
     // this hook gives you access to history objects 
     // and you have access to several functions to 
@@ -33,6 +36,18 @@ function LoginPage() {
                 if (response.status === 202 || 200) {
                     console.log("Congratulation you have access!");
 
+                    const userToken = response.data.token;
+                    const decodedToken = jwtDecode(userToken);
+        
+                    // Store the user information in localStorage
+                    localStorage.setItem('userToken', userToken);
+                    localStorage.setItem('userName', decodedToken.user.name);
+                    console.log(decodedToken.user.name)
+
+                    // const userName = response.data.user.name;
+                    // localStorage.setItem('userName', userName);
+                    // console.log(userName);
+
                     // console.log(jwtDecode(response.data.token));
                     // const token = response.data.token;
                     // const decoded = jwtDecode(token);
@@ -40,7 +55,7 @@ function LoginPage() {
                     // console.log(decoded);
                     // console.log(token.user);
 
-                    if (response.data.user.role === "admin") {
+                    if (decodedToken.user.role === "admin") {
                         navigate("/adminScreen");
                     }
                     else {
@@ -54,11 +69,13 @@ function LoginPage() {
             .catch(error => console.log(error))
     }
 
+    
 
     return (
         <div className='main-login-container'>
             <div className='inner-login-container'>
                 <h1>Login Page</h1>
+                
                 <form className='form-login' onSubmit={handleSubmit}>
                     <label htmlFor="email">
                         <strong>

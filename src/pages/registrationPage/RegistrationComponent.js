@@ -1,5 +1,5 @@
 import axios from "axios";
-import React,{useState} from "react";
+import React,{useState,useRef, useEffect} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import '../registrationPage/RegistrationComponent.css';
 
@@ -7,6 +7,10 @@ export default function RegistrationPage(){
     const [email,setEmail] = useState()
     const [password ,setPassword] = useState()
     const [name,setName] = useState()
+    const nameRef = useRef();
+    const emailRef = useRef();
+    const passwordRef = useRef();
+   
     // axios.defaults.withCredentials = true;
     const navigate = useNavigate();
     const handleSubmit = (event) => {
@@ -20,7 +24,7 @@ export default function RegistrationPage(){
         )
     }   
 
-    return(
+    return(    
         <div className="main-register-container">
             <div className="inner-register-container">
                 <h1>Registrate</h1>
@@ -33,6 +37,7 @@ export default function RegistrationPage(){
                             placeholder="Enter email..."
                             autoComplete="off"
                             name="email"
+                            ref={emailRef}
                             onChange={(e) => setEmail(e.target.value)}
                         /><br></br>
                          <label htmlFor="name">
@@ -43,6 +48,7 @@ export default function RegistrationPage(){
                             placeholder="Enter name..."
                             autoComplete="off"
                             name="name"
+                            ref={nameRef}
                             onChange={(e) => setName(e.target.value)}
                         /><br></br>
                         <label htmlFor="password">
@@ -51,6 +57,7 @@ export default function RegistrationPage(){
                         <input
                             type="password"
                             name="password"
+                            ref={passwordRef}
                             placeholder="Enter password..."
                             onChange={(e) => setPassword(e.target.value)}
                         /><br></br>

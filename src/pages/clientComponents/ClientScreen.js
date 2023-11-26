@@ -4,8 +4,11 @@ import axios from "axios";
 import ClientSingleTask from '../clientComponents/ClientSingleTasks.js';
 import './ClientScreen.css';
 import NavbarClients from '../clientPage/navbarClientsFolder/NavbarClients.js';
+import UserWelcome from '../loginPage/UserWelcome.js';
 
-const ClientScreen = () => {
+
+
+const ClientScreen = ({ userName }) => {
 
     const [tasks, setTasks] = useState([]);
     useEffect(() => {
@@ -15,11 +18,14 @@ const ClientScreen = () => {
             .catch((error) => console.error(error));
     }, [])
 
+
     return (
         <>
-            <NavbarClients path="/navClients" ></NavbarClients>
-            <div className='main-client-container'>
+            <NavbarClients path="/navClients" >
+            </NavbarClients>
 
+            <div className='main-client-container'>
+                {<UserWelcome />}
                 <div className='inner-client-container'>
                     {tasks.map((task) => (
                         <Link
