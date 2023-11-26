@@ -3,6 +3,7 @@ import { useLocation, useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import "./CreateAddEditTasks.css";
 import SubtaskForm from "../componentsForAll/SubtaskForm";
+import SubtaskEditForm from "../componentsForAll/SubtaskEditForm";
 import Navbar from "../componentsForAll/Navbar.js";
 
 const CreateAddEditTasks = () => {
@@ -11,6 +12,7 @@ const CreateAddEditTasks = () => {
   const searchParams = new URLSearchParams(location.search);
   const id = searchParams.get("id");
   const [showSubtaskForm, setShowSubtaskForm] = useState(false);
+  const [editingSubtask, setEditingSubtask] = useState(null);
 
   //Assigned users component
   const AssignedUser = ({ user, onUnassign }) => {
@@ -84,37 +86,10 @@ const CreateAddEditTasks = () => {
     deletedSubtasks: [],
   });
 
-  // useEffect(() => {
-  //   // Fetch task details
-  //   if (id) {
-  //     axios
-  //       .get(`http://localhost:7777/tasks/${id}`)
-  //       .then((response) => {
-  //         const task =
-  //           Array.isArray(response.data) && response.data.length > 0
-  //             ? response.data[0]
-  //             : null;
-
-  //         if (task && task.title) {
-  //           setTaskData(task);
-  //         } else {
-  //           console.error("Invalid API response:", response.data);
-  //         }
-  //       })
-  //       .catch((err) => console.error(err));
-
-  //     // Fetch subtasks
-  //     axios
-  //       .get(`http://localhost:7777/tasks/${id}/subtasks`)
-  //       .then((response) => {
-  //         setTaskData((prevTaskData) => ({
-  //           ...prevTaskData,
-  //           subtasks: response.data,
-  //         }));
-  //       })
-  //       .catch((err) => console.error(err));
-  //   }
-  // }, [id]);
+  //Controls what happens when a subtask is clicked
+  const handleSubtaskClick = (subtask) => {
+    setEditingSubtask(subtask);
+  };
 
   //Fetching tasks and subtasks
   useEffect(() => {
@@ -300,14 +275,13 @@ const CreateAddEditTasks = () => {
 
   return (
     <>
-      <Navbar path="/navManager" element={<Navbar/>}/>
-      <form onSubmit={handleSubmit}>
+      <Navbar path="/navManager" element={<Navbar />} />
+      <form onSubmit={handleSubmit} className="add-edit-tasks-form">
         <div className="form-data">
           <div className="col-1">
             <div className="task">
               <label>
                 Task Name:
-                <br />
                 <input
                   type="text"
                   name="title"
@@ -315,76 +289,100 @@ const CreateAddEditTasks = () => {
                   onChange={handleInputChange}
                 />
               </label>
-              <br />
               <label>
                 Task Description:
-                <br />
-                <input
-                  type="text"
+                <textarea
                   name="description"
                   value={taskData.description || ""}
                   onChange={handleInputChange}
                 />
               </label>
-              <br />
-              <label>
-                Start Time:
-                <br />
-                <input
-                  type="datetime-local"
-                  name="startTime"
-                  value={
-                    taskData.startTime ? taskData.startTime.slice(0, -1) : ""
-                  }
-                  onChange={handleInputChange}
-                />
-              </label>
-              <label>
-                End Time:
-                <br />
-                <input
-                  type="datetime-local"
-                  name="endTime"
-                  value={taskData.endTime ? taskData.endTime.slice(0, -1) : ""}
-                  onChange={handleInputChange}
-                />
-              </label>
+              <div className="task-datetime">
+                <label>
+                  Start Time:
+                  <input
+                    type="datetime-local"
+                    name="startTime"
+                    value={
+                      taskData.startTime ? taskData.startTime.slice(0, -1) : ""
+                    }
+                    onChange={handleInputChange}
+                  />
+                </label>
+                <label>
+                  End Time:
+                  <input
+                    type="datetime-local"
+                    name="endTime"
+                    value={
+                      taskData.endTime ? taskData.endTime.slice(0, -1) : ""
+                    }
+                    onChange={handleInputChange}
+                  />
+                </label>
+              </div>
             </div>
-            <hr></hr>
             <div className="subtasks">
-              <h2>Subtasks</h2>
-              {taskData.subtasks &&
-                taskData.subtasks
-                  .filter(
-                    (subtask) => subtask.isComplete !== 1 || !subtask.isComplete
-                  )
-                  .map((subtask) => (
-                    <Subtask
-                      key={subtask.id}
-                      subtask={subtask}
-                      onSubtaskDelete={handleSubtaskDelete}
-                    />
-                  ))}
-              <h2>Completed Subtasks</h2>
-              {taskData.subtasks &&
-                taskData.subtasks
-                  .filter((subtask) => subtask.isComplete === 1)
-                  .map((subtask) => (
-                    <Subtask
-                      key={subtask.id}
-                      subtask={subtask}
-                      onSubtaskDelete={handleSubtaskDelete}
-                    />
-                  ))}
-              <button type="button" onClick={handleShowSubtaskForm}>
-                Add a subtask
-              </button>
+              <div className="subtasks-columns">
+                <div className="subtasks-col-1">
+                  <h2>Subtasks</h2>
+                  <div className="subtasks-scrollable-container">
+                    {taskData.subtasks &&
+                      taskData.subtasks
+                        .filter(
+                          (subtask) =>
+                            subtask.isComplete !== 1 || !subtask.isComplete
+                        )
+                        .map((subtask) => (
+                          <div
+                            key={subtask.id}
+                            onClick={() => handleSubtaskClick(subtask)}
+                            className="clickable-subtasks"
+                          >
+                            <Subtask
+                              subtask={subtask}
+                              onSubtaskDelete={handleSubtaskDelete}
+                            />
+                          </div>
+                        ))}
+                  </div>
+                </div>
+                <div className="subtasks-col-2">
+                  <h2>Completed subtasks</h2>
+                  <div className="subtasks-scrollable-container">
+                    {taskData.subtasks &&
+                      taskData.subtasks
+                        .filter((subtask) => subtask.isComplete === 1)
+                        .map((subtask) => (
+                          <div
+                            key={subtask.id}
+                            onClick={() => handleSubtaskClick(subtask)}
+                            className="clickable-subtasks"
+                          >
+                            <Subtask
+                              subtask={subtask}
+                              onSubtaskDelete={handleSubtaskDelete}
+                            />
+                          </div>
+                        ))}
+                  </div>
+                </div>
+              </div>
+              <div className="add-subtasks-button">
+                <button
+                  className="custom-button"
+                  type="button"
+                  onClick={handleShowSubtaskForm}
+                >
+                  <span></span>
+                  Add a subtask
+                </button>
+              </div>
             </div>
           </div>
-          <hr></hr>
           <div className="col-2">
+            <h2>Assigned users</h2>
             <div className="assigned-users">
-              <h2>Assigned users</h2>
               {taskData.users.map((user) => (
                 <AssignedUser
                   key={user.id}
@@ -392,38 +390,59 @@ const CreateAddEditTasks = () => {
                   onUnassign={handleUnassignUser}
                 />
               ))}
-              <h2>Waiting to be assigned</h2>
-              <div className="users-without-tasks-list">
-                {users
-                  .filter(
-                    (user) =>
-                      !taskData.users.some(
-                        (assignedUser) => assignedUser.id === user.id
-                      )
-                  )
-                  .map((user) => (
-                    <WTAUser
-                      key={user.id}
-                      user={user}
-                      onAssign={handleAssignUser}
-                    />
-                  ))}
-              </div>
+            </div>
+            <h2>Not assigned</h2>
+            <div className="wta-users">
+              {users
+                .filter(
+                  (user) =>
+                    !taskData.users.some(
+                      (assignedUser) => assignedUser.id === user.id
+                    )
+                )
+                .map((user) => (
+                  <WTAUser
+                    key={user.id}
+                    user={user}
+                    onAssign={handleAssignUser}
+                  />
+                ))}
             </div>
           </div>
         </div>
         <div className="form-buttons">
-          <button type="submit">{id ? "Update Task" : "Create Task"}</button>
+          <button className="custom-button" type="submit">
+            <span></span>
+            {id ? "Update Task" : "Create Task"}
+          </button>
           {id && (
-            <button type="delete" onClick={handleDelete}>
+            <button
+              className="custom-button"
+              type="delete"
+              onClick={handleDelete}
+            >
+              <span></span>
               Delete Task
             </button>
           )}
-          <button type="button" onClick={handleCancel}>
+          <button
+            className="custom-button"
+            type="button"
+            onClick={handleCancel}
+          >
+            <span></span>
             Cancel
           </button>
         </div>
       </form>
+      {editingSubtask && (
+        <div className="modal-overlay">
+          <SubtaskEditForm
+            subtask={editingSubtask}
+            onClose={() => setEditingSubtask(null)}
+          />
+        </div>
+      )}
       {showSubtaskForm && (
         <div className="modal-overlay">
           <SubtaskForm

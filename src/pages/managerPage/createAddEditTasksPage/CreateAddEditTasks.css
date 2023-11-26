@@ -1,24 +1,64 @@
-form {
-  padding: 20px 40px;
+/**Basic page structure*/
+.add-edit-tasks-form {
+  padding: 2.5rem;
+  height: calc(100vh - 68px); /* 68px is the height of the navbar */
 }
-
 .form-data {
   display: flex;
-  height: 70vh;
+  height: calc(100% - 57.6px); /* 57.6px is the height of the form-buttons */
+  padding-bottom: 2.5rem;
 }
-
+.form-buttons {
+  display: flex;
+  justify-content: center;
+}
 .col-1 {
   flex: 2;
-  padding: 10px 20px;
+  padding-right: 1.25rem;
 }
-
 .col-2 {
   flex: 1;
-  padding: 10px 20px;
+}
+.task {
+  margin-bottom: 1.25rem;
+}
+.task,
+.subtasks,
+.col-2 {
+  background-color: rgb(161, 161, 161);
+  border-radius: 10px;
+  padding: 10px;
+}
+h2 {
+  text-align: center;
 }
 
-hr {
+/**Form Input fields*/
+form label {
+  display: block;
+}
+form input {
   border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  width: 100%;
+  background: transparent;
+}
+form textarea {
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 5px;
+  resize: none;
+  height: 5.5rem;
+  width: 100%;
+  background: transparent;
+}
+.task-datetime label {
+  display: inline-block;
+  width: 49%;
+}
+.task-datetime label:first-child {
+  margin-right: 2%;
 }
 
 .user-manager-container {
@@ -35,7 +75,78 @@ hr {
   cursor: pointer;
 }
 
-/* CreateAddEditTasks.css */
+/** Users */
+.assigned-users {
+  max-height: 15rem;
+  overflow-y: auto;
+}
+
+.wta-users {
+  max-height: 21.7rem;
+  overflow-y: auto;
+}
+
+/** Subtasks */
+.subtasks-columns {
+  display: flex;
+}
+
+.subtasks-col-1,
+.subtasks-col-2 {
+  flex: 1;
+  padding: 10px;
+}
+
+.subtasks-scrollable-container {
+  height: 17.7rem;
+  overflow-y: auto;
+}
+
+.clickable-subtasks {
+  cursor: pointer;
+}
+
+/**Buttons*/
+.form-buttons button {
+  margin-right: 2rem;
+}
+
+.add-subtasks-button {
+  text-align: center;
+}
+
+.custom-button {
+  width: 300px;
+  padding: 15px 25px;
+  text-align: center;
+  border-radius: 25px !important;
+  font-weight: bold;
+  border: 2px solid black;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.custom-button span {
+  background: black;
+  height: 100%;
+  width: 0;
+  border-radius: 22px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1; /*to move it behind the text*/
+  transition: 0.5s;
+}
+.custom-button:hover span {
+  width: 100%;
+}
+.custom-button:hover {
+  color: white;
+  transition: 0.5s;
+}
+
+/*! Subtask Form */
 .modal-overlay {
   position: fixed;
   top: 0;
@@ -46,6 +157,7 @@ hr {
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 2;
 }
 
 .subtask-form {
@@ -53,4 +165,25 @@ hr {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 45rem;
+  height: 25rem;
+}
+
+.subtask-form-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.25rem;
+}
+
+.subtask-form-buttons button {
+  margin-right: 2rem;
+}
+
+.subtask-form-number-fields label {
+  display: inline-block;
+  width: 49%;
+}
+
+.subtask-form-number-fields label:first-child {
+  margin-right: 2%;
 }

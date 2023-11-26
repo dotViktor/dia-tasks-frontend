@@ -1,0 +1,93 @@
+.subtask-edit-form {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 65rem;
+  height: 40rem;
+  text-align: center;
+}
+.subtask-edit-form-columns {
+  display: flex;
+  height: 34rem;
+}
+.subtask-edit-form-col-1,
+.subtask-edit-form-col-2 {
+  flex: 1;
+  border-radius: 10px;
+  padding: 10px;
+}
+.subtask-edit-form button {
+  display: block;
+  margin: auto;
+}
+.subtask-edit-form-scrollable-container {
+  height: 28rem;
+  overflow-y: auto;
+}
+
+/**Note and Image components*/
+.note-component,
+.image-component {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.note-component {
+  width: 150px;
+  height: auto;
+  background-color: lightgray;
+  padding: 10px;
+}
+.image-component {
+  width: fit-content;
+}
+
+.image-component img {
+  width: 10rem;
+}
+
+.note-overlay,
+.image-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  background-color: rgba(255, 255, 255, 0);
+  opacity: 0;
+  transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease,
+    opacity 0.3s ease;
+  border-radius: 10px;
+}
+
+.note-component:hover .note-overlay,
+.image-component:hover .image-overlay {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7); /* Semi-transparent white */
+  opacity: 1;
+}
+
+.note-component span,
+.image-component span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  visibility: hidden;
+  font-size: 2.5rem;
+  color: red;
+}
+.image-component span {
+  position: relative;
+  top: 43%;
+  left: initial;
+  transform: initial;
+}
+
+.note-component:hover .material-symbols-outlined,
+.image-component:hover .material-symbols-outlined {
+  visibility: visible;
+}
