@@ -1,12 +1,12 @@
 /**Basic page structure*/
 .add-edit-tasks-form {
-  padding: 2.5rem;
+  padding: 3vh;
   height: calc(100vh - 68px); /* 68px is the height of the navbar */
 }
 .form-data {
   display: flex;
   height: calc(100% - 57.6px); /* 57.6px is the height of the form-buttons */
-  padding-bottom: 2.5rem;
+  padding-bottom: 3vh;
 }
 .form-buttons {
   display: flex;
@@ -14,44 +14,66 @@
 }
 .col-1 {
   flex: 2;
-  padding-right: 1.25rem;
+  padding-right: 1.5vh;
 }
 .col-2 {
   flex: 1;
 }
 .task {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5vh;
 }
 .task,
 .subtasks,
 .col-2 {
-  background-color: rgb(161, 161, 161);
+  background-color: rgb(230, 230, 230);
   border-radius: 10px;
   padding: 10px;
 }
+
+/**Font sizes and margins*/
 h2 {
   text-align: center;
+  margin-bottom: 0vh;
+}
+h4 {
+  margin: 4px 0px;
+}
+.form-data p {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 1vh;
+}
+.form-data hr {
+  margin-bottom: 0vh;
+}
+#assigned-users-paragraph {
+  margin-top: 10px;
 }
 
 /**Form Input fields*/
 form label {
   display: block;
+  font-weight: bold;
+  font-size: 16px;
 }
 form input {
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 25px;
   padding: 5px;
   width: 100%;
   background: transparent;
+  padding-left: 10px;
 }
 form textarea {
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 25px;
   padding: 5px;
   resize: none;
-  height: 5.5rem;
+  height: 6.5vh;
   width: 100%;
   background: transparent;
+  padding-left: 10px;
 }
 .task-datetime label {
   display: inline-block;
@@ -63,7 +85,7 @@ form textarea {
 
 .user-manager-container {
   border: 1px solid black;
-  border-radius: 10px;
+  border-radius: 25px;
   padding: 5px 20px;
   margin-bottom: 10px;
   display: flex;
@@ -77,12 +99,12 @@ form textarea {
 
 /** Users */
 .assigned-users {
-  max-height: 15rem;
+  max-height: 24vh;
   overflow-y: auto;
 }
 
 .wta-users {
-  max-height: 21.7rem;
+  max-height: 36vh;
   overflow-y: auto;
 }
 
@@ -98,7 +120,7 @@ form textarea {
 }
 
 .subtasks-scrollable-container {
-  height: 17.7rem;
+  height: 32.9vh;
   overflow-y: auto;
 }
 
@@ -108,7 +130,7 @@ form textarea {
 
 /**Buttons*/
 .form-buttons button {
-  margin-right: 2rem;
+  margin-right: 4vh;
 }
 
 .add-subtasks-button {
@@ -145,6 +167,12 @@ form textarea {
   color: white;
   transition: 0.5s;
 }
+#add-subtask-button {
+  border: 1px solid black;
+  width: 100%;
+  padding: 5px !important;
+  font-weight: normal;
+}
 
 /*! Subtask Form */
 .modal-overlay {
@@ -165,18 +193,18 @@ form textarea {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  width: 45rem;
-  height: 25rem;
+  width: 70vh;
+  height: 40vh;
 }
 
 .subtask-form-buttons {
   display: flex;
   justify-content: center;
-  margin-top: 1.25rem;
+  margin-top: 1.5vh;
 }
 
 .subtask-form-buttons button {
-  margin-right: 2rem;
+  margin-right: 3vh;
 }
 
 .subtask-form-number-fields label {

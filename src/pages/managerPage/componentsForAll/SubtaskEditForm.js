@@ -5,11 +5,32 @@ import "./SubtaskEditForm.css";
 const SubtaskEditForm = ({ subtask, onClose }) => {
   const [images, setImages] = useState([]);
   const [notes, setNotes] = useState([]);
+  const [requiredData, setRequiredData] = useState([]);
 
   useEffect(() => {
     fetchImages();
     fetchNotes();
+    fetchRequiredData();
   }, []);
+
+  const fetchRequiredData = async () => {
+    try {
+      const response = await axios.get(
+        `http://localhost:7777/tasks/${subtask.TaskParentID}/subtasks`
+      );
+      //Since I only need the data for a specific subtask
+      const subtasksArray = response.data;
+      const specificSubtask = subtasksArray.find(
+        (subtaskE) => subtaskE.id === subtask.id
+      );
+      setRequiredData(specificSubtask);
+    } catch (error) {
+      console.error(
+        "Error getting number of required images and notes data:",
+        error
+      );
+    }
+  };
 
   const fetchImages = async () => {
     try {
@@ -104,7 +125,9 @@ const SubtaskEditForm = ({ subtask, onClose }) => {
     <div className="subtask-edit-form">
       <div className="subtask-edit-form-columns">
         <div className="subtask-edit-form-col-1">
-          <h2>Images:</h2>
+          <h2>
+            Images: {images.length}/{requiredData.requiredImages}
+          </h2>
           <hr />
           <div className="subtask-edit-form-scrollable-container">
             {images.length === 0 ? (
@@ -116,7 +139,9 @@ const SubtaskEditForm = ({ subtask, onClose }) => {
         </div>
         <hr />
         <div className="subtask-edit-form-col-2">
-          <h2>Notes:</h2>
+          <h2>
+            Notes: {notes.length}/{requiredData.requiredNotes}
+          </h2>
           <hr />
           <div className="subtask-edit-form-scrollable-container">
             {notes.length === 0 ? (

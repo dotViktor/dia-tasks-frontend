@@ -323,9 +323,11 @@ const CreateAddEditTasks = () => {
               </div>
             </div>
             <div className="subtasks">
+              <h2>Subtasks</h2>
+              <hr />
               <div className="subtasks-columns">
                 <div className="subtasks-col-1">
-                  <h2>Subtasks</h2>
+                  <p>Active</p>
                   <div className="subtasks-scrollable-container">
                     {taskData.subtasks &&
                       taskData.subtasks
@@ -348,7 +350,7 @@ const CreateAddEditTasks = () => {
                   </div>
                 </div>
                 <div className="subtasks-col-2">
-                  <h2>Completed subtasks</h2>
+                  <p>Completed</p>
                   <div className="subtasks-scrollable-container">
                     {taskData.subtasks &&
                       taskData.subtasks
@@ -373,6 +375,7 @@ const CreateAddEditTasks = () => {
                   className="custom-button"
                   type="button"
                   onClick={handleShowSubtaskForm}
+                  id="add-subtask-button"
                 >
                   <span></span>
                   Add a subtask
@@ -381,7 +384,9 @@ const CreateAddEditTasks = () => {
             </div>
           </div>
           <div className="col-2">
-            <h2>Assigned users</h2>
+            <h2>Users</h2>
+            <hr />
+            <p id="assigned-users-paragraph">Assigned</p>
             <div className="assigned-users">
               {taskData.users.map((user) => (
                 <AssignedUser
@@ -391,7 +396,7 @@ const CreateAddEditTasks = () => {
                 />
               ))}
             </div>
-            <h2>Not assigned</h2>
+            <p>Not assigned</p>
             <div className="wta-users">
               {users
                 .filter(
