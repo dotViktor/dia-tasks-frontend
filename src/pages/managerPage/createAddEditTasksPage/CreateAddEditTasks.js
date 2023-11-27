@@ -46,6 +46,12 @@ const CreateAddEditTasks = () => {
 
   //Subtask component
   const Subtask = ({ subtask, onSubtaskDelete }) => {
+    const handleDeleteClick = (event) => {
+      //Stop the event from propagating to the container, without this when clicking the X both onClick events would be executed
+      event.stopPropagation();
+      onSubtaskDelete(subtask);
+    };
+
     return (
       <div className="user-manager-container">
         <h4>{subtask.title}</h4>
@@ -53,7 +59,7 @@ const CreateAddEditTasks = () => {
           (subtask.isComplete === 0 || subtask.isComplete === undefined) && (
             <span
               className="material-symbols-outlined"
-              onClick={() => onSubtaskDelete(subtask)}
+              onClick={handleDeleteClick}
             >
               close
             </span>

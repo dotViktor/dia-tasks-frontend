@@ -126,7 +126,10 @@ const SubtaskEditForm = ({ subtask, onClose }) => {
       <div className="subtask-edit-form-columns">
         <div className="subtask-edit-form-col-1">
           <h2>
-            Images: {images.length}/{requiredData.requiredImages}
+            Images: {images.length}/
+            {requiredData?.requiredImages !== undefined
+              ? requiredData.requiredImages
+              : "..."}
           </h2>
           <hr />
           <div className="subtask-edit-form-scrollable-container">
@@ -140,7 +143,10 @@ const SubtaskEditForm = ({ subtask, onClose }) => {
         <hr />
         <div className="subtask-edit-form-col-2">
           <h2>
-            Notes: {notes.length}/{requiredData.requiredNotes}
+            Notes: {notes.length}/
+            {requiredData?.requiredNotes !== undefined
+              ? requiredData.requiredNotes
+              : "..."}
           </h2>
           <hr />
           <div className="subtask-edit-form-scrollable-container">
