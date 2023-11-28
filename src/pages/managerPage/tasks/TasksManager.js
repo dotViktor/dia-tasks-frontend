@@ -17,7 +17,7 @@ const TasksManager = () => {
 
   return (
     <>
-      <Navbar/>
+      <Navbar />
       <div className="tasks-list">
         {tasks.map((task) => (
           <Link
@@ -28,9 +28,13 @@ const TasksManager = () => {
             <Task task={task} />
           </Link>
         ))}
-        <Link to="/createAddEditTasks" className="custom-link">
-          <button className="custom-button"><span></span>Add</button>
-        </Link>
+        <div className="add-task-button">
+          <Link to="/createAddEditTasks" className="custom-link">
+            <button className="custom-button">
+              <span></span>Add
+            </button>
+          </Link>
+        </div>
       </div>
     </>
   );
