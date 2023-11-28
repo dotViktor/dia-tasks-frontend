@@ -8,10 +8,30 @@ import { jwtDecode } from "jwt-decode";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
+import { useNavigate } from "react-router-dom";
 
-function RenderEventContent({ eventInfo }) {
+function RenderEventContent({ eventInfo, navigate }) {
+  const handleNavigate = () => {
+    //state should have the title, desc and id
+    return navigate(
+      `/clientScreen/clientTask/${eventInfo.event.extendedProps.id}`,
+      {
+        state: {
+          id: eventInfo.event.extendedProps.id,
+          title: eventInfo.event.title,
+          description: eventInfo.event.extendedProps.description,
+          isComplete: eventInfo.event.extendedProps.isComplete,
+          users: eventInfo.event.extendedProps.users,
+        },
+      }
+    );
+  };
   return (
-    <div className="client-task-container">
+    <div
+      className="client-task-container"
+      onClick={handleNavigate}
+      onKeyDown={handleNavigate}
+    >
       <h1>{eventInfo.event.title}</h1>
       {eventInfo.event.extendedProps.users.map((user) => {
         return (
@@ -26,6 +46,7 @@ function RenderEventContent({ eventInfo }) {
 
 const ClientScreen = () => {
   const [tasks, setTasks] = useState([]);
+  const navigate = useNavigate();
 
   const storedToken = localStorage.getItem("userToken");
   const loggedUser = jwtDecode(storedToken).user;
@@ -69,7 +90,9 @@ const ClientScreen = () => {
               users: task.users,
             },
           }))}
-          eventContent={(eventInfo) => RenderEventContent({ eventInfo })}
+          eventContent={(eventInfo) =>
+            RenderEventContent({ eventInfo, navigate })
+          }
         />
       </div>
     </>
