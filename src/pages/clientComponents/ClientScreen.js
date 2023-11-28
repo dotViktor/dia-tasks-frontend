@@ -8,7 +8,7 @@ import UserWelcome from '../loginPage/UserWelcome.js';
 
 
 
-const ClientScreen = ({ userName }) => {
+const ClientScreen = () => {
 
     const [tasks, setTasks] = useState([]);
     useEffect(() => {

@@ -12,7 +12,6 @@ const UserWelcome = () => {
     const year = today.getFullYear();
     const date = today.getDate();
     return `${date}/${month}/${year}`;
-
   }
 
   useEffect(() => {
