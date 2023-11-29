@@ -10,13 +10,19 @@ const UsersManager = () => {
   const [users, setUsers] = useState([]);
   const [selectedUserId, setSelectedUserId] = useState(null);
   const [showForm, setShowForm] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(0);
+
+  //Refresh data when user list is updated
+  const handleRefreshData = () => {
+    setRefreshKey((prevKey) => prevKey + 1);
+  };
 
   useEffect(() => {
     axios
-      .get("http://localhost:7777/users")
+      .get("http://localhost:7777/users?key=${refreshKey}")
       .then((response) => setUsers(response.data))
       .catch((err) => console.error(err));
-  }, []);
+  }, [refreshKey]);
 
   const handleUserClick = (userId) => {
     setSelectedUserId(userId);
@@ -58,7 +64,11 @@ const UsersManager = () => {
       </div>
       {showForm && (
         <div className="modal-overlay">
-          <UsersForm userId={selectedUserId} onClose={handleCloseForm} />
+          <UsersForm
+            userId={selectedUserId}
+            onClose={handleCloseForm}
+            onRefreshData={handleRefreshData}
+          />
         </div>
       )}
     </>

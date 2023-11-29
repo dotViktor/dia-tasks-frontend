@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "../users/UsersManager.css";
 
-const UsersForm = ({ userId, onClose }) => {
+const UsersForm = ({ userId, onClose, onRefreshData }) => {
   const [userData, setUserData] = useState(null);
   const [userTasks, setUserTasks] = useState([]);
 
@@ -41,6 +41,24 @@ const UsersForm = ({ userId, onClose }) => {
     }
   }, [userId]);
 
+  //Changing user role to "admin" (turning a client into a manager)
+  const handlePromoteToAdmin = () => {
+    const confirmed = window.confirm(
+      `Are you sure you want to promote ${userData.name} to a manager? This action will remove him from all tasks he is currently apart of, but will give him full access to all tasks.`
+    );
+    if (userId && confirmed) {
+      axios
+        .get(`http://localhost:7777/users/${userId}/make-admin`)
+        .then(() => {
+          console.log("User role updated to admin");
+          onRefreshData();
+          onClose();
+        })
+        .catch((error) => console.error("Update user role error:", error));
+    }
+  };
+
+  //Deleting a user
   const handleDeleteUser = () => {
     const confirmed = window.confirm(
       "Are absolutely sure you want to delete this user? Keep in mind that deleting him will also remove him from all tasks."
@@ -50,6 +68,7 @@ const UsersForm = ({ userId, onClose }) => {
         .delete(`http://localhost:7777/users/${userId}`)
         .then(() => {
           console.log("User deleted");
+          onRefreshData();
           onClose();
         })
         .catch((error) => console.error("Delete user error:", error));
@@ -68,6 +87,7 @@ const UsersForm = ({ userId, onClose }) => {
             <br />
             <strong>Role:</strong> {userData.role}
           </div>
+          {userData.role === "client" && <h2>Tasks</h2>}
           <ul>
             {userTasks.map((task) => (
               <li key={task.id}>
@@ -82,9 +102,18 @@ const UsersForm = ({ userId, onClose }) => {
               </li>
             ))}
           </ul>
-          <div className="form-buttons">
-            <button onClick={handleDeleteUser}>Delete User</button>
-            <button onClick={onClose}>Cancel</button>
+          <div>
+            {userData.role === "client" && (
+              <button className="custom-button" onClick={handlePromoteToAdmin}>
+                <span></span>Promote to Admin
+              </button>
+            )}
+            <button className="custom-button" onClick={handleDeleteUser}>
+              <span></span>Delete User
+            </button>
+            <button className="custom-button" onClick={onClose}>
+              <span></span>Cancel
+            </button>
           </div>
         </>
       )}

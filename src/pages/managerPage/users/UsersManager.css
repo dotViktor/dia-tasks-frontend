@@ -36,6 +36,9 @@
   justify-content: center;
   background-color: lightblue;
 }
+.user-image-smaller-initials {
+  font-size: 30px;
+}
 
 .user-details {
   flex-grow: 1;
