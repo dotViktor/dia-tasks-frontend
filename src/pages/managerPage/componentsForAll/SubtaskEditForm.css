@@ -2,13 +2,12 @@
   background-color: white;
   border-radius: 10px;
   padding: 20px;
-  width: 65rem;
-  height: 40rem;
+  width: 110vh;
+  height: fit-content;
   text-align: center;
 }
 .subtask-edit-form-columns {
   display: flex;
-  height: 34rem;
 }
 .subtask-edit-form-col-1,
 .subtask-edit-form-col-2 {
@@ -21,8 +20,13 @@
   margin: auto;
 }
 .subtask-edit-form-scrollable-container {
-  height: 28rem;
+  height: 45vh;
   overflow-y: auto;
+}
+.subtask-edit-form-image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 15vh);
+  grid-gap: 10px;
 }
 
 /**Note and Image components*/
@@ -33,17 +37,21 @@
   border-radius: 10px;
 }
 .note-component {
-  width: 150px;
   height: auto;
   background-color: lightgray;
   padding: 10px;
+  margin-bottom: 10px;
+}
+.note-component p {
+  margin-bottom: 8px;
 }
 .image-component {
   width: fit-content;
 }
 
 .image-component img {
-  width: 10rem;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .note-overlay,
@@ -77,7 +85,7 @@
   transform: translate(-50%, -50%);
   cursor: pointer;
   visibility: hidden;
-  font-size: 2.5rem;
+  font-size: 3.5vh;
   color: red;
 }
 .image-component span {

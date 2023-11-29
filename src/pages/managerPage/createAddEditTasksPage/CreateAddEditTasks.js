@@ -47,7 +47,7 @@ const CreateAddEditTasks = () => {
   //Subtask component
   const Subtask = ({ subtask, onSubtaskDelete }) => {
     const handleDeleteClick = (event) => {
-      //Stop the event from propagating to the container, without this when clicking the X both onClick events would be executed
+      //Stop the event from spreading to the container, without this when clicking the X both onClick events would be executed
       event.stopPropagation();
       onSubtaskDelete(subtask);
     };

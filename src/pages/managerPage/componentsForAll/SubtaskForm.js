@@ -28,7 +28,7 @@ const SubtaskForm = ({ taskParentID, onClose, onAddSubtask }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Ensure at least one note is required
+    // Ensures theres is at least one note required
     const requiredNotes =
       subtaskData.requiredNotes < 1 ? 1 : subtaskData.requiredNotes;
 
