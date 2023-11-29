@@ -15,12 +15,19 @@
 .col-1 {
   flex: 2;
   padding-right: 1.5vh;
+  display: flex;
+  flex-direction: column;
 }
 .col-2 {
   flex: 1;
 }
 .task {
   margin-bottom: 1.5vh;
+}
+.subtasks {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
 }
 .task,
 .subtasks,
@@ -60,10 +67,9 @@ form label {
 form input {
   border: 1px solid black;
   border-radius: 25px;
-  padding: 5px;
+  padding: 5px 10px;
   width: 100%;
   background: transparent;
-  padding-left: 10px;
 }
 form textarea {
   border: 1px solid black;
@@ -120,7 +126,7 @@ form textarea {
 }
 
 .subtasks-scrollable-container {
-  height: 32.9vh;
+  max-height: 32.9vh;
   overflow-y: auto;
 }
 
@@ -135,6 +141,7 @@ form textarea {
 
 .add-subtasks-button {
   text-align: center;
+  margin-top: auto;
 }
 
 .custom-button {
@@ -199,12 +206,8 @@ form textarea {
 
 .subtask-form-buttons {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin-top: 1.5vh;
-}
-
-.subtask-form-buttons button {
-  margin-right: 3vh;
 }
 
 .subtask-form-number-fields label {

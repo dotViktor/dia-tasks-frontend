@@ -44,7 +44,7 @@ const SubtaskForm = ({ taskParentID, onClose, onAddSubtask }) => {
 
   return (
     <div className="subtask-form">
-      <h2>Add Subtask</h2>
+      <h2>Add a subtask</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Subtask Name:

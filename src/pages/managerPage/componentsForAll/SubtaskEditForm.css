@@ -28,6 +28,9 @@
   grid-template-columns: repeat(3, 15vh);
   grid-gap: 10px;
 }
+.subtask-edit-form-image-grid p {
+  grid-column: 1 / -1; /* Span across all columns */
+}
 
 /**Note and Image components*/
 .note-component,
