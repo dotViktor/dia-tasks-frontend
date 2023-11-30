@@ -33,13 +33,13 @@ function RenderEventContent({ eventInfo, navigate }) {
       onKeyDown={handleNavigate}
     >
       <h1>{eventInfo.event.title}</h1>
-      {eventInfo.event.extendedProps.users.map((user) => {
-        return (
-          <div className="client-user-container" key={user.id}>
-            <h1>{user.name}</h1>
-          </div>
-        );
-      })}
+
+      <div
+        className="client-user-container"
+        key={eventInfo.event.extendedProps.user.id}
+      >
+        <h1>{eventInfo.event.extendedProps.user.name}</h1>
+      </div>
     </div>
   );
 }
@@ -49,16 +49,23 @@ const ClientScreen = () => {
   const navigate = useNavigate();
 
   const storedToken = localStorage.getItem("userToken");
-  const loggedUser = jwtDecode(storedToken).user;
+  let loggedUser = null;
+  if (storedToken) {
+    loggedUser = jwtDecode(storedToken).user;
+  }
+
+  const filterTasks = (tasks) => {
+    return tasks.filter((task) => {
+      return task.users.some((user) => user.id === loggedUser.id);
+    });
+  };
 
   useEffect(() => {
     axios
       .get("http://localhost:7777/tasks")
       .then((response) => {
-        const tasks = response.data;
-        const filteredTasks = tasks.filter((task) => {
-          return task.users.some((user) => user.id === loggedUser.id);
-        });
+        if (!loggedUser) return console.error("No logged user");
+        const filteredTasks = filterTasks(response.data);
         setTasks(filteredTasks);
       })
       .catch((error) => console.error(error));
@@ -69,9 +76,7 @@ const ClientScreen = () => {
       <NavbarClients path="/navClients"></NavbarClients>
 
       <div className="main-client-container">
-        <div className="client-info-container">
-          {<UserWelcome />}
-        </div>
+        <div className="client-info-container">{<UserWelcome />}</div>
         <div>
           <FullCalendar
             timeZone="EET"
@@ -90,7 +95,7 @@ const ClientScreen = () => {
                 id: task.id,
                 description: task.description,
                 isComplete: task.isComplete,
-                users: task.users,
+                user: loggedUser,
               },
             }))}
             eventContent={(eventInfo) =>
