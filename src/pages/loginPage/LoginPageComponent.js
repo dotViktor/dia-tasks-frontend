@@ -87,7 +87,7 @@ function LoginPage() {
             </button>
           </div>
         </form>
-        <div className="sign-up-container">
+        <div className="link-container">
           <Link to="/register">
             <span className="sign-up">Sign Up</span>
           </Link>
