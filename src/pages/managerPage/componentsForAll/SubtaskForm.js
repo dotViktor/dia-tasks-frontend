@@ -28,7 +28,7 @@ const SubtaskForm = ({ taskParentID, onClose, onAddSubtask }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Ensure at least one note is required
+    // Ensures theres is at least one note required
     const requiredNotes =
       subtaskData.requiredNotes < 1 ? 1 : subtaskData.requiredNotes;
 
@@ -44,7 +44,7 @@ const SubtaskForm = ({ taskParentID, onClose, onAddSubtask }) => {
 
   return (
     <div className="subtask-form">
-      <h2>Add Subtask</h2>
+      <h2>Add a subtask</h2>
       <form onSubmit={handleSubmit}>
         <label>
           Subtask Name:

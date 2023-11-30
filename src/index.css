@@ -1,14 +1,14 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 .title-effect{
@@ -36,4 +36,53 @@ code {
 }
 .route-div{
   font-family: 'Quicksand';
+}
+/**Primary colors*/
+
+/*?To use one of the primary colors: background: var(--primary-color);*/
+
+/**Custom button styling*/
+.custom-button {
+  width: 300px;
+  padding: 15px 25px;
+  text-align: center;
+  border-radius: 25px !important;
+  font-weight: bold;
+  border: 2px solid black;
+  background: transparent;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.custom-button span {
+  background: black;
+  height: 100%;
+  width: 0;
+  border-radius: 22px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: -1; /*to move it behind the text*/
+  transition: 0.5s;
+}
+.custom-button:hover span {
+  width: 100%;
+}
+.custom-button:hover {
+  color: white;
+  transition: 0.5s;
+}
+
+/**Pop-up windows overlay*/
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
 }

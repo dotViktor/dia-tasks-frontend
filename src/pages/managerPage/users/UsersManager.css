@@ -1,32 +1,76 @@
 .user-list {
-    padding: 20px;
-    width: fit-content;
-    margin: auto;
-  }
-  
-  .user-container {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    border: 1px solid black;
-    border-radius: 10px;
-    width: 800px;
-  }
-  
-  .user-image {
-    border-radius: 50%;
-    height: 60px;
-    width: 60px;
-    margin: 0px 15px;
-    border: 1px solid black;
-    display: flex;
-    align-items: center;
-    font-size: 35px;
-    font-weight: 500;
-    justify-content: center;
-    background-color: lightblue;
-  }
-  
-  .user-details {
-    flex-grow: 1;
-  }
+  padding: 20px;
+  width: fit-content;
+  margin: auto;
+}
+
+.user-list h2 {
+  margin-bottom: 20px;
+}
+
+/**UsersInfo.js*/
+.user-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+  width: 800px;
+  padding: 5px;
+}
+
+.user-container p {
+  margin-bottom: 8px;
+}
+
+.user-image {
+  border-radius: 50%;
+  height: 60px;
+  width: 60px;
+  margin: 0px 15px;
+  border: 1px solid black;
+  display: flex;
+  align-items: center;
+  font-size: 35px;
+  font-weight: 500;
+  justify-content: center;
+  background-color: lightblue;
+}
+.user-image-smaller-initials {
+  font-size: 30px;
+}
+
+.user-details {
+  flex-grow: 1;
+}
+
+/**UserForm.js*/
+.user-form {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  width: 72vh;
+}
+.user-information-component {
+  display: flex;
+  margin: 20px 0px;
+  align-items: center;
+}
+.user-information-component div:first-child {
+  flex: 1;
+}
+.user-information-component div {
+  flex: 2;
+}
+.users-form-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.user-tasks-list {
+  margin: 20px 0px;
+}
+.user-tasks-list p {
+  text-align: center;
+}
