@@ -133,11 +133,13 @@ const SubtaskEditForm = ({ subtask, onClose }) => {
           </h2>
           <hr />
           <div className="subtask-edit-form-scrollable-container">
-            {images.length === 0 ? (
-              <p>This subtask doesn't have any images yet.</p>
-            ) : (
-              images.map((image) => <ImageComponent image={image} />)
-            )}
+            <div className="subtask-edit-form-image-grid">
+              {images.length === 0 ? (
+                <p>This subtask doesn't have any images yet.</p>
+              ) : (
+                images.map((image) => <ImageComponent image={image} />)
+              )}
+            </div>
           </div>
         </div>
         <hr />

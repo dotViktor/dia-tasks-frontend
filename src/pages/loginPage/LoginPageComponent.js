@@ -2,8 +2,6 @@ import axios from 'axios';
 import "../loginPage/LoginPage.css";
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
-import AdminScreen from '../managerComponents/AdminScreen.js';
-import ClientScreen from '../clientComponents/ClientScreen.js';
 import { jwtDecode } from "jwt-decode";
 
 
@@ -29,10 +27,6 @@ function LoginPage() {
         axios.post('http://localhost:7777/users/login', { email, password })
             .then(response => {
 
-                //---------------------------------------------------
-                // console.log(response.data.user.role);
-                //---------------------------------------------------
-
                 if (response.status === 202 || 200) {
                     console.log("Congratulation you have access!");
 
@@ -43,17 +37,6 @@ function LoginPage() {
                     localStorage.setItem('userToken', userToken);
                     localStorage.setItem('userName', decodedToken.user.name);
                     console.log(decodedToken.user.name)
-
-                    // const userName = response.data.user.name;
-                    // localStorage.setItem('userName', userName);
-                    // console.log(userName);
-
-                    // console.log(jwtDecode(response.data.token));
-                    // const token = response.data.token;
-                    // const decoded = jwtDecode(token);
-                    // localStorage.setItem(token.user);
-                    // console.log(decoded);
-                    // console.log(token.user);
 
                     if (decodedToken.user.role === "admin") {
                         navigate("/adminScreen");
