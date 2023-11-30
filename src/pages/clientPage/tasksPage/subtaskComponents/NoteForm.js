@@ -1,6 +1,7 @@
 import { computeShrinkWidth } from "@fullcalendar/core/internal";
 import React, { useState } from "react";
 import axios from 'axios';
+import { axiosOutHeaders } from "../../../..";
 
 const NoteForm = ({ onClose }) => {
 
@@ -9,7 +10,7 @@ const NoteForm = ({ onClose }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post("http://localhost:7777/subtasks/1/notes", { title: titleNote, content:contentNote })
+    axios.post("http://localhost:7777/subtasks/1/notes", { title: titleNote, content:contentNote }, axiosOutHeaders)
       .then(response => {
         if (response.status === "202" || "200") {
           console.log("Congratulations! Note was uploaded succesfully!")
