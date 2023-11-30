@@ -4,11 +4,11 @@ import "./ClientScreen.css";
 import NavbarClients from "../clientPage/navbarClientsFolder/NavbarClients.js";
 import UserWelcome from "../loginPage/UserWelcome.js";
 import { jwtDecode } from "jwt-decode";
-
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { useNavigate } from "react-router-dom";
+import { axiosOutHeaders } from "../../index.js";
 
 function RenderEventContent({ eventInfo, navigate }) {
   const handleNavigate = () => {
@@ -62,7 +62,7 @@ const ClientScreen = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:7777/tasks")
+      .get("http://localhost:7777/tasks", axiosOutHeaders)
       .then((response) => {
         if (!loggedUser) return console.error("No logged user");
         const filteredTasks = filterTasks(response.data);
@@ -74,9 +74,7 @@ const ClientScreen = () => {
   return (
     <>
       <NavbarClients path="/navClients"></NavbarClients>
-
       <div className="main-client-container">
-        <div className="client-info-container">{<UserWelcome />}</div>
         <div>
           <FullCalendar
             timeZone="EET"

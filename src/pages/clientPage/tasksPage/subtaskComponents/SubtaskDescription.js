@@ -4,6 +4,7 @@ import {  useLocation } from 'react-router-dom';
 import NavbarClients from '../../navbarClientsFolder/NavbarClients';
 import NoteForm from '../subtaskComponents/NoteForm.js';
 import ImageForm from '../subtaskComponents/ImageForm.js';
+import { axiosOutHeaders } from '../../../../index.js';
 
 
 export default function SubtaskDescription() {
@@ -23,7 +24,7 @@ export default function SubtaskDescription() {
       const response = await fetch('http://localhost:7777/upload/to-subtask/1', {
         method: 'POST',
         body: formData,
-      });
+      }, axiosOutHeaders);
 
       // Handle the response as needed
       console.log(response);

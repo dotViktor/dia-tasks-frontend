@@ -4,7 +4,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--bacground-white);
+    background-image: url("../../../../public/Images/bg-tasks.png");
+    background-size:cover;
+    background-position:center;
+    background-color: var(--background-white);
 }
 
 .task-content-container {

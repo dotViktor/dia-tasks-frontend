@@ -1,4 +1,5 @@
 import React from 'react'
+import { axiosOutHeaders } from '../../../..';
 
 export default function ImageForm({ onClose }) {
 
@@ -13,7 +14,7 @@ export default function ImageForm({ onClose }) {
             const response = await fetch('http://localhost:7777/upload/to-subtask/1', {
                 method: 'POST',
                 body: formData,
-            });
+            }, axiosOutHeaders);
 
             // Handle the response as needed
             console.log(response);

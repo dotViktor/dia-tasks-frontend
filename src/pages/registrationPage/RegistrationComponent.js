@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../loginPage/LoginPage.css";
 import LoginRegistrationEffect from "../login&RegistrationEffect/LoginRegistrationEffect";
+import { axiosOutHeaders } from "../..";
 
 export default function RegistrationPage() {
   const [email, setEmail] = useState();
@@ -12,17 +13,18 @@ export default function RegistrationPage() {
   const emailRef = useRef();
   const passwordRef = useRef();
 
-  // axios.defaults.withCredentials = true;
-  const navigate = useNavigate();
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    axios
-      .post("http://localhost:7777/users/register", { email, password, name })
-      .then((response) => {
-        navigate("/login");
-      })
-      .catch((error) => console.log(error));
-  };
+    // axios.defaults.withCredentials = true;
+    const navigate = useNavigate();
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        axios.post('http://localhost:7777/users/register', { email, password, name }, axiosOutHeaders)
+            .then(response => {
+                navigate('/login')
+            })
+            .catch(
+                error => console.log(error)
+            )
+    }
 
   return (
     <div className="main-login-container">
@@ -70,8 +72,11 @@ export default function RegistrationPage() {
               <i className="bx bx-user"></i>
             </div>
           </div>
+          <br></br>
           <button type="submit" className="login-btn">
+
             Register
+            <i className="fa-solid fa-right-to-bracket"></i>
           </button>
         </form>
         <div className="link-container">

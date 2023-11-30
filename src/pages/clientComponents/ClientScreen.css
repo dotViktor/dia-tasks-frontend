@@ -1,7 +1,7 @@
 .main-client-container {
   height: 100vh;
   width: 100%;
-  display:flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -18,13 +18,6 @@
   text-overflow: ellipsis;
   cursor: pointer;
   overflow-y: auto;
-}
-.client-info-container{
-  width:100%;
-  height:6rem;
-  display:flex;
-  justify-content: center;
-  align-items:center;
 }
 .client-task-container > h1 {
   font-size: 1.6rem;

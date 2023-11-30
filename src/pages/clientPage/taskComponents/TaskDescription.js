@@ -5,6 +5,7 @@ import NavbarClients from "../navbarClientsFolder/NavbarClients";
 import { useLocation } from "react-router-dom";
 import RenderSubtasks from "../taskComponents/RenderSubtasks.js";
 import axios from "axios";
+import { axiosOutHeaders } from "../../../index.js";
 // export default function TaskDescription(){
 //     const {taskId} = useParams();
 
@@ -22,7 +23,7 @@ export default function TaskDescription() {
   const [subtasks, setSubtasks] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:7777/tasks/${task.id}/subtasks`)
+      .get(`http://localhost:7777/tasks/${task.id}/subtasks`,axiosOutHeaders)
       .then((response) => {
         setSubtasks(response.data);
       })
@@ -36,6 +37,7 @@ export default function TaskDescription() {
     <>
       <NavbarClients path="/navClients"></NavbarClients>
       <div className="main-client-container">
+        
         <div className="task-content-container">
           <div className="task-header">
             <div>
