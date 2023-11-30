@@ -11,35 +11,34 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.title-effect{
-  font-family: 'Caveat';
-  color:var(--accent);
+.title-effect {
+  font-family: "Caveat";
+  color: var(--accent);
 }
 
+/**Primary colors*/
 :root {
   --primary-color: #0959d3;
   --background-dark: #010409;
-  --bacground-white: #BED2F0;
+  --bacground-white: #bed2f0;
   --color-text: #dce8fa;
   --secondary-color: #171819;
   --accent: #e19d37;
 }
+/*?To use one of the primary colors: background: var(--primary-color);*/
 
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap");
 
 @layer base {
   html {
-    font-family: 'Quicksand';
-    font-family: 'Caveat';
+    font-family: "Quicksand";
+    font-family: "Caveat";
   }
 }
-.route-div{
-  font-family: 'Quicksand';
+.route-div {
+  font-family: "Quicksand";
 }
-/**Primary colors*/
-
-/*?To use one of the primary colors: background: var(--primary-color);*/
 
 /**Custom button styling*/
 .custom-button {
