@@ -67,11 +67,7 @@ const ClientScreen = () => {
   return (
     <>
       <NavbarClients path="/navClients"></NavbarClients>
-
       <div className="main-client-container">
-        <div className="client-info-container">
-          {<UserWelcome />}
-        </div>
         <div>
           <FullCalendar
             timeZone="EET"
