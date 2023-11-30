@@ -47,7 +47,7 @@ const CreateAddEditTasks = () => {
   //Subtask component
   const Subtask = ({ subtask, onSubtaskDelete }) => {
     const handleDeleteClick = (event) => {
-      //Stop the event from propagating to the container, without this when clicking the X both onClick events would be executed
+      //Stop the event from spreading to the container, without this when clicking the X both onClick events would be executed
       event.stopPropagation();
       onSubtaskDelete(subtask);
     };
@@ -170,7 +170,10 @@ const CreateAddEditTasks = () => {
 
   //Task delete
   const handleDelete = () => {
-    if (id) {
+    const confirmed = window.confirm(
+      "You are going to delete a task. Keep in mind that deleting this task will also delete all subtasks associated with it. This action cannot be undone. Are you sure you want to continue?"
+    );
+    if (id && confirmed) {
       axios
         .delete(`http://localhost:7777/tasks/${id}`)
         .then((response) => {
@@ -407,6 +410,7 @@ const CreateAddEditTasks = () => {
               {users
                 .filter(
                   (user) =>
+                    user.role === "client" &&
                     !taskData.users.some(
                       (assignedUser) => assignedUser.id === user.id
                     )

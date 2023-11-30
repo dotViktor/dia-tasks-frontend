@@ -15,12 +15,19 @@
 .col-1 {
   flex: 2;
   padding-right: 1.5vh;
+  display: flex;
+  flex-direction: column;
 }
 .col-2 {
   flex: 1;
 }
 .task {
   margin-bottom: 1.5vh;
+}
+.subtasks {
+  flex: auto;
+  display: flex;
+  flex-direction: column;
 }
 .task,
 .subtasks,
@@ -60,10 +67,9 @@ form label {
 form input {
   border: 1px solid black;
   border-radius: 25px;
-  padding: 5px;
+  padding: 5px 10px;
   width: 100%;
   background: transparent;
-  padding-left: 10px;
 }
 form textarea {
   border: 1px solid black;
@@ -120,7 +126,7 @@ form textarea {
 }
 
 .subtasks-scrollable-container {
-  height: 32.9vh;
+  max-height: 32.9vh;
   overflow-y: auto;
 }
 
@@ -135,38 +141,9 @@ form textarea {
 
 .add-subtasks-button {
   text-align: center;
+  margin-top: auto;
 }
 
-.custom-button {
-  width: 300px;
-  padding: 15px 25px;
-  text-align: center;
-  border-radius: 25px !important;
-  font-weight: bold;
-  border: 2px solid black;
-  background: transparent;
-  position: relative;
-  overflow: hidden;
-  z-index: 1;
-}
-.custom-button span {
-  background: black;
-  height: 100%;
-  width: 0;
-  border-radius: 22px;
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  z-index: -1; /*to move it behind the text*/
-  transition: 0.5s;
-}
-.custom-button:hover span {
-  width: 100%;
-}
-.custom-button:hover {
-  color: white;
-  transition: 0.5s;
-}
 #add-subtask-button {
   border: 1px solid black;
   width: 100%;
@@ -175,36 +152,19 @@ form textarea {
 }
 
 /*! Subtask Form */
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 2;
-}
-
 .subtask-form {
   background: #fff;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   width: 70vh;
-  height: 40vh;
+  height: fit-content;
 }
 
 .subtask-form-buttons {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   margin-top: 1.5vh;
-}
-
-.subtask-form-buttons button {
-  margin-right: 3vh;
 }
 
 .subtask-form-number-fields label {
