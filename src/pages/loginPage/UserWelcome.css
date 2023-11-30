@@ -25,6 +25,12 @@
     justify-content: flex-start;
     align-items: center;
 }
+.user-box{
+    display: flex;
+    justify-content:center;
+    align-items:center;
+    text-align: center;
+}
 .user-name{
     margin-left:2rem;
     font-size:1.7rem;
@@ -33,5 +39,7 @@
 }
 .fa-user{
     margin-left:2rem;
+    margin-top:3.5rem;
     font-size:1.7rem;
+    color:black;
 }

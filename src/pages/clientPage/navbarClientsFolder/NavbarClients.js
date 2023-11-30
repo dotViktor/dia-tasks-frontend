@@ -8,7 +8,7 @@ export default function NavbarClients(){
             <div className="nav-client-inner">
                 <Link className="link-client" to='/clientScreen'>
                     <h1 className="title-clients">
-                        Tasks.DO
+                        Tasks.<span className="title-effect">Do</span>
                     </h1>
                 </Link>
             </div>

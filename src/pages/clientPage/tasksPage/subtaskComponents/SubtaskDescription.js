@@ -1,18 +1,17 @@
 import React, { useState } from 'react'
 import './SubtaskDescription.css';
-import { Link, useLocation} from 'react-router-dom';
+import {  useLocation } from 'react-router-dom';
 import NavbarClients from '../../navbarClientsFolder/NavbarClients';
-import axios from 'axios';
-import { hasFormSubmit } from '@testing-library/user-event/dist/utils';
-import Popup from 'reactjs-popup';
-import TaskDescription from '../../taskComponents/TaskDescription';
+import NoteForm from '../subtaskComponents/NoteForm.js';
+import ImageForm from '../subtaskComponents/ImageForm.js';
 
 
 export default function SubtaskDescription() {
 
   const location = useLocation();
   const subtask = location.state;
-
+  const [showNoteForm, setShowNoteForm] = useState(false);
+  const [showImageForm, setShowImageForm] = useState(false);
   const handleSubmit = async (event) => {
     event.preventDefault(); // Prevent the default form submission behavior
 
@@ -34,7 +33,23 @@ export default function SubtaskDescription() {
     }
   };
 
-  const handleClick = () =>{
+  const handleShowImageForm = () => {
+    setShowImageForm(true);
+  }
+  const handleCloseImageForm = () => {
+    setShowImageForm(false)
+  }
+
+  //Subtask form show/hide
+  const handleShowNoteForm = () => {
+    setShowNoteForm(true);
+  };
+
+  const handleCloseNoteForm = () => {
+    setShowNoteForm(false);
+  };
+
+  const handleClick = () => {
     window.history.back();
   }
   // const [selectedImages, setSelectedImages] = useState([]);
@@ -74,36 +89,51 @@ export default function SubtaskDescription() {
             <p className='sub-description'>{subtask.description}</p>
           </div>
           <div className='sub-content'>
-            <form
-              action="http://localhost:7777/upload/to-subtask/1"
-              method="POST"
-              onSubmit={handleSubmit}
-              encType="multipart/form-data"
-              className='form-content'
-            >
-              <input type="file" name="image" id='image-box' accept="image/*" multiple />
-              <input type="submit" value="Upload" className='upload-btn' />
-            </form>
+           
             <div>
-              <form
-                action="http://localhost:7777/upload/to-subtask/1"
-                method="POST"
-                onSubmit={handleSubmit}
-                encType="multipart/form-data"
+              <button
+                className="custom-button"
+                type="button"
+                onClick={handleShowImageForm}
+                id="add-subtask-button"
               >
-                <input type='textbox' name='note' accept="note/*" />
-                <input type="submit" value="Upload" className='upload-btn' />
-              </form>
-              {/* <Popup trigger=
-                {<button> Click to open popup </button>}
-                position="right center">
-                <div>GeeksforGeeks</div>
-                <button>Click here</button>
-              </Popup> */}
+                <span></span>
+                Add Image
+              </button>
+
             </div>
+            {showImageForm && (
+              <div className="modal-overlay">
+                <ImageForm
+                  onClose={handleCloseImageForm}
+                />
+              </div>
+            )}
+            <div></div>
+
             <div>
-                <button className='btn btn-primary' onClick={handleClick}>Done</button>
+              <button
+                className="custom-button"
+                type="button"
+                onClick={handleShowNoteForm}
+                id="add-subtask-button"
+              >
+                <span></span>
+                Add Note
+              </button>
+
             </div>
+            {showNoteForm && (
+              <div className="modal-overlay">
+                <NoteForm
+                  onClose={handleCloseNoteForm}
+                />
+              </div>
+            )}
+            <div>
+              <button className='btn btn-primary' onClick={handleClick}>Done</button>
+            </div>
+
           </div>
         </div>
       </div>

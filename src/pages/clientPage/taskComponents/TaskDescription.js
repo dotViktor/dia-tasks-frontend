@@ -59,9 +59,10 @@ export default function TaskDescription() {
             ))}
           </div>
           <div className="btn-sub-container">
-            <button className="btn btn-primary" onClick={handleClick}>
-              Done
-            </button>
+            <div className='btn-container'>
+              <button type="submit" onClick={handleClick} className='login-btn' smooth="true">Done
+              </button>
+            </div>
           </div>
         </div>
       </div>

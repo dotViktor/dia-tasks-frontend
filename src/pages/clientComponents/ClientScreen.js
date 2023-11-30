@@ -67,33 +67,37 @@ const ClientScreen = () => {
   return (
     <>
       <NavbarClients path="/navClients"></NavbarClients>
-      {<UserWelcome />}
 
       <div className="main-client-container">
-        <FullCalendar
-          timeZone="EET"
-          plugins={[timeGridPlugin, dayGridPlugin]}
-          initialView="timeGridWeek"
-          headerToolbar={{
-            left: "prev,next today",
-            center: "title",
-            right: "dayGridMonth,timeGridWeek,timeGridDay",
-          }}
-          events={tasks.map((task) => ({
-            title: task.title,
-            start: task.startTime,
-            end: task.endTime,
-            extendedProps: {
-              id: task.id,
-              description: task.description,
-              isComplete: task.isComplete,
-              users: task.users,
-            },
-          }))}
-          eventContent={(eventInfo) =>
-            RenderEventContent({ eventInfo, navigate })
-          }
-        />
+        <div className="client-info-container">
+          {<UserWelcome />}
+        </div>
+        <div>
+          <FullCalendar
+            timeZone="EET"
+            plugins={[timeGridPlugin, dayGridPlugin]}
+            initialView="timeGridWeek"
+            headerToolbar={{
+              left: "prev,next today",
+              center: "title",
+              right: "dayGridMonth,timeGridWeek,timeGridDay",
+            }}
+            events={tasks.map((task) => ({
+              title: task.title,
+              start: task.startTime,
+              end: task.endTime,
+              extendedProps: {
+                id: task.id,
+                description: task.description,
+                isComplete: task.isComplete,
+                users: task.users,
+              },
+            }))}
+            eventContent={(eventInfo) =>
+              RenderEventContent({ eventInfo, navigate })
+            }
+          />
+        </div>
       </div>
     </>
   );

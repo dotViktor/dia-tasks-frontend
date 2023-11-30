@@ -28,10 +28,10 @@ const UserWelcome = () => {
     <div className='welcome-container'>
       <div className='welcome-user'>
         {userName ? (
-          <>
-            <i class="fa-solid fa-user"></i>
+          <div className='user-box'>
+            <i className="fa-solid fa-user"></i>
             <p className='user-name'>{userName}</p>
-          </>
+          </div>
         ) : (
           <p>Welcome, Guest!</p>
         )}

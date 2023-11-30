@@ -2,8 +2,9 @@ import axios from 'axios';
 import "../loginPage/LoginPage.css";
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
+import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { jwtDecode } from "jwt-decode";
-
+import LoginRegistrationEffect from '../login&RegistrationEffect/LoginRegistrationEffect.js';
 
 
 function LoginPage() {
@@ -14,7 +15,7 @@ function LoginPage() {
     const navigate = useNavigate();
 
 
- 
+
     //-------------------------
     // this hook gives you access to history objects 
     // and you have access to several functions to 
@@ -32,7 +33,7 @@ function LoginPage() {
 
                     const userToken = response.data.token;
                     const decodedToken = jwtDecode(userToken);
-        
+
                     // Store the user information in localStorage
                     localStorage.setItem('userToken', userToken);
                     localStorage.setItem('userName', decodedToken.user.name);
@@ -52,49 +53,55 @@ function LoginPage() {
             .catch(error => console.log(error))
     }
 
-    
+
 
     return (
         <div className='main-login-container'>
+            
             <div className='inner-login-container'>
-                <h1>Login Page</h1>
-                
+                <h1 className='login-title'>Task.<span className='title-effect'>Do</span></h1>
+
                 <form className='form-login' onSubmit={handleSubmit}>
-                    <label htmlFor="email">
-                        <strong>
-                            Email:
-                        </strong>
-                    </label>
-                    <input
-                        type="email"
-                        name="email"
-                        placeholder='Enter email...'
-                        autoComplete='off'
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
+                    <div >
+                       
+
+                        <div className="input-field-login">
+                            <input type="email"
+                                name="email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                                className="input-login"
+                                placeholder="Username..." required />
+                            <i className="bx bx-user"></i>
+                        </div>
+                        <br></br>
+                        <div className="input-field-login">
+                            <input type="password"
+                                name="password"
+                                placeholder="Password..."
+                                value={password}
+                                className="input-login"
+                                onChange={(e) => setPassword(e.target.value)} />
+                            <i className="bx bx-user"></i>
+                        </div>
+
+                    </div>
                     <br></br>
-                    <label htmlFor="password">
-                        <strong>
-                            Password:
-                        </strong>
-                    </label>
-                    <input
-                        type="password"
-                        name="password"
-                        placeholder="Enter password..."
-                        value={password}
-                        className='input-pass'
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <br></br>
-                    <button type="submit" className='btn btn-primary'>Login</button>
+                    <div className='btn-container'>
+                        <button type="submit" className='login-btn' smooth="true">Login
+                        </button>
+                    </div>
                 </form>
-                <p>Don't have an account</p>
-                <Link to="/register" >Sign Up
-                </Link>
+                <div className='sign-up-container'>
+                    <Link to="/register" >
+                        <span className='sign-up'>
+                            Sign Up
+                        </span>
+                    </Link>
+                </div>
             </div>
 
+            <LoginRegistrationEffect/>
         </div>
     );
 };

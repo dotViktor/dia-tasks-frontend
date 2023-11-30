@@ -1,30 +1,49 @@
 .subtask-box{
     width:100%;
     height:100%;
-    border:2px solid black;
+    border:1px solid var(--bacground-white);
     border-radius: 10px;
     display:flex;
     justify-content: space-between;
     align-items:center;
-    background-color: whitesmoke;
+    text-align: center;
+    background-color: var(--secondary-color);
+    color:var(--color-text);
 }
-.sub-title{
-    color:black;
-    margin-top:5px;
+.sub-icon-container{
+    width:10%;
+    height:100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+
+}
+.sub-icon-box{
+    width:100%;
+    height:100%;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+.sub-title-container{
     width:40%;
     height:100%;
     display:flex;
     justify-content: center;
     align-items:center;
+
+}
+.sub-title{
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+
 }
 .fa-square, .fa-square-check{
     font-size:2rem;
-    color:black;
-}
-.sub-icon-box{
-    width:10%;
+    margin-top:6rem;
+    width:100%;
     height:100%;
-    display: flex;
-    justify-content: center;
-    align-items:center;
 }
