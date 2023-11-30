@@ -1,7 +1,22 @@
+/**Navbar title*/
+.title {
+  font-size: 2.8rem;
+}
+.link-title {
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.link-title:hover {
+  transform: scale(1.07);
+}
+
 .active {
   background: #1b4ed8;
 }
-
 nav {
   display: flex;
   justify-content: space-between;
@@ -10,13 +25,6 @@ nav {
   position: sticky;
   top: 0;
   z-index: 999;
-}
-.title {
-  font-size: 1.5rem;
-  margin: 1rem;
-  font-weight: bold;
-  text-decoration: none;
-  color: white;
 }
 nav ul {
   display: flex;

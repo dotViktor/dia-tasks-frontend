@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import classnames from "classnames";
 import "../users/UsersManager.css";
+import UserImageComponent from "../../globalComponents/UserImageComponent";
 
 const UsersForm = ({ userId, onClose, onRefreshData }) => {
   const [userData, setUserData] = useState(null);
@@ -9,24 +10,10 @@ const UsersForm = ({ userId, onClose, onRefreshData }) => {
 
   //*User Component
   const User = ({ user }) => {
-    //*Image initials
-    const initials = user.name
-      .split(" ")
-      .filter(
-        (word, index) =>
-          index === 0 || index === user.name.split(" ").length - 1
-      )
-      .map((word) => word.charAt(0).toUpperCase())
-      .join("");
-
-    const imageClasses = classnames("user-image", {
-      "user-image-smaller-initials": initials.length === 2,
-    });
-
     return (
       <div className="user-information-component" key={user.id}>
         <div>
-          <span className={imageClasses}>{initials}</span>
+          <UserImageComponent user={user} />
         </div>
         <div>
           <strong>Name:</strong> {user.name}
