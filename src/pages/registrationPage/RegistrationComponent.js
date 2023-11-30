@@ -1,17 +1,17 @@
 import axios from "axios";
 import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import '../registrationPage/RegistrationComponent.css';
+import "../loginPage/LoginPage.css";
 import LoginRegistrationEffect from "../login&RegistrationEffect/LoginRegistrationEffect";
 import { axiosOutHeaders } from "../..";
 
 export default function RegistrationPage() {
-    const [email, setEmail] = useState()
-    const [password, setPassword] = useState()
-    const [name, setName] = useState()
-    const nameRef = useRef();
-    const emailRef = useRef();
-    const passwordRef = useRef();
+  const [email, setEmail] = useState();
+  const [password, setPassword] = useState();
+  const [name, setName] = useState();
+  const nameRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
 
     // axios.defaults.withCredentials = true;
     const navigate = useNavigate();
@@ -26,55 +26,63 @@ export default function RegistrationPage() {
             )
     }
 
-    return (
-        <div className="main-register-container">
-            <div className="inner-register-container">
-                <h1 className='register-title'>Task.<span className='title-effect'>Do</span></h1>
-                <form className="register-form" onSubmit={handleSubmit}>
-                    <div >
-                        <div className="input-field-register">
-                            <input type="email"
-                                name="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                className="input-register"
-                                placeholder="Username..." required />
-                            <i className="bx bx-user"></i>
-                        </div>
-                        <br></br>
-                        <div className="input-field-register">
-                            <input
-                                type="text"
-                                placeholder="Enter name..."
-                                autoComplete="off"
-                                name="name"
-                                ref={nameRef}
-                                className="input-register"
-                                onChange={(e) => setName(e.target.value)} />
-                            <i className="bx bx-user"></i>
-                        </div>
-                        <br></br>
-                        <div className="input-field-register">
-                            <input type="password"
-                                name="password"
-                                placeholder="Password..."
-                                value={password}
-                                className="input-register"
-                                onChange={(e) => setPassword(e.target.value)} />
-                            <i className="bx bx-user"></i>
-                        </div>
-                    </div>
-                    <button type="submit" className="register-btn">Registrate</button>
-                </form>
-                <div className='log-in-container'>
-                    <Link to="/login" >
-                        <span className='log-in'>
-                            Log In
-                        </span>
-                    </Link>
-                </div>
+  return (
+    <div className="main-login-container">
+      <div className="inner-login-container">
+        <h1 className="login-title">
+          Task.<span className="title-effect">Do</span>
+        </h1>
+        <form className="form-login" onSubmit={handleSubmit}>
+          <div>
+            <div className="input-field-login">
+              <input
+                type="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="input-register"
+                placeholder="Username..."
+                required
+              />
+              <i className="bx bx-user"></i>
             </div>
-            <LoginRegistrationEffect />
+            <br></br>
+            <div className="input-field-login">
+              <input
+                type="text"
+                placeholder="Enter name..."
+                autoComplete="off"
+                name="name"
+                ref={nameRef}
+                className="input-register"
+                onChange={(e) => setName(e.target.value)}
+              />
+              <i className="bx bx-user"></i>
+            </div>
+            <br></br>
+            <div className="input-field-register">
+              <input
+                type="password"
+                name="password"
+                placeholder="Password..."
+                value={password}
+                className="input-register"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <i className="bx bx-user"></i>
+            </div>
+          </div>
+          <button type="submit" className="login-btn">
+            Register
+          </button>
+        </form>
+        <div className="link-container">
+          <Link to="/login">
+            <span className="log-in">Log In</span>
+          </Link>
         </div>
-    )
+      </div>
+      <LoginRegistrationEffect />
+    </div>
+  );
 }

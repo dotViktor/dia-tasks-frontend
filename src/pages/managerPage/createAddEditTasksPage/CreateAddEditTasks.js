@@ -293,6 +293,7 @@ const CreateAddEditTasks = () => {
               <label>
                 Task Name:
                 <input
+                  required
                   type="text"
                   name="title"
                   value={taskData.title}
@@ -302,6 +303,7 @@ const CreateAddEditTasks = () => {
               <label>
                 Task Description:
                 <textarea
+                  required
                   name="description"
                   value={taskData.description || ""}
                   onChange={handleInputChange}
@@ -311,6 +313,7 @@ const CreateAddEditTasks = () => {
                 <label>
                   Start Time:
                   <input
+                    required
                     type="datetime-local"
                     name="startTime"
                     value={
@@ -322,6 +325,7 @@ const CreateAddEditTasks = () => {
                 <label>
                   End Time:
                   <input
+                    required
                     type="datetime-local"
                     name="endTime"
                     value={

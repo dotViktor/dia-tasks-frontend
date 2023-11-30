@@ -8,8 +8,13 @@
 }
 
 .inner-login-container {
-  background: rgb(125,166,230);
-background: linear-gradient(0deg, rgba(125,166,230,0.9444152661064426) 5%, rgba(62,118,205,0.9556197478991597) 30%, rgba(9,89,211,1) 65%);
+  background: rgb(125, 166, 230);
+  background: linear-gradient(
+    0deg,
+    rgba(125, 166, 230, 0.9444152661064426) 5%,
+    rgba(62, 118, 205, 0.9556197478991597) 30%,
+    rgba(9, 89, 211, 1) 65%
+  );
   width: 36rem;
   position: absolute;
   height: 42rem;
@@ -20,7 +25,9 @@ background: linear-gradient(0deg, rgba(125,166,230,0.9444152661064426) 5%, rgba(
   flex-direction: column;
   border-radius: 25px;
   overflow: hidden;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 .form-login {
   height: fit-content;
@@ -37,7 +44,8 @@ background: linear-gradient(0deg, rgba(125,166,230,0.9444152661064426) 5%, rgba(
   flex-direction: column;
 }
 
-.input-login {
+.input-login,
+.input-register {
   height: 45px;
   width: 100%;
   border: none;
@@ -64,7 +72,6 @@ i {
   font-size: 4.4rem;
 }
 
-
 .login-btn {
   text-transform: uppercase;
   text-decoration: none;
@@ -75,29 +82,38 @@ i {
   border-radius: 15px;
   border: unset;
   background: rgb(225, 157, 55);
-  -webkit-transition: all .5s;
-  -moz-transition: all .5s;
-  transition: all .5s;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
   font-weight: 600;
   margin-top: 1rem;
   background: rgb(225, 157, 55);
-  background: linear-gradient(110deg, rgba(225, 157, 55, 1) 26%, rgba(212, 118, 48, 1) 54%, rgba(193, 79, 13, 1) 87%);
+  background: linear-gradient(
+    110deg,
+    rgba(225, 157, 55, 1) 26%,
+    rgba(212, 118, 48, 1) 54%,
+    rgba(193, 79, 13, 1) 87%
+  );
 }
 
 .login-btn:hover {
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   transform: translateY(0.25rem);
-  background: linear-gradient(110deg, rgba(193, 79, 13, 1) 26%, rgba(212, 118, 48, 1) 54%, rgba(225, 157, 55, 1) 87%);
+  background: linear-gradient(
+    110deg,
+    rgba(193, 79, 13, 1) 26%,
+    rgba(212, 118, 48, 1) 54%,
+    rgba(225, 157, 55, 1) 87%
+  );
   transform: scale(1.04);
 }
 
-
-.sign-up-container a:link {
+.link-container a:link {
   text-decoration: none;
 }
 
-
-.sign-up {
+.sign-up,
+.log-in {
   color: var(--color-text);
   font-size: 1.4rem;
   text-decoration: unset;
@@ -125,7 +141,7 @@ i {
   list-style: none;
   width: 20px;
   height: 20px;
-  background: var(--secondary-color);
+  background: var(--accent) !important;
   animation: animate 25s linear infinite;
   bottom: -150px;
 }
@@ -136,7 +152,6 @@ i {
   height: 80px;
   animation-delay: 0s;
 }
-
 
 .circles li:nth-child(2) {
   left: 10%;
@@ -206,10 +221,7 @@ i {
   animation-duration: 11s;
 }
 
-
-
 @keyframes animate {
-
   0% {
     transform: translateY(0) rotate(0deg);
     opacity: 1;
@@ -221,5 +233,4 @@ i {
     opacity: 0;
     border-radius: 50%;
   }
-
 }

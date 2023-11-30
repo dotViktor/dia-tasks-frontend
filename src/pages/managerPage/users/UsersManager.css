@@ -17,6 +17,7 @@
   border-radius: 10px;
   width: 800px;
   padding: 5px;
+  cursor: pointer;
 }
 
 .user-container p {

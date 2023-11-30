@@ -36,9 +36,13 @@ const UsersForm = ({ userId, onClose, onRefreshData }) => {
           <strong>Role:</strong> {user.role}
         </div>
         <div>
-          {user.role === "client" && (
+          {user.role === "client" ? (
             <button className="custom-button" onClick={handlePromoteToAdmin}>
               <span></span>Promote to Admin
+            </button>
+          ) : (
+            <button className="custom-button" onClick={handleDemoteToClient}>
+              <span></span>Demote to Client
             </button>
           )}
         </div>
@@ -107,6 +111,23 @@ const UsersForm = ({ userId, onClose, onRefreshData }) => {
         .get(`http://localhost:7777/users/${userId}/make-admin`)
         .then(() => {
           console.log("User role updated to admin");
+          onRefreshData();
+          onClose();
+        })
+        .catch((error) => console.error("Update user role error:", error));
+    }
+  };
+
+  //Changing user role to "client" (turning a manager into a simple user)
+  const handleDemoteToClient = () => {
+    const confirmed = window.confirm(
+      `Are you sure you want to demote ${userData.name} to a simple user? This will take away all of his access.`
+    );
+    if (userId && confirmed) {
+      axios
+        .get(`http://localhost:7777/users/${userId}/make-client`)
+        .then(() => {
+          console.log("User role updated to client");
           onRefreshData();
           onClose();
         })
