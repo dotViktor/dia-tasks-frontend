@@ -8,6 +8,7 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { useNavigate } from "react-router-dom";
 import UserWelcome from "../loginPage/UserWelcome";
+import { axiosOutHeaders } from "../..";
 
 function RenderEventContent({ eventInfo, navigate }) {
   const redirectHandler = () => {
@@ -39,7 +40,7 @@ export default function AdminScreen() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:7777/tasks")
+      .get("http://localhost:7777/tasks", axiosOutHeaders)
       .then((response) => {
         setTasks(response.data);
       })

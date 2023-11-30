@@ -5,6 +5,7 @@ import "./CreateAddEditTasks.css";
 import SubtaskForm from "../componentsForAll/SubtaskForm";
 import SubtaskEditForm from "../componentsForAll/SubtaskEditForm";
 import Navbar from "../componentsForAll/Navbar.js";
+import { axiosOutHeaders } from "../../../index.js";
 
 const CreateAddEditTasks = () => {
   const location = useLocation();
@@ -73,7 +74,7 @@ const CreateAddEditTasks = () => {
   //For all users list
   useEffect(() => {
     axios
-      .get("http://localhost:7777/users")
+      .get("http://localhost:7777/users", axiosOutHeaders)
       .then((response) => setUsers(response.data))
       .catch((err) => console.error(err));
   }, []);
@@ -102,8 +103,8 @@ const CreateAddEditTasks = () => {
     const fetchData = async () => {
       try {
         const [taskResponse, subtasksResponse] = await Promise.all([
-          axios.get(`http://localhost:7777/tasks/${id}`),
-          axios.get(`http://localhost:7777/tasks/${id}/subtasks`),
+          axios.get(`http://localhost:7777/tasks/${id}`, axiosOutHeaders),
+          axios.get(`http://localhost:7777/tasks/${id}/subtasks`, axiosOutHeaders),
         ]);
 
         const task =
@@ -175,7 +176,7 @@ const CreateAddEditTasks = () => {
     );
     if (id && confirmed) {
       axios
-        .delete(`http://localhost:7777/tasks/${id}`)
+        .delete(`http://localhost:7777/tasks/${id}`, axiosOutHeaders)
         .then((response) => {
           console.log("Task deleted:", response.data);
           <Link path="/tasksManager" />;
@@ -253,7 +254,7 @@ const CreateAddEditTasks = () => {
     if (id) {
       //For updating tasks
       axios
-        .put(`http://localhost:7777/tasks/${id}`, taskData)
+        .put(`http://localhost:7777/tasks/${id}`, taskData, axiosOutHeaders)
         .then((response) => {
           console.log("Task updated:", response.data);
 
@@ -261,7 +262,7 @@ const CreateAddEditTasks = () => {
           axios
             .put(
               `http://localhost:7777/tasks/${id}/update-subtasks`,
-              subtaskData
+              subtaskData, axiosOutHeaders
             )
             .then((response) => {
               console.log("Subtasks created:", response.data);
@@ -273,7 +274,7 @@ const CreateAddEditTasks = () => {
     } else {
       //For creating tasks
       axios
-        .post("http://localhost:7777/tasks", taskData)
+        .post("http://localhost:7777/tasks", taskData, axiosOutHeaders)
         .then((response) => {
           console.log("Task created:", response.data);
           navigate(-1);

@@ -5,6 +5,7 @@ import User from "../componentsForAll/UsersInfo";
 import "./UsersManager.css";
 import Navbar from "../componentsForAll/Navbar";
 import UsersForm from "../componentsForAll/UsersForm";
+import { axiosOutHeaders } from "../../..";
 
 const UsersManager = () => {
   const [users, setUsers] = useState([]);
@@ -19,7 +20,7 @@ const UsersManager = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:7777/users?key=${refreshKey}")
+      .get("http://localhost:7777/users?key=${refreshKey}", axiosOutHeaders)
       .then((response) => setUsers(response.data))
       .catch((err) => console.error(err));
   }, [refreshKey]);

@@ -8,6 +8,13 @@ import ManagerPageComponent from './pages/managerPage/ManagerPageComponent.js';
 import LoginPage from './pages/loginPage/LoginPageComponent.js';
 import RegistrationPage from './pages/registrationPage/RegistrationComponent.js';
 
+const token = localStorage.getItem("userToken");
+
+export const axiosOutHeaders = {
+    headers: { Authorization: `Bearer ${token}` }
+};
+
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
     <BrowserRouter>

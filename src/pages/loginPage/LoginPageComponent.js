@@ -5,6 +5,7 @@ import React, { useState, useEffect } from 'react';
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import { jwtDecode } from "jwt-decode";
 import LoginRegistrationEffect from '../login&RegistrationEffect/LoginRegistrationEffect.js';
+import { axiosOutHeaders } from '../../index.js';
 
 
 function LoginPage() {
@@ -25,7 +26,7 @@ function LoginPage() {
     // axios.defaults.withCredentials = true;
     const handleSubmit = (event) => {
         event.preventDefault()
-        axios.post('http://localhost:7777/users/login', { email, password })
+        axios.post('http://localhost:7777/users/login', { email, password }, axiosOutHeaders)
             .then(response => {
 
                 if (response.status === 202 || 200) {

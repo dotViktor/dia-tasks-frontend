@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import '../registrationPage/RegistrationComponent.css';
 import LoginRegistrationEffect from "../login&RegistrationEffect/LoginRegistrationEffect";
+import { axiosOutHeaders } from "../..";
 
 export default function RegistrationPage() {
     const [email, setEmail] = useState()
@@ -16,7 +17,7 @@ export default function RegistrationPage() {
     const navigate = useNavigate();
     const handleSubmit = (event) => {
         event.preventDefault()
-        axios.post('http://localhost:7777/users/register', { email, password, name })
+        axios.post('http://localhost:7777/users/register', { email, password, name }, axiosOutHeaders)
             .then(response => {
                 navigate('/login')
             })

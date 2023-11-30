@@ -4,13 +4,14 @@ import Task from "../componentsForAll/TasksInfo";
 import { Link } from "react-router-dom";
 import "./TasksManager.css";
 import Navbar from "../componentsForAll/Navbar";
+import { axiosOutHeaders } from "../../..";
 
 const TasksManager = () => {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:7777/tasks")
+      .get("http://localhost:7777/tasks", axiosOutHeaders)
       .then((response) => setTasks(response.data))
       .catch((err) => console.error(err));
   }, []);

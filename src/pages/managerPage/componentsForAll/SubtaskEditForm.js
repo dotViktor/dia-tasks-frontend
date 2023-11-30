@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./SubtaskEditForm.css";
+import { axiosOutHeaders } from "../../..";
 
 const SubtaskEditForm = ({ subtask, onClose }) => {
   const [images, setImages] = useState([]);
@@ -16,7 +17,7 @@ const SubtaskEditForm = ({ subtask, onClose }) => {
   const fetchRequiredData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:7777/tasks/${subtask.TaskParentID}/subtasks`
+        `http://localhost:7777/tasks/${subtask.TaskParentID}/subtasks`, axiosOutHeaders
       );
       //Since I only need the data for a specific subtask
       const subtasksArray = response.data;
@@ -35,7 +36,7 @@ const SubtaskEditForm = ({ subtask, onClose }) => {
   const fetchImages = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:7777/subtasks/${subtask.id}/images`
+        `http://localhost:7777/subtasks/${subtask.id}/images`, axiosOutHeaders
       );
       setImages(response.data);
     } catch (error) {
@@ -46,7 +47,7 @@ const SubtaskEditForm = ({ subtask, onClose }) => {
   const fetchNotes = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:7777/subtasks/${subtask.id}/notes`
+        `http://localhost:7777/subtasks/${subtask.id}/notes`, axiosOutHeaders
       );
       setNotes(response.data);
     } catch (error) {
@@ -60,7 +61,7 @@ const SubtaskEditForm = ({ subtask, onClose }) => {
     );
     if (confirmed) {
       try {
-        await axios.delete(`http://localhost:7777/subtasks/image/${imageId}`);
+        await axios.delete(`http://localhost:7777/subtasks/image/${imageId}`, axiosOutHeaders);
         fetchImages();
       } catch (error) {
         console.error("Error deleting image:", error);
@@ -74,7 +75,7 @@ const SubtaskEditForm = ({ subtask, onClose }) => {
     );
     if (confirmed) {
       try {
-        await axios.delete(`http://localhost:7777/subtasks/notes/${noteId}`);
+        await axios.delete(`http://localhost:7777/subtasks/notes/${noteId}`, axiosOutHeaders);
         fetchNotes();
       } catch (error) {
         console.error("Error deleting note:", error);
