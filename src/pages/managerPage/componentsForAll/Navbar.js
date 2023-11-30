@@ -29,7 +29,7 @@ export default function Navbar() {
             <p>{user.name}</p>
           </div>
         ) : (
-          <p>You're not supposed to be here!</p>
+          <p id="navbar-no-user-p">You're not supposed to be here!</p>
         )}
       </div>
     );
