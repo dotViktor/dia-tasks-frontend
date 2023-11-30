@@ -1,11 +1,66 @@
-// UsersForm.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import classnames from "classnames";
 import "../users/UsersManager.css";
 
 const UsersForm = ({ userId, onClose, onRefreshData }) => {
   const [userData, setUserData] = useState(null);
   const [userTasks, setUserTasks] = useState([]);
+
+  //*User Component
+  const User = ({ user }) => {
+    //*Image initials
+    const initials = user.name
+      .split(" ")
+      .filter(
+        (word, index) =>
+          index === 0 || index === user.name.split(" ").length - 1
+      )
+      .map((word) => word.charAt(0).toUpperCase())
+      .join("");
+
+    const imageClasses = classnames("user-image", {
+      "user-image-smaller-initials": initials.length === 2,
+    });
+
+    return (
+      <div className="user-information-component" key={user.id}>
+        <div>
+          <span className={imageClasses}>{initials}</span>
+        </div>
+        <div>
+          <strong>Name:</strong> {user.name}
+          <br />
+          <strong>Email:</strong> {user.email}
+          <br />
+          <strong>Role:</strong> {user.role}
+        </div>
+        <div>
+          {user.role === "client" && (
+            <button className="custom-button" onClick={handlePromoteToAdmin}>
+              <span></span>Promote to Admin
+            </button>
+          )}
+        </div>
+      </div>
+    );
+  };
+
+  //*Task component
+  const Task = ({ task }) => {
+    return (
+      <div className="user-tasks-component" key={task.id}>
+        <strong>Title:</strong> {task.title}
+        <br />
+        <strong>Description:</strong> {task.description}
+        <br />
+        <strong>Start Time:</strong> {task.startTime}
+        <br />
+        <strong>End Time:</strong> {task.endTime}
+        <hr />
+      </div>
+    );
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,6 +76,7 @@ const UsersForm = ({ userId, onClose, onRefreshData }) => {
           : userResponse.data;
 
         setUserData(userData);
+        console.log(userData);
 
         // Fetch all tasks
         const tasksResponse = await axios.get("http://localhost:7777/tasks");
@@ -79,35 +135,23 @@ const UsersForm = ({ userId, onClose, onRefreshData }) => {
     <div className="user-form">
       {userData && (
         <>
-          <h2>User Information</h2>
-          <div key={userData.id}>
-            <strong>Name:</strong> {userData.name}
-            <br />
-            <strong>Email:</strong> {userData.email}
-            <br />
-            <strong>Role:</strong> {userData.role}
-          </div>
-          {userData.role === "client" && <h2>Tasks</h2>}
-          <ul>
-            {userTasks.map((task) => (
-              <li key={task.id}>
-                <strong>Title:</strong> {task.title}
-                <br />
-                <strong>Description:</strong> {task.description}
-                <br />
-                <strong>Start Time:</strong> {task.startTime}
-                <br />
-                <strong>End Time:</strong> {task.endTime}
-                <hr />
-              </li>
-            ))}
-          </ul>
-          <div>
-            {userData.role === "client" && (
-              <button className="custom-button" onClick={handlePromoteToAdmin}>
-                <span></span>Promote to Admin
-              </button>
-            )}
+          <h2>
+            User Information: <strong>{userData.name}</strong>
+          </h2>
+          <User user={userData} />
+          {userData.role === "client" && (
+            <>
+              <h2>Tasks</h2>
+              <div className="user-tasks-list">
+                {userTasks.length > 0 ? (
+                  userTasks.map((task) => <Task key={task.id} task={task} />)
+                ) : (
+                  <p>There aren't any tasks assigned to this user yet.</p>
+                )}
+              </div>
+            </>
+          )}
+          <div className="users-form-buttons">
             <button className="custom-button" onClick={handleDeleteUser}>
               <span></span>Delete User
             </button>

@@ -11,7 +11,7 @@ const User = ({ user, onClick }) => {
     .map((word) => word.charAt(0).toUpperCase())
     .join("");
 
-  //Checks if the user has two letters in initial, and if so, makes the initials smaller
+  //Checks if the user has two letters in initial, and if so, makes the initials smaller by adding a second class to the same div
   const imageClasses = classnames("user-image", {
     "user-image-smaller-initials": initials.length === 2,
   });

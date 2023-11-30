@@ -51,4 +51,26 @@
   background-color: white;
   border-radius: 10px;
   padding: 20px;
+  width: 72vh;
+}
+.user-information-component {
+  display: flex;
+  margin: 20px 0px;
+  align-items: center;
+}
+.user-information-component div:first-child {
+  flex: 1;
+}
+.user-information-component div {
+  flex: 2;
+}
+.users-form-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+.user-tasks-list {
+  margin: 20px 0px;
+}
+.user-tasks-list p {
+  text-align: center;
 }
