@@ -9,9 +9,16 @@
   font-size: 35px;
   font-weight: 500;
   justify-content: center;
-  background-color: lightblue;
+  background-color: var(--accent);
 }
 
+/**Only apply style if user initials has more than one letter*/
 .user-image-smaller-initials {
   font-size: 30px;
+}
+
+/**Only apply style if image component is in navbar*/
+.nav-style {
+  width: 45px;
+  height: 45px;
 }

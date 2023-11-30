@@ -1,6 +1,68 @@
+/**Main structure*/
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--secondary-color);
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: 5px 5px;
+}
+
+/**Navbar links*/
+nav ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  margin-right: 7px;
+}
+nav ul li {
+  list-style: none;
+  position: relative;
+}
+nav ul li a {
+  display: block;
+  text-decoration: none;
+  color: var(--color-text);
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+  border-radius: 0.5rem;
+  font-size: 22px;
+  letter-spacing: 2px;
+}
+nav ul li::after {
+  content: "";
+  height: 3px;
+  width: 0;
+  background: var(--accent);
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  transition: 0.5s;
+}
+nav ul li:hover::after {
+  width: 100%;
+}
+.active {
+  background-color: blue;
+}
+
+/**User component*/
+.user-component-navbar {
+  display: flex;
+}
+.user-component-navbar p {
+  color: var(--color-text);
+  margin: 0px;
+  align-self: center;
+  font-size: 26px;
+}
+
 /**Navbar title*/
 .title {
   font-size: 2.8rem;
+  color: var(--color-text);
 }
 .link-title {
   text-decoration: none;
@@ -14,36 +76,7 @@
   transform: scale(1.07);
 }
 
-.active {
-  background: #1b4ed8;
-}
-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #0f172a;
-  position: sticky;
-  top: 0;
-  z-index: 999;
-}
-nav ul {
-  display: flex;
-}
-
-nav ul li {
-  list-style: none;
-}
-nav ul li a {
-  display: block;
-  text-decoration: none;
-  color: white;
-  padding: 0.5rem;
-  margin: 0 0.5rem;
-  border-radius: 0.5rem;
-}
-nav ul li a:not(.active):hover {
-  background-color: #172554;
-}
+/*?Responsive design*/
 nav .menu {
   display: none;
   position: absolute;
