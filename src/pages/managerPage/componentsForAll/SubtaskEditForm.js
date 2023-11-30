@@ -86,16 +86,18 @@ const SubtaskEditForm = ({ subtask, onClose }) => {
     window.open(imagePath, "_blank");
   };
 
-  const ImageComponent = ({ image }) => (
+  const ImageComponent = ({ image, task }) => (
     <div key={image.id} className="image-component">
       <img src={image.imagePath} alt="Subtask Image" />
       <div className="image-overlay">
-        <span
-          className="material-symbols-outlined"
-          onClick={() => handleDeleteImage(image.id)}
-        >
-          delete
-        </span>
+        {task.isComplete === 0 && (
+          <span
+            className="material-symbols-outlined"
+            onClick={() => handleDeleteImage(image.id)}
+          >
+            delete
+          </span>
+        )}
         <span
           className="material-symbols-outlined"
           onClick={() => handleZoomImage(image.imagePath)}
@@ -106,18 +108,20 @@ const SubtaskEditForm = ({ subtask, onClose }) => {
     </div>
   );
 
-  const NoteComponent = ({ note }) => (
+  const NoteComponent = ({ note, task }) => (
     <div key={note.id} className="note-component">
       <h3>{note.title}</h3>
       <p>{note.content}</p>
-      <div className="note-overlay">
-        <span
-          className="material-symbols-outlined"
-          onClick={() => handleDeleteNote(note.id)}
-        >
-          delete
-        </span>
-      </div>
+      {task.isComplete === 0 && (
+        <div className="note-overlay">
+          <span
+            className="material-symbols-outlined"
+            onClick={() => handleDeleteNote(note.id)}
+          >
+            delete
+          </span>
+        </div>
+      )}
     </div>
   );
 
@@ -137,7 +141,9 @@ const SubtaskEditForm = ({ subtask, onClose }) => {
               {images.length === 0 ? (
                 <p>This subtask doesn't have any images yet.</p>
               ) : (
-                images.map((image) => <ImageComponent image={image} />)
+                images.map((image) => (
+                  <ImageComponent image={image} task={requiredData} />
+                ))
               )}
             </div>
           </div>
@@ -155,7 +161,9 @@ const SubtaskEditForm = ({ subtask, onClose }) => {
             {notes.length === 0 ? (
               <p>This subtask doesn't have any notes yet.</p>
             ) : (
-              notes.map((note) => <NoteComponent note={note} />)
+              notes.map((note) => (
+                <NoteComponent note={note} task={requiredData} />
+              ))
             )}
           </div>
         </div>
