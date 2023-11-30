@@ -49,7 +49,6 @@ export default function AdminScreen() {
   return (
     <>
       <Navbar path="/navManager" element={<Navbar />} />
-      <UserWelcome />
       <div className="main-admin-container">
         <FullCalendar
           timeZone="EET"
