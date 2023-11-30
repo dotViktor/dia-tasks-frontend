@@ -7,6 +7,7 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { useNavigate } from "react-router-dom";
+import UserWelcome from "../loginPage/UserWelcome";
 
 function RenderEventContent({ eventInfo, navigate }) {
   const redirectHandler = () => {
@@ -48,6 +49,7 @@ export default function AdminScreen() {
   return (
     <>
       <Navbar path="/navManager" element={<Navbar />} />
+      <UserWelcome />
       <div className="main-admin-container">
         <FullCalendar
           timeZone="EET"
