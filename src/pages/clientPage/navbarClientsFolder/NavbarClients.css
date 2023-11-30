@@ -5,10 +5,11 @@
   position: sticky;
   top: 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   z-index: 999;
 }
+
 .nav-client-inner {
   width: 20%;
   height: 100%;
@@ -17,6 +18,24 @@
   justify-content: center;
   align-items: center;
 }
+
+.log-out-btn-container {
+  width: 20%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.log-out-btn {
+  border: unset;
+  background: none;
+  text-decoration: none;
+  color: var(--color-text);
+  font-size:2rem !important;
+}
+
 .link-client {
   text-decoration: none;
   color: white;
@@ -24,10 +43,13 @@
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   transition: all 0.5s;
+  text-align: center;
 }
-.title-clients{
-  font-size:2.8rem;
+
+.title-clients {
+  font-size: 2.8rem;
 }
+
 .link-client:hover {
   transform: scale(1.07);
 }

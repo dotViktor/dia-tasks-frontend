@@ -55,13 +55,13 @@
   padding: 0 0 0 42px;
   background: rgba(255, 255, 255, 0.1);
 }
-
-i {
-  position: relative;
-  top: -31px;
-  left: 17px;
-  color: #fff;
+.fa-right-to-bracket{
+  margin-left:0.5rem;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
 }
+
 
 ::-webkit-input-placeholder {
   color: #fff;
@@ -106,6 +106,9 @@ i {
     rgba(225, 157, 55, 1) 87%
   );
   transform: scale(1.04);
+}
+.login-btn:hover .fa-right-to-bracket{
+  transform: rotateY(-360deg);
 }
 
 .link-container a:link {

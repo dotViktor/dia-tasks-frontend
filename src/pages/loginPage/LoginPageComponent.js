@@ -85,7 +85,8 @@ function LoginPage() {
           <br></br>
           <div className="btn-container">
             <button type="submit" className="login-btn" smooth="true">
-              Login
+              Login 
+              <i className="fa-solid fa-right-to-bracket"></i>
             </button>
           </div>
         </form>

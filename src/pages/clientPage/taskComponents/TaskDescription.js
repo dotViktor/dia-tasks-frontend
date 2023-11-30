@@ -37,6 +37,7 @@ export default function TaskDescription() {
     <>
       <NavbarClients path="/navClients"></NavbarClients>
       <div className="main-client-container">
+        
         <div className="task-content-container">
           <div className="task-header">
             <div>

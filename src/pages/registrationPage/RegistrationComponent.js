@@ -72,8 +72,11 @@ export default function RegistrationPage() {
               <i className="bx bx-user"></i>
             </div>
           </div>
+          <br></br>
           <button type="submit" className="login-btn">
+
             Register
+            <i className="fa-solid fa-right-to-bracket"></i>
           </button>
         </form>
         <div className="link-container">
