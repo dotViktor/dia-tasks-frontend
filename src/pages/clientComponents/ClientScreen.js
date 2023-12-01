@@ -53,7 +53,7 @@ const ClientScreen = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:7777/tasks",axiosOutHeaders)
+      .get("http://localhost:7777/tasks", axiosOutHeaders)
       .then((response) => {
         const tasks = response.data;
         const filteredTasks = tasks.filter((task) => {
@@ -67,33 +67,33 @@ const ClientScreen = () => {
   return (
     <>
       <NavbarClients path="/navClients"></NavbarClients>
-      <div className="main-client-container">
-        <div>
-          <FullCalendar
-            timeZone="EET"
-            plugins={[timeGridPlugin, dayGridPlugin]}
-            initialView="timeGridWeek"
-            headerToolbar={{
-              left: "prev,next today",
-              center: "title",
-              right: "dayGridMonth,timeGridWeek,timeGridDay",
-            }}
-            events={tasks.map((task) => ({
-              title: task.title,
-              start: task.startTime,
-              end: task.endTime,
-              extendedProps: {
-                id: task.id,
-                description: task.description,
-                isComplete: task.isComplete,
-                users: task.users,
-              },
-            }))}
-            eventContent={(eventInfo) =>
-              RenderEventContent({ eventInfo, navigate })
-            }
-          />
-        </div>
+      <div className="main-client-screen-container">
+        <FullCalendar
+          timeZone="EET"
+          plugins={[timeGridPlugin, dayGridPlugin]}
+          initialView="timeGridWeek"
+          headerToolbar={{
+            left: "prev,next today",
+            center: "title",
+            right: "dayGridMonth,timeGridWeek,timeGridDay",
+          }}
+          events={tasks.map((task) => ({
+            title: task.title,
+            start: task.startTime,
+            end: task.endTime,
+            extendedProps: {
+              id: task.id,
+              description: task.description,
+              isComplete: task.isComplete,
+              users: task.users,
+            },
+          }))}
+          eventContent={(eventInfo) =>
+            RenderEventContent({ eventInfo, navigate })
+          }
+          height={"85vh"}
+          allDaySlot={false}
+        />
       </div>
     </>
   );
