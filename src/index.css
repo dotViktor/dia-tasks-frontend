@@ -43,18 +43,30 @@ code {
 /**Custom button styling*/
 .custom-button {
   width: 300px;
+  color: white;
   padding: 15px 25px;
   text-align: center;
   border-radius: 25px !important;
   font-weight: bold;
-  border: 2px solid black;
+  border: none;
   background: transparent;
   position: relative;
   overflow: hidden;
   z-index: 1;
+  background: linear-gradient(
+    110deg,
+    rgba(193, 79, 13, 1) 26%,
+    rgba(212, 118, 48, 1) 54%,
+    rgba(225, 157, 55, 1) 87%
+  );
 }
 .custom-button span {
-  background: black;
+  background: linear-gradient(
+    110deg,
+    rgba(225, 157, 55, 1) 26%,
+    rgba(212, 118, 48, 1) 54%,
+    rgba(193, 79, 13, 1) 87%
+  );
   height: 100%;
   width: 0;
   border-radius: 22px;
@@ -68,7 +80,6 @@ code {
   width: 100%;
 }
 .custom-button:hover {
-  color: white;
   transition: 0.5s;
 }
 

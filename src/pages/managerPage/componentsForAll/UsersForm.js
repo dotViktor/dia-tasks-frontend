@@ -3,6 +3,7 @@ import axios from "axios";
 import classnames from "classnames";
 import "../users/UsersManager.css";
 import UserImageComponent from "../../globalComponents/UserImageComponent";
+import { axiosOutHeaders } from "../../..";
 
 const UsersForm = ({ userId, onClose, onRefreshData }) => {
   const [userData, setUserData] = useState(null);
@@ -58,7 +59,8 @@ const UsersForm = ({ userId, onClose, onRefreshData }) => {
       try {
         // Fetch user data
         const userResponse = await axios.get(
-          `http://localhost:7777/users/${userId}`
+          `http://localhost:7777/users/${userId}`,
+          axiosOutHeaders
         );
 
         // Access the first element if the response is an array
@@ -70,7 +72,10 @@ const UsersForm = ({ userId, onClose, onRefreshData }) => {
         console.log(userData);
 
         // Fetch all tasks
-        const tasksResponse = await axios.get("http://localhost:7777/tasks");
+        const tasksResponse = await axios.get(
+          "http://localhost:7777/tasks",
+          axiosOutHeaders
+        );
 
         // Filter tasks based on the user ID
         const tasks = tasksResponse.data.filter((task) =>
@@ -95,7 +100,10 @@ const UsersForm = ({ userId, onClose, onRefreshData }) => {
     );
     if (userId && confirmed) {
       axios
-        .get(`http://localhost:7777/users/${userId}/make-admin`)
+        .get(
+          `http://localhost:7777/users/${userId}/make-admin`,
+          axiosOutHeaders
+        )
         .then(() => {
           console.log("User role updated to admin");
           onRefreshData();
@@ -112,7 +120,10 @@ const UsersForm = ({ userId, onClose, onRefreshData }) => {
     );
     if (userId && confirmed) {
       axios
-        .get(`http://localhost:7777/users/${userId}/make-client`)
+        .get(
+          `http://localhost:7777/users/${userId}/make-client`,
+          axiosOutHeaders
+        )
         .then(() => {
           console.log("User role updated to client");
           onRefreshData();
@@ -129,7 +140,7 @@ const UsersForm = ({ userId, onClose, onRefreshData }) => {
     );
     if (userId && confirmed) {
       axios
-        .delete(`http://localhost:7777/users/${userId}`)
+        .delete(`http://localhost:7777/users/${userId}`, axiosOutHeaders)
         .then(() => {
           console.log("User deleted");
           onRefreshData();
