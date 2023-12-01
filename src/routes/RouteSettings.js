@@ -33,16 +33,17 @@ function RouteSettings() {
         <Route element={<RouteProtector allowedRole={"client"} />}>
           <Route path="/clientScreen" element={<ClientScreen />} />
           <Route path="/clientTasks" element={<ClientTasks />} />
+
+          <Route
+            path={`/clientScreen/clientTask/:taskId`}
+            element={<ClientTasks />}
+          ></Route>
+          <Route
+            path={`/clientScreen/clientTask/:taskId/:subtaskId`}
+            element={<ClientSubtasks />}
+          ></Route>
         </Route>
 
-        <Route
-          path={`/clientScreen/clientTask/:taskId`}
-          element={<ClientTasks />}
-        ></Route>
-        <Route
-          path={`/clientScreen/clientTask/:taskId/:subtaskId`}
-          element={<ClientSubtasks />}
-        ></Route>
         {/* /clientScreen/clientTask/z${task.id}/${subtask.id} */}
       </Routes>
     </div>
