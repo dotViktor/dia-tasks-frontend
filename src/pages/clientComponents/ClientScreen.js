@@ -11,8 +11,15 @@ import { useNavigate } from "react-router-dom";
 import { axiosOutHeaders } from "../../index.js";
 
 function RenderEventContent({ eventInfo, navigate }) {
+  const particles = Array.from({ length: 20 }).map((_, index) => {
+    const style = {
+      "--n": index / 20,
+      "--duration": `${Math.random() * 5 + 3}s`,
+    };
+    return <div className="particle" style={style} key={`particle-${index}`} />;
+  });
+
   const handleNavigate = () => {
-    //state should have the title, desc and id
     return navigate(
       `/clientScreen/clientTask/${eventInfo.event.extendedProps.id}`,
       {
@@ -32,6 +39,7 @@ function RenderEventContent({ eventInfo, navigate }) {
       onClick={handleNavigate}
       onKeyDown={handleNavigate}
     >
+      <div className="particles">{particles}</div>
       <h1>{eventInfo.event.title}</h1>
       {eventInfo.event.extendedProps.users.map((user) => {
         return (

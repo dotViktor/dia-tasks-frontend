@@ -96,3 +96,19 @@ code {
   align-items: center;
   z-index: 2;
 }
+
+/* Fullcalendar Styles */
+
+.fc-button {
+  background: linear-gradient(
+    110deg,
+    rgba(225, 157, 55, 1) 26%,
+    rgba(212, 118, 48, 1) 54%,
+    rgba(193, 79, 13, 1) 87%
+  );
+  background-size: 200% 200%;
+  transition: background-position 0.5s;
+}
+.fc-button:hover {
+  background-position: 100% 0;
+}

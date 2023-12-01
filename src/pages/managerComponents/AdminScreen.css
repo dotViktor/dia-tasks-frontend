@@ -1,7 +1,7 @@
 .main-admin-container {
-  height: 100vh;
+  height: 80vh;
   width: 100%;
-  padding: 4rem;
+  padding: 1rem 3rem;
 }
 .admin-task-container {
   display: flex;
@@ -44,4 +44,46 @@
   text-overflow: ellipsis;
   text-align: center;
   margin: 0;
+}
+
+.fc-toolbar-chunk {
+  margin: 0;
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+}
+
+@media screen and (max-width: 950px) {
+  .fc-header-toolbar {
+    flex-direction: column;
+  }
+
+  .fc-toolbar-chunk {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 5px 0;
+  }
+  .main-admin-container {
+    padding: 0;
+  }
+}
+
+.particle {
+  position: absolute;
+  top: 0;
+  left: calc(100% * var(--n));
+  width: 2px;
+  height: 2px;
+  background: white;
+  animation: move var(--duration) linear infinite;
+}
+
+@keyframes move {
+  0% {
+    top: -100%;
+  }
+  100% {
+    top: 100%;
+  }
 }

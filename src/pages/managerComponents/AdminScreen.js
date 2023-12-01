@@ -11,6 +11,14 @@ import UserWelcome from "../loginPage/UserWelcome";
 import { axiosOutHeaders } from "../..";
 
 function RenderEventContent({ eventInfo, navigate }) {
+  const particles = Array.from({ length: 20 }).map((_, index) => {
+    const style = {
+      "--n": index / 20,
+      "--duration": `${Math.random() * 5 + 3}s`,
+    };
+    return <div className="particle" style={style} key={`particle-${index}`} />;
+  });
+
   const redirectHandler = () => {
     return navigate(
       `/createAddEditTasks?id=${eventInfo.event.extendedProps.id}`
@@ -22,6 +30,8 @@ function RenderEventContent({ eventInfo, navigate }) {
       onClick={redirectHandler}
       onKeyDown={redirectHandler}
     >
+      <div className="particles">{particles}</div>
+
       <h1>{eventInfo.event.title}</h1>
       {eventInfo.event.extendedProps.users.map((user) => {
         return (
@@ -74,6 +84,8 @@ export default function AdminScreen() {
           eventContent={(eventInfo) =>
             RenderEventContent({ eventInfo, navigate })
           }
+          height={"85vh"}
+          allDaySlot={false}
         />
       </div>
     </>
