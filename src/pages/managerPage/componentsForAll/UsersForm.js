@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import classnames from "classnames";
 import "../users/UsersManager.css";
 import UserImageComponent from "../../globalComponents/UserImageComponent";
 import { axiosOutHeaders } from "../../..";

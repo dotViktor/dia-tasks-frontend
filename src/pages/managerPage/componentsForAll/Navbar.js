@@ -3,12 +3,23 @@ import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import UserImageComponent from "../../globalComponents/UserImageComponent";
 import { jwtDecode } from "jwt-decode";
+import UserProfileComponent from "./UserProfileComponent";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const location = useLocation();
+  const [showForm, setShowForm] = useState(false);
   const isActive = (path) => location.pathname === path;
   const [user, setUser] = useState("");
+
+  //*Handles form visibility
+  const handleUserClick = () => {
+    setShowForm(true);
+  };
+
+  const handleCloseForm = () => {
+    setShowForm(false);
+  };
 
   //*Gets user details from localStorage
   useEffect(() => {
@@ -24,14 +35,14 @@ export default function Navbar() {
   const isAdmin = user && user.role === "admin";
 
   //*This is the user component
-  const User = ({ user }) => {
+  const User = ({ user, onClick }) => {
     return (
-      <div>
+      <div className="user-component-navbar" onClick={onClick}>
         {user ? (
-          <div className="user-component-navbar">
+          <>
             <UserImageComponent user={user} isnavbar={true} />
             <p>{user.name}</p>
-          </div>
+          </>
         ) : (
           <>
             <p id="navbar-no-user-p">Welcome, Guest!</p>
@@ -52,44 +63,55 @@ export default function Navbar() {
   };
 
   return (
-    <nav>
-      <User user={user} />
-      {isAdmin ? (
-        <Link className="link-title" to="/adminScreen">
-          <h1 className="title">
-            Tasks.<span className="title-effect">Do</span>
-          </h1>
-        </Link>
-      ) : (
-        <Link className="link-title" to="/clientScreen">
-          <h1 className="title">
-            Tasks.<span className="title-effect">Do</span>
-          </h1>
-        </Link>
-      )}
-      {/* This is a hamburger menu */}
-      <div
-        className="menu"
-        onClick={() => {
-          setMenuOpen(!menuOpen);
-        }}
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div className="nav-links-space">
-        {isAdmin && (
-          <ul className={menuOpen ? "open" : ""}>
-            <li className={isActive("/tasksManager") ? "active-nav-link" : ""}>
-              <NavLink to="/tasksManager">Tasks</NavLink>
-            </li>
-            <li className={isActive("/usersManager") ? "active-nav-link" : ""}>
-              <NavLink to="/usersManager">Users</NavLink>
-            </li>
-          </ul>
+    <>
+      <nav>
+        <User user={user} onClick={() => handleUserClick(user.id)} />
+        {isAdmin ? (
+          <Link className="link-title" to="/adminScreen">
+            <h1 className="title">
+              Tasks.<span className="title-effect">Do</span>
+            </h1>
+          </Link>
+        ) : (
+          <Link className="link-title" to="/clientScreen">
+            <h1 className="title">
+              Tasks.<span className="title-effect">Do</span>
+            </h1>
+          </Link>
         )}
-      </div>
-    </nav>
+        {/* This is a hamburger menu */}
+        <div
+          className="menu"
+          onClick={() => {
+            setMenuOpen(!menuOpen);
+          }}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+        <div className="nav-links-space">
+          {isAdmin && (
+            <ul className={menuOpen ? "open" : ""}>
+              <li
+                className={isActive("/tasksManager") ? "active-nav-link" : ""}
+              >
+                <NavLink to="/tasksManager">Tasks</NavLink>
+              </li>
+              <li
+                className={isActive("/usersManager") ? "active-nav-link" : ""}
+              >
+                <NavLink to="/usersManager">Users</NavLink>
+              </li>
+            </ul>
+          )}
+        </div>
+      </nav>
+      {showForm && (
+        <div className="modal-overlay">
+          <UserProfileComponent user={user} onClose={handleCloseForm} />
+        </div>
+      )}
+    </>
   );
 }

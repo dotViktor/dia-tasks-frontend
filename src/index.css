@@ -20,7 +20,7 @@ code {
 :root {
   --primary-color: #0959d3;
   --background-dark: #010409;
-  --bacground-white: #bed2f0;
+  --background-white: #bed2f0;
   --color-text: #dce8fa;
   --secondary-color: #171819;
   --accent: #e19d37;
@@ -95,5 +95,5 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2;
+  z-index: 3;
 }
