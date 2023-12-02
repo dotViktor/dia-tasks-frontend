@@ -53,6 +53,7 @@ code {
   position: relative;
   overflow: hidden;
   z-index: 1;
+  border: 1px solid black;
   background: linear-gradient(
     110deg,
     rgba(193, 79, 13, 1) 26%,

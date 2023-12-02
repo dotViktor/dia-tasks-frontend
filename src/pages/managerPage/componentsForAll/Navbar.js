@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import UserImageComponent from "../../globalComponents/UserImageComponent";
 import { jwtDecode } from "jwt-decode";
 
 export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
+  const isActive = (path) => location.pathname === path;
 
   //*This is the user component
   const User = () => {
@@ -55,10 +57,10 @@ export default function Navbar() {
         <span></span>
       </div>
       <ul className={menuOpen ? "open" : ""}>
-        <li>
+        <li className={isActive("/tasksManager") ? "active-nav-link" : ""}>
           <NavLink to="/tasksManager">Tasks</NavLink>
         </li>
-        <li>
+        <li className={isActive("/usersManager") ? "active-nav-link" : ""}>
           <NavLink to="/usersManager">Users</NavLink>
         </li>
       </ul>
