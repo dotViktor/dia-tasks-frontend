@@ -36,12 +36,23 @@ export default function Navbar() {
 
   //*This is the user component
   const User = ({ user, onClick }) => {
+    //*Split users name to only show first and last name
+    let firstName = "";
+    let lastName = "";
+    if (user && user.name) {
+      const words = user.name.split(" ");
+      firstName = words[0];
+      lastName = words.length > 1 ? words[words.length - 1] : "";
+    }
+
     return (
       <div className="user-component-navbar" onClick={onClick}>
         {user ? (
           <>
             <UserImageComponent user={user} isnavbar={true} />
-            <p>{user.name}</p>
+            <p>
+              {firstName} {lastName}
+            </p>
           </>
         ) : (
           <>

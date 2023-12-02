@@ -46,7 +46,7 @@
   flex: 1;
 }
 .user-information-component div {
-  flex: 2;
+  flex: 3;
 }
 .users-form-buttons {
   display: flex;

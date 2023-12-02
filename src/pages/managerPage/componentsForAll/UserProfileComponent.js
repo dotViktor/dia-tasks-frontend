@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Navbar.css";
@@ -9,12 +9,12 @@ const UserProfileComponent = ({ user, onClose }) => {
   //*User Component
   const User = ({ user }) => {
     return (
-      <div className="user-information-component" key={user.id}>
+      <div className="user-profile-information-component" key={user.id}>
         <div>
-          <UserImageComponent user={user} />
+          <UserImageComponent user={user} isuserprofile={true} />
         </div>
         <div>
-          <strong>Name:</strong> {user.name}
+          <strong>Full Name:</strong> {user.name}
           <br />
           <strong>Email:</strong> {user.email}
           <br />
@@ -27,7 +27,7 @@ const UserProfileComponent = ({ user, onClose }) => {
   //*Deleting user account
   const handleDeleteUser = () => {
     const confirmed = window.confirm(
-      "Are absolutely sure you want to delete this user? Keep in mind that deleting him will also remove him from all tasks."
+      "Are certain you want to delete your account? Keep in mind that this action is irreversible!"
     );
     if (user && confirmed) {
       axios
@@ -47,15 +47,30 @@ const UserProfileComponent = ({ user, onClose }) => {
     return navigate("/login");
   };
 
+  //*Split users name to only show first and last name
+  let firstName = "";
+  let lastName = "";
+  if (user && user.name) {
+    const words = user.name.split(" ");
+    firstName = words[0];
+    lastName = words.length > 1 ? words[words.length - 1] : "";
+  }
+
   return (
     <div className="user-form">
       {user && (
         <>
-          <h2>
-            User Information: <strong>{user.name}</strong>
-          </h2>
+          <div className="user-profile-header">
+            <h2>
+              User Profile: <strong>{firstName}</strong>{" "}
+              <strong>{lastName}</strong>
+            </h2>
+            <span className="material-symbols-outlined" onClick={onClose}>
+              close
+            </span>
+          </div>
           <User user={user} />
-          <div className="users-form-buttons">
+          <div className="user-profile-buttons">
             {user.role === "admin" && (
               <>
                 <button className="custom-button" onClick={handleDeleteUser}>
@@ -63,9 +78,6 @@ const UserProfileComponent = ({ user, onClose }) => {
                 </button>
               </>
             )}
-            <button className="custom-button" onClick={onClose}>
-              <span></span>Go Back
-            </button>
             <button className="custom-button" onClick={handleLogOut}>
               <span></span>Log Out
             </button>
