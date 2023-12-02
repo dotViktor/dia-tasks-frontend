@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./ClientScreen.css";
-import NavbarClients from "../clientPage/navbarClientsFolder/NavbarClients.js";
-import UserWelcome from "../loginPage/UserWelcome.js";
+import Navbar from "../managerPage/componentsForAll/Navbar.js";
 import { jwtDecode } from "jwt-decode";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -53,7 +52,7 @@ const ClientScreen = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:7777/tasks",axiosOutHeaders)
+      .get("http://localhost:7777/tasks", axiosOutHeaders)
       .then((response) => {
         const tasks = response.data;
         const filteredTasks = tasks.filter((task) => {
@@ -66,7 +65,7 @@ const ClientScreen = () => {
 
   return (
     <>
-      <NavbarClients path="/navClients"></NavbarClients>
+      <Navbar path="/navManager" element={<Navbar />} />
       <div className="main-client-container">
         <div>
           <FullCalendar

@@ -51,6 +51,9 @@ nav ul li:hover::after {
 .active-nav-link::after {
   width: 100%;
 }
+.nav-links-space {
+  min-width: 209.433px;
+}
 
 /**User component*/
 .user-component-navbar {
