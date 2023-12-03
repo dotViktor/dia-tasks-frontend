@@ -13,18 +13,21 @@ export default function RegistrationPage() {
   const emailRef = useRef();
   const passwordRef = useRef();
 
-    // axios.defaults.withCredentials = true;
-    const navigate = useNavigate();
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        axios.post('http://localhost:7777/users/register', { email, password, name }, axiosOutHeaders)
-            .then(response => {
-                navigate('/login')
-            })
-            .catch(
-                error => console.log(error)
-            )
-    }
+  // axios.defaults.withCredentials = true;
+  const navigate = useNavigate();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .post(
+        "http://localhost:7777/users/register",
+        { email, password, name },
+        axiosOutHeaders
+      )
+      .then((response) => {
+        navigate("/login");
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <div className="main-login-container">
@@ -74,7 +77,6 @@ export default function RegistrationPage() {
           </div>
           <br></br>
           <button type="submit" className="login-btn">
-
             Register
             <i className="fa-solid fa-right-to-bracket"></i>
           </button>

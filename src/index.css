@@ -44,9 +44,9 @@ code {
 .custom-button {
   width: 300px;
   color: white;
-  padding: 15px 25px;
+  padding: 10px 40px;
   text-align: center;
-  border-radius: 25px !important;
+  border-radius: 25px;
   font-weight: bold;
   border: none;
   background: transparent;
@@ -54,6 +54,7 @@ code {
   overflow: hidden;
   z-index: 1;
   border: 1px solid black;
+  font-size: 1.4rem;
   background: linear-gradient(
     110deg,
     rgba(193, 79, 13, 1) 26%,

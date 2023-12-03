@@ -59,6 +59,9 @@ nav ul li:hover::after {
 .user-component-navbar {
   display: flex;
 }
+.user-component-navbar:hover {
+  cursor: pointer;
+}
 .user-component-navbar p {
   color: var(--color-text);
   margin: 0px;

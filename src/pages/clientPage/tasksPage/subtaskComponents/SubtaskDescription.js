@@ -97,7 +97,6 @@ export default function SubtaskDescription() {
                 className="custom-button"
                 type="button"
                 onClick={handleShowImageForm}
-                id="add-subtask-button"
               >
                 <span></span>
                 Add Image
@@ -115,7 +114,6 @@ export default function SubtaskDescription() {
                 className="custom-button"
                 type="button"
                 onClick={handleShowNoteForm}
-                id="add-subtask-button"
               >
                 <span></span>
                 Add Note
@@ -127,8 +125,8 @@ export default function SubtaskDescription() {
               </div>
             )}
             <div>
-              <button className="btn btn-primary" onClick={handleClick}>
-                Done
+              <button className="custom-button" onClick={handleClick}>
+                <span></span>Done
               </button>
             </div>
           </div>

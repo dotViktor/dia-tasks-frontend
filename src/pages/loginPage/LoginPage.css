@@ -94,7 +94,6 @@
     rgba(193, 79, 13, 1) 87%
   );
 }
-
 .login-btn:hover {
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   transform: translateY(0.25rem);
@@ -113,7 +112,6 @@
 .link-container a:link {
   text-decoration: none;
 }
-
 .sign-up,
 .log-in {
   color: var(--color-text);

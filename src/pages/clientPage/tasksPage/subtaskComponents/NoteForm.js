@@ -1,24 +1,26 @@
 import { computeShrinkWidth } from "@fullcalendar/core/internal";
 import React, { useState } from "react";
-import axios from 'axios';
+import axios from "axios";
 import { axiosOutHeaders } from "../../../..";
 
 const NoteForm = ({ onClose }) => {
-
   const [titleNote, setTitleNote] = useState();
   const [contentNote, setContentNote] = useState();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post("http://localhost:7777/subtasks/1/notes", { title: titleNote, content:contentNote }, axiosOutHeaders)
-      .then(response => {
+    axios
+      .post(
+        "http://localhost:7777/subtasks/1/notes",
+        { title: titleNote, content: contentNote },
+        axiosOutHeaders
+      )
+      .then((response) => {
         if (response.status === "202" || "200") {
-          console.log("Congratulations! Note was uploaded succesfully!")
+          console.log("Congratulations! Note was uploaded succesfully!");
         }
       })
-      .catch(
-        error => console.log(error)
-      )
+      .catch((error) => console.log(error));
     onClose();
   };
 
@@ -34,17 +36,15 @@ const NoteForm = ({ onClose }) => {
             onChange={(e) => setTitleNote(e.target.value)}
           />
         </label>
-        <label>
-          Note Content:
-        </label>
+        <label>Note Content:</label>
         <textarea
           name="contentNote"
           type="text"
           onChange={(e) => setContentNote(e.target.value)}
         />
         <div className="subtask-form-buttons">
-          <button  type="submit">
-            Upload Note
+          <button className="custom-button" type="submit">
+            <span></span>Upload Note
           </button>
           <button className="custom-button" onClick={onClose}>
             <span></span>Close
@@ -56,4 +56,3 @@ const NoteForm = ({ onClose }) => {
 };
 
 export default NoteForm;
-

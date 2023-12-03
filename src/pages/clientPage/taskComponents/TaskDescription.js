@@ -55,9 +55,10 @@ export default function TaskDescription() {
               <button
                 type="submit"
                 onClick={handleClick}
-                className="login-btn"
+                className="custom-button"
                 smooth="true"
               >
+                <span></span>
                 Done
               </button>
             </div>

@@ -3,9 +3,8 @@ import "../loginPage/LoginPage.css";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
-import LoginRegistrationEffect from '../login&RegistrationEffect/LoginRegistrationEffect.js';
-import { axiosOutHeaders } from '../../index.js';
-
+import LoginRegistrationEffect from "../login&RegistrationEffect/LoginRegistrationEffect.js";
+import { axiosOutHeaders } from "../../index.js";
 
 function LoginPage() {
   const [email, setEmail] = useState("");
@@ -19,14 +18,18 @@ function LoginPage() {
   // navigate your page. It's all about navigation.
   //-------------------------
 
-    // axios.defaults.withCredentials = true;
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        axios.post('http://localhost:7777/users/login', { email, password }, axiosOutHeaders)
-            .then(response => {
-
-                if (response.status === 202 || 200) {
-                    console.log("Congratulation you have access!");
+  // axios.defaults.withCredentials = true;
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .post(
+        "http://localhost:7777/users/login",
+        { email, password },
+        axiosOutHeaders
+      )
+      .then((response) => {
+        if (response.status === 202 || 200) {
+          console.log("Congratulation you have access!");
 
           const userToken = response.data.token;
           const decodedToken = jwtDecode(userToken);
@@ -85,7 +88,7 @@ function LoginPage() {
           <br></br>
           <div className="btn-container">
             <button type="submit" className="login-btn" smooth="true">
-              Login 
+              Login
               <i className="fa-solid fa-right-to-bracket"></i>
             </button>
           </div>
