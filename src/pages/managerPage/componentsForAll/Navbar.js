@@ -55,12 +55,7 @@ export default function Navbar() {
             </p>
           </>
         ) : (
-          <>
-            <p id="navbar-no-user-p">Welcome, Guest!</p>
-            <button className="custom-button" onClick={handleLogOut}>
-              <span></span>Log In
-            </button>
-          </>
+          <p id="navbar-no-user-p">Welcome, Guest!</p>
         )}
       </div>
     );
@@ -102,19 +97,25 @@ export default function Navbar() {
           <span></span>
         </div>
         <div className="nav-links-space">
-          {isAdmin && (
-            <ul className={menuOpen ? "open" : ""}>
-              <li
-                className={isActive("/tasksManager") ? "active-nav-link" : ""}
-              >
-                <NavLink to="/tasksManager">Tasks</NavLink>
-              </li>
-              <li
-                className={isActive("/usersManager") ? "active-nav-link" : ""}
-              >
-                <NavLink to="/usersManager">Users</NavLink>
-              </li>
-            </ul>
+          {user ? (
+            isAdmin && (
+              <ul className={menuOpen ? "open" : ""}>
+                <li
+                  className={isActive("/tasksManager") ? "active-nav-link" : ""}
+                >
+                  <NavLink to="/tasksManager">Tasks</NavLink>
+                </li>
+                <li
+                  className={isActive("/usersManager") ? "active-nav-link" : ""}
+                >
+                  <NavLink to="/usersManager">Users</NavLink>
+                </li>
+              </ul>
+            )
+          ) : (
+            <button className="custom-button" onClick={handleLogOut}>
+              <span></span>Log In
+            </button>
           )}
         </div>
       </nav>
