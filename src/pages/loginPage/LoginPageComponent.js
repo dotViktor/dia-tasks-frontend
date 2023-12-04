@@ -57,9 +57,8 @@ function LoginPage() {
         <h1 className="login-title">
           Task.<span className="title-effect">Do</span>
         </h1>
-
         <form className="form-login" onSubmit={handleSubmit}>
-          <div>
+          <div className="input-fields-div-login">
             <div className="input-field-login">
               <input
                 type="email"
@@ -87,8 +86,8 @@ function LoginPage() {
           </div>
           <br></br>
           <div className="btn-container">
-            <button type="submit" className="login-btn" smooth="true">
-              Login
+            <button type="submit" className="custom-button" smooth="true">
+              <span></span>Login
               <i className="fa-solid fa-right-to-bracket"></i>
             </button>
           </div>

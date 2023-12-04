@@ -53,8 +53,8 @@ code {
   position: relative;
   overflow: hidden;
   z-index: 1;
-  border: 1px solid black;
   font-size: 1.4rem;
+  transition: 0.3s ease-in-out;
   background: linear-gradient(
     110deg,
     rgba(193, 79, 13, 1) 26%,
@@ -82,7 +82,9 @@ code {
   width: 100%;
 }
 .custom-button:hover {
-  transition: 0.5s;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  transform: scale(1.04);
 }
 
 /**Pop-up windows overlay*/

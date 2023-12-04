@@ -36,7 +36,7 @@ export default function RegistrationPage() {
           Task.<span className="title-effect">Do</span>
         </h1>
         <form className="form-login" onSubmit={handleSubmit}>
-          <div>
+          <div className="input-fields-div-login">
             <div className="input-field-login">
               <input
                 type="email"
@@ -76,8 +76,8 @@ export default function RegistrationPage() {
             </div>
           </div>
           <br></br>
-          <button type="submit" className="login-btn">
-            Register
+          <button type="submit" className="custom-button">
+            <span></span>Register
             <i className="fa-solid fa-right-to-bracket"></i>
           </button>
         </form>
