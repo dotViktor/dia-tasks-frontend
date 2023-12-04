@@ -12,7 +12,28 @@ import { axiosOutHeaders } from "../../index.js";
 import Particles from "../reusables/Particles/Particles.jsx";
 
 function RenderEventContent({ eventInfo, navigate }) {
+  const taskStatus = () => {
+    const currentDate = new Date();
+    if (eventInfo.event.extendedProps.isComplete === true) {
+      return "complete-task";
+    }
+
+    if (eventInfo.event.end < currentDate) {
+      return "past-task";
+    }
+
+    if (
+      eventInfo.event.start < currentDate &&
+      eventInfo.event.end > currentDate
+    ) {
+      return "current-task";
+    }
+
+    return "upcoming-task";
+  };
+
   const handleNavigate = () => {
+    if (eventInfo.event.extendedProps.isComplete === true) return;
     return navigate(
       `/clientScreen/clientTask/${eventInfo.event.extendedProps.id}`,
       {
@@ -28,7 +49,7 @@ function RenderEventContent({ eventInfo, navigate }) {
   };
   return (
     <div
-      className="client-task-container"
+      className={`client-task-container ${taskStatus()}`}
       onClick={handleNavigate}
       onKeyDown={handleNavigate}
     >

@@ -67,3 +67,20 @@
     padding: 5px 0;
   }
 }
+
+.upcoming-task {
+  border: 3px solid yellow;
+}
+
+.past-task {
+  border: 3px solid red;
+}
+
+.complete-task {
+  border: 3px solid green;
+  cursor: default;
+}
+
+.current-task {
+  border: 3px solid white;
+}
