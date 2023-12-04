@@ -9,10 +9,31 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { useNavigate } from "react-router-dom";
 import { axiosOutHeaders } from "../../index.js";
+import Particles from "../reusables/Particles/Particles.jsx";
 
 function RenderEventContent({ eventInfo, navigate }) {
+  const taskStatus = () => {
+    const currentDate = new Date();
+    if (eventInfo.event.extendedProps.isComplete === true) {
+      return "complete-task";
+    }
+
+    if (eventInfo.event.end < currentDate) {
+      return "past-task";
+    }
+
+    if (
+      eventInfo.event.start < currentDate &&
+      eventInfo.event.end > currentDate
+    ) {
+      return "current-task";
+    }
+
+    return "upcoming-task";
+  };
+
   const handleNavigate = () => {
-    //state should have the title, desc and id
+    if (eventInfo.event.extendedProps.isComplete === true) return;
     return navigate(
       `/clientScreen/clientTask/${eventInfo.event.extendedProps.id}`,
       {
@@ -28,10 +49,11 @@ function RenderEventContent({ eventInfo, navigate }) {
   };
   return (
     <div
-      className="client-task-container"
+      className={`client-task-container ${taskStatus()}`}
       onClick={handleNavigate}
       onKeyDown={handleNavigate}
     >
+      <Particles />
       <h1>{eventInfo.event.title}</h1>
       {eventInfo.event.extendedProps.users.map((user) => {
         return (
@@ -67,33 +89,33 @@ const ClientScreen = () => {
   return (
     <>
       <NavbarClients path="/navClients"></NavbarClients>
-      <div className="main-client-container">
-        <div>
-          <FullCalendar
-            timeZone="EET"
-            plugins={[timeGridPlugin, dayGridPlugin]}
-            initialView="timeGridWeek"
-            headerToolbar={{
-              left: "prev,next today",
-              center: "title",
-              right: "dayGridMonth,timeGridWeek,timeGridDay",
-            }}
-            events={tasks.map((task) => ({
-              title: task.title,
-              start: task.startTime,
-              end: task.endTime,
-              extendedProps: {
-                id: task.id,
-                description: task.description,
-                isComplete: task.isComplete,
-                user: loggedUser,
-              },
-            }))}
-            eventContent={(eventInfo) =>
-              RenderEventContent({ eventInfo, navigate })
-            }
-          />
-        </div>
+      <div className="main-client-screen-container">
+        <FullCalendar
+          timeZone="EET"
+          plugins={[timeGridPlugin, dayGridPlugin]}
+          initialView="timeGridWeek"
+          headerToolbar={{
+            left: "prev,next today",
+            center: "title",
+            right: "dayGridMonth,timeGridWeek,timeGridDay",
+          }}
+          events={tasks.map((task) => ({
+            title: task.title,
+            start: task.startTime,
+            end: task.endTime,
+            extendedProps: {
+              id: task.id,
+              description: task.description,
+              isComplete: task.isComplete,
+              user: loggedUser,
+            },
+          }))}
+          eventContent={(eventInfo) =>
+            RenderEventContent({ eventInfo, navigate })
+          }
+          height={"85vh"}
+          allDaySlot={false}
+        />
       </div>
     </>
   );

@@ -9,6 +9,7 @@ import timeGridPlugin from "@fullcalendar/timegrid";
 import { useNavigate } from "react-router-dom";
 import UserWelcome from "../loginPage/UserWelcome";
 import { axiosOutHeaders } from "../..";
+import Particles from "../reusables/Particles/Particles";
 
 function RenderEventContent({ eventInfo, navigate }) {
   const redirectHandler = () => {
@@ -22,6 +23,7 @@ function RenderEventContent({ eventInfo, navigate }) {
       onClick={redirectHandler}
       onKeyDown={redirectHandler}
     >
+      <Particles />
       <h1>{eventInfo.event.title}</h1>
       {eventInfo.event.extendedProps.users.map((user) => {
         return (
@@ -74,6 +76,8 @@ export default function AdminScreen() {
           eventContent={(eventInfo) =>
             RenderEventContent({ eventInfo, navigate })
           }
+          height={"85vh"}
+          allDaySlot={false}
         />
       </div>
     </>
