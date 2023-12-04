@@ -114,7 +114,7 @@ const ClientScreen = () => {
               id: task.id,
               description: task.description,
               isComplete: task.isComplete,
-              users: task.users,
+              user: loggedUser,
             },
           }))}
           eventContent={(eventInfo) =>
