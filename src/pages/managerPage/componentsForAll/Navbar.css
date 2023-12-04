@@ -1,6 +1,7 @@
 /**Main structure*/
 nav {
   display: flex;
+  min-height: 73.7667px;
   justify-content: space-between;
   align-items: center;
   background: var(--secondary-color);

@@ -11,6 +11,7 @@ export default function Navbar() {
   const [showForm, setShowForm] = useState(false);
   const isActive = (path) => location.pathname === path;
   const [user, setUser] = useState("");
+  const [loading, setLoading] = useState(true); // Added loading state
 
   //*Handles form visibility
   const handleUserClick = () => {
@@ -29,6 +30,7 @@ export default function Navbar() {
       const decodedToken = jwtDecode(storedToken);
       setUser(decodedToken.user);
     }
+    setLoading(false);
   }, []);
 
   //*Checks if the logged in user is admin
@@ -71,53 +73,63 @@ export default function Navbar() {
   return (
     <>
       <nav>
-        <User user={user} onClick={() => handleUserClick(user.id)} />
-        {isAdmin ? (
-          <Link className="link-title" to="/adminScreen">
-            <h1 className="title">
-              Tasks.<span className="title-effect">Do</span>
-            </h1>
-          </Link>
+        {loading ? (
+          <p></p> //Waiting for user details to be fetched, before rendering
         ) : (
-          <Link className="link-title" to="/clientScreen">
-            <h1 className="title">
-              Tasks.<span className="title-effect">Do</span>
-            </h1>
-          </Link>
+          <>
+            <User user={user} onClick={() => handleUserClick(user.id)} />
+            {isAdmin ? (
+              <Link className="link-title" to="/adminScreen">
+                <h1 className="title">
+                  Tasks.<span className="title-effect">Do</span>
+                </h1>
+              </Link>
+            ) : (
+              <Link className="link-title" to="/clientScreen">
+                <h1 className="title">
+                  Tasks.<span className="title-effect">Do</span>
+                </h1>
+              </Link>
+            )}
+            {/* This is a hamburger menu */}
+            <div
+              className="menu"
+              onClick={() => {
+                setMenuOpen(!menuOpen);
+              }}
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <div className="nav-links-space">
+              {user ? (
+                isAdmin && (
+                  <ul className={menuOpen ? "open" : ""}>
+                    <li
+                      className={
+                        isActive("/tasksManager") ? "active-nav-link" : ""
+                      }
+                    >
+                      <NavLink to="/tasksManager">Tasks</NavLink>
+                    </li>
+                    <li
+                      className={
+                        isActive("/usersManager") ? "active-nav-link" : ""
+                      }
+                    >
+                      <NavLink to="/usersManager">Users</NavLink>
+                    </li>
+                  </ul>
+                )
+              ) : (
+                <button className="custom-button" onClick={handleLogOut}>
+                  <span></span>Log In
+                </button>
+              )}
+            </div>
+          </>
         )}
-        {/* This is a hamburger menu */}
-        <div
-          className="menu"
-          onClick={() => {
-            setMenuOpen(!menuOpen);
-          }}
-        >
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-        <div className="nav-links-space">
-          {user ? (
-            isAdmin && (
-              <ul className={menuOpen ? "open" : ""}>
-                <li
-                  className={isActive("/tasksManager") ? "active-nav-link" : ""}
-                >
-                  <NavLink to="/tasksManager">Tasks</NavLink>
-                </li>
-                <li
-                  className={isActive("/usersManager") ? "active-nav-link" : ""}
-                >
-                  <NavLink to="/usersManager">Users</NavLink>
-                </li>
-              </ul>
-            )
-          ) : (
-            <button className="custom-button" onClick={handleLogOut}>
-              <span></span>Log In
-            </button>
-          )}
-        </div>
       </nav>
       {showForm && (
         <div className="modal-overlay">
