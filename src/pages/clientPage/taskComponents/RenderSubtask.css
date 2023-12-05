@@ -1,17 +1,40 @@
 .subtask-box{
     width:100%;
     height:100%;
-    border:1px solid var(--bacground-white);
     border-radius: 10px;
     display:flex;
     justify-content: space-between;
     align-items:center;
     text-align: center;
-    background-color: var(--secondary-color);
-    color:var(--color-text);
+    flex-direction: column;
+    border:1px solid #fff;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+    background: whitesmoke;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    position:relative;
+}
+   
+.sub-decoration{
+    background-image:url("/public/Images/task.png");
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    height:3rem;
+    width:3rem;
+    border-radius: 2px solid black;
+    position:absolute;
+    top:-2vh;
+    left:14vw;
+    transform:rotateZ(20deg);
+}
+.subtask-box:hover{
+    transform: translateY(0.25rem);
+    transform:scale(1.04);
 }
 .sub-icon-container{
-    width:10%;
+    width:20%;
     height:100%;
     display: flex;
     justify-content:center;
@@ -26,7 +49,7 @@
     align-items: center;
 }
 .sub-title-container{
-    width:40%;
+    width:90%;
     height:100%;
     display:flex;
     justify-content: center;
@@ -39,11 +62,14 @@
     display:flex;
     justify-content: center;
     align-items:center;
-
+    font-weight:600;
+    color:var(--accent);
+    font-family: "Caveat";
 }
 .fa-square, .fa-square-check{
     font-size:2rem;
-    margin-top:6rem;
     width:100%;
     height:100%;
+    color:green;
+    margin-top:2.5rem;
 }

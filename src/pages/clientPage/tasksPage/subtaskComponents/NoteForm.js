@@ -2,15 +2,18 @@ import { computeShrinkWidth } from "@fullcalendar/core/internal";
 import React, { useState } from "react";
 import axios from 'axios';
 import { axiosOutHeaders } from "../../../..";
+import Popup from 'reactjs-popup';
+
 
 const NoteForm = ({ onClose }) => {
 
   const [titleNote, setTitleNote] = useState();
   const [contentNote, setContentNote] = useState();
+  const [isPopupOpen, setPopupOpen] = useState(false);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post("http://localhost:7777/subtasks/1/notes", { title: titleNote, content:contentNote }, axiosOutHeaders)
+    axios.post("http://localhost:7777/subtasks/1/notes", { title: titleNote, content: contentNote }, axiosOutHeaders)
       .then(response => {
         if (response.status === "202" || "200") {
           console.log("Congratulations! Note was uploaded succesfully!")
@@ -19,6 +22,10 @@ const NoteForm = ({ onClose }) => {
       .catch(
         error => console.log(error)
       )
+    onClose();
+  };
+  const closePopup = () => {
+    setPopupOpen(false);
     onClose();
   };
 
@@ -43,14 +50,21 @@ const NoteForm = ({ onClose }) => {
           onChange={(e) => setContentNote(e.target.value)}
         />
         <div className="subtask-form-buttons">
-          <button  type="submit">
-            Upload Note
+          <button type="submit" className="custom-button">
+            <span></span>Upload Note
           </button>
           <button className="custom-button" onClick={onClose}>
             <span></span>Close
           </button>
         </div>
       </form>
+      <Popup open={isPopupOpen} closeOnDocumentClick onClose={closePopup}>
+        <div style={{ width: "20rem", border: "1px solid black", borderRadius: "15px ", height: "14rem", background: "white", display: "flex", justifyContent: "space-evenly", alignItems: "center", flexDirection: "column" }}>
+          <i className="fa-solid fa-circle-check" style={{ fontSize: "2.4rem", color: "green" }}></i>
+          <p style={{ fontSize: "1.4rem" }}>Upload successful!</p>
+          <button style={{ border: "none", background: "green", color: "white", borderRadius: "15px" }} onClick={closePopup}>Close</button>
+        </div>
+      </Popup>
     </div>
   );
 };

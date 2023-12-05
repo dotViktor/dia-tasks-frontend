@@ -19,14 +19,13 @@ function LoginPage() {
   // navigate your page. It's all about navigation.
   //-------------------------
 
-    // axios.defaults.withCredentials = true;
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        axios.post('http://localhost:7777/users/login', { email, password }, axiosOutHeaders)
-            .then(response => {
+  // axios.defaults.withCredentials = true;
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    axios.post('http://localhost:7777/users/login', { email, password }, axiosOutHeaders)
+      .then(response => {
 
-                if (response.status === 202 || 200) {
-                    console.log("Congratulation you have access!");
+        if (response.status === 202 || 200) {
 
           const userToken = response.data.token;
           const decodedToken = jwtDecode(userToken);
@@ -36,11 +35,9 @@ function LoginPage() {
           localStorage.setItem("userName", decodedToken.user.name);
           console.log(decodedToken.user.name);
 
-          if (decodedToken.user.role === "admin") {
-            navigate("/adminScreen");
-          } else {
-            navigate("/clientScreen");
-          }
+          decodedToken.user.role === "admin"
+            ? navigate("/adminScreen")
+            : navigate("/clientScreen");
         } else {
           console.log("Oops! Something went wrong!");
         }
@@ -49,7 +46,7 @@ function LoginPage() {
   };
 
   return (
-    <div className="main-login-container">
+    <div className="main-container">
       <div className="inner-login-container">
         <h1 className="login-title">
           Task.<span className="title-effect">Do</span>
@@ -85,7 +82,7 @@ function LoginPage() {
           <br></br>
           <div className="btn-container">
             <button type="submit" className="login-btn" smooth="true">
-              Login 
+              Login
               <i className="fa-solid fa-right-to-bracket"></i>
             </button>
           </div>

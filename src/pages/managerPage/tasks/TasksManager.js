@@ -19,22 +19,29 @@ const TasksManager = () => {
   return (
     <>
       <Navbar />
-      <div className="tasks-list">
-        {tasks.map((task) => (
-          <Link
-            key={task.id}
-            to={`/createAddEditTasks?id=${task.id}`}
-            className="custom-link"
-          >
-            <Task task={task} />
-          </Link>
-        ))}
-        <div className="add-task-button">
-          <Link to="/createAddEditTasks" className="custom-link">
-            <button className="custom-button">
-              <span></span>Add
-            </button>
-          </Link>
+      <div className="main-container">
+        <div className="task-list-headline">
+          <h1>Tasks</h1>
+        </div>
+        <div className="reusable-container">
+          <div className="tasks-list">
+            {tasks.map((task) => (
+              <Link
+                key={task.id}
+                to={`/createAddEditTasks?id=${task.id}`}
+                className="custom-link"
+              >
+                <Task task={task} />
+              </Link>
+            ))}
+            <div className="add-task-button">
+              <Link to="/createAddEditTasks" className="custom-link">
+                <button className="custom-button">
+                  <span></span>Add
+                </button>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </>

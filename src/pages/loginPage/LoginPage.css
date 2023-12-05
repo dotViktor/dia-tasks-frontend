@@ -1,20 +1,11 @@
-.main-login-container {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--bacground-white);
-}
+
 
 .inner-login-container {
   background: rgb(125, 166, 230);
-  background: linear-gradient(
-    0deg,
-    rgba(125, 166, 230, 0.9444152661064426) 5%,
-    rgba(62, 118, 205, 0.9556197478991597) 30%,
-    rgba(9, 89, 211, 1) 65%
-  );
+  background: linear-gradient(0deg,
+      rgba(125, 166, 230, 0.9444152661064426) 5%,
+      rgba(62, 118, 205, 0.9556197478991597) 30%,
+      rgba(9, 89, 211, 1) 65%);
   width: 36rem;
   position: absolute;
   height: 42rem;
@@ -29,6 +20,7 @@
     rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
+
 .form-login {
   height: fit-content;
   width: fit-content;
@@ -55,8 +47,9 @@
   padding: 0 0 0 42px;
   background: rgba(255, 255, 255, 0.1);
 }
-.fa-right-to-bracket{
-  margin-left:0.5rem;
+
+.fa-right-to-bracket {
+  margin-left: 0.5rem;
   -webkit-transition: all 0.5s;
   -moz-transition: all 0.5s;
   transition: all 0.5s;
@@ -73,6 +66,8 @@
 }
 
 .login-btn {
+  font-size: 1.4rem;
+  padding: 10px 30px;
   text-transform: uppercase;
   text-decoration: none;
   text-align: center;
@@ -88,26 +83,23 @@
   font-weight: 600;
   margin-top: 1rem;
   background: rgb(225, 157, 55);
-  background: linear-gradient(
-    110deg,
-    rgba(225, 157, 55, 1) 26%,
-    rgba(212, 118, 48, 1) 54%,
-    rgba(193, 79, 13, 1) 87%
-  );
+  background: linear-gradient(110deg,
+      rgba(225, 157, 55, 1) 26%,
+      rgba(212, 118, 48, 1) 54%,
+      rgba(193, 79, 13, 1) 87%);
 }
 
 .login-btn:hover {
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
   transform: translateY(0.25rem);
-  background: linear-gradient(
-    110deg,
-    rgba(193, 79, 13, 1) 26%,
-    rgba(212, 118, 48, 1) 54%,
-    rgba(225, 157, 55, 1) 87%
-  );
+  background: linear-gradient(110deg,
+      rgba(193, 79, 13, 1) 26%,
+      rgba(212, 118, 48, 1) 54%,
+      rgba(225, 157, 55, 1) 87%);
   transform: scale(1.04);
 }
-.login-btn:hover .fa-right-to-bracket{
+
+.login-btn:hover .fa-right-to-bracket {
   transform: rotateY(-360deg);
 }
 

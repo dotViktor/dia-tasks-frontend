@@ -27,7 +27,7 @@ export default function RegistrationPage() {
     }
 
   return (
-    <div className="main-login-container">
+    <div className="main-container">
       <div className="inner-login-container">
         <h1 className="login-title">
           Task.<span className="title-effect">Do</span>

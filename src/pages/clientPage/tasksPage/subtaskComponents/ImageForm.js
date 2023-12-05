@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { axiosOutHeaders } from '../../../..';
+import Popup from 'reactjs-popup';
 
 export default function ImageForm({ onClose }) {
+    const [isPopupOpen, setPopupOpen] = useState(false);
 
     const handleSubmit = async (event) => {
         event.preventDefault(); // Prevent the default form submission behavior
@@ -18,11 +20,20 @@ export default function ImageForm({ onClose }) {
 
             // Handle the response as needed
             console.log(response);
+
+            // Open the popup on successful upload
+            setPopupOpen(true);
         } catch (error) {
             // Handle errors
             console.error('Error:', error);
         }
     };
+
+    const closePopup = () => {
+        setPopupOpen(false);
+        onClose();
+    };
+
     return (
         <div className='subtask-form'>
             <form
@@ -33,13 +44,22 @@ export default function ImageForm({ onClose }) {
                 className='form-content'
             >
                 <input type="file" name="image" id='image-box' accept="image/*" multiple />
-                <input type="submit" value="Upload"  />
+                <input type="submit" value="Upload"  className='upload-img-btn'/>
                 <div className="subtask-form-buttons">
                     <button className="custom-button" onClick={onClose}>
                         <span></span>Close
                     </button>
                 </div>
             </form>
+
+            {/* Popup */}
+            <Popup open={isPopupOpen} closeOnDocumentClick onClose={closePopup}>
+                <div style={{width:"20rem",border:"1px solid black",borderRadius:"15px ",height:"14rem",background:"white",display:"flex",justifyContent:"space-evenly",alignItems:"center", flexDirection:"column"}}>
+                    <i className="fa-solid fa-circle-check" style={{fontSize:"2.4rem", color:"green"}}></i>
+                    <p style={{fontSize:"1.4rem"}}>Upload successful!</p>
+                    <button style={{border:"none", background:"green", color:"white",borderRadius:"15px"}} onClick={closePopup}>Close</button>
+                </div>
+            </Popup>
         </div>
-    )
+    );
 }

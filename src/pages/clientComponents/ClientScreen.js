@@ -68,7 +68,7 @@ const ClientScreen = () => {
     <>
       <NavbarClients path="/navClients"></NavbarClients>
 
-      <div className="main-client-container">
+      <div className="main-container">
         <div className="client-info-container">
           {<UserWelcome />}
         </div>
