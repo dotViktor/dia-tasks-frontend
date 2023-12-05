@@ -1,0 +1,32 @@
+
+.cube-container {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #f0f0f0; /* Set background color */
+    overflow: hidden;
+  }
+  
+  .cube {
+    position: absolute;
+    z-index: -1;
+    border: 10px solid;
+    border-image-slice: 1;
+    border-width: 5px;
+    filter:blur(0.8px);
+    border-image-source: linear-gradient(to left, var(--primary-color), rgb(0, 187, 255));
+  }
+  
+  /* Adjust the position of each cube */
+    .cube:nth-child(1) {top: 10vh; left: 30vw; transform: rotateZ(-30deg);  width:5vw; height:9vh}
+  .cube:nth-child(2) { bottom: 20vh; left: 20vw; width:6vw;height:12vh; transform: rotateZ(30deg);}
+  .cube:nth-child(3) { top: 30vh; left: 4vw; width:8vw;height:14vh; transform: rotateZ(-20deg);}
+  .cube:nth-child(4) { top: 40vh; right: 10vw; width:6vw;height:10vh; transform: rotateZ(20deg);}
+  .cube:nth-child(5) { bottom: 30vh; right:-5vw; width:10vw;height:14vh; transform: rotateZ(-20deg);}
+  .cube:nth-child(6) { bottom: 0vh; left:-2vw; width:10vw;height:18vh; transform: rotateZ(20deg);}
+  .cube:nth-child(7) { bottom:10vh; right:0vw; width:12vw;height:20vh; transform: rotateZ(-20deg);}
+  .cube:nth-child(8) { top:9vh; right:20vw; width:5vw;height:9vh; transform: rotateZ(20deg);}
+  .cube:nth-child(9) { top:22vh; left:5vw; width:5vw;height:9vh; transform: rotateZ(20deg);}
+  /* Add more cube positions as needed */
+  

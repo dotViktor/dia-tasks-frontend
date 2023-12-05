@@ -1,32 +1,17 @@
-.main-client-container {
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url("../../../../public/Images/bg-tasks.png");
-  background-size: cover;
-  background-position: center;
-  background-color: var(--background-white);
-}
 
-.task-content-container {
-  width: 70%;
-  height: 90%;
-  background: rgb(125, 166, 230);
-  background: linear-gradient(
-    0deg,
-    rgba(125, 166, 230, 0.9444152661064426) 5%,
-    rgba(62, 118, 205, 0.9556197478991597) 30%,
-    rgba(9, 89, 211, 1) 65%
-  );
-  border-radius: 15px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+.task-content-decoration-2{
+    background-image:url("/public/Images/calendar.png");
+    background-position: center;
+    background-size:cover;
+    background-repeat: no-repeat;
+    height:4.5rem;
+    width:4.5rem;
+    border-radius: 2px solid black;
+    position:absolute;
+    top:-2vh;
+    left:-1vw;
+    transform:rotateZ(-10deg);
 }
-
 .task-header {
   width: 100%;
   height: 20%;
@@ -38,33 +23,62 @@
 }
 
 .task-content {
-  width: 80%;
-  height: 60%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  flex-direction: column;
+    padding-top:1rem;
+    width: 90%;
+    height: 60%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: start;    
+    flex-direction: row;
 }
 
+
 .task-title {
-  font-size: 3rem;
-  font-weight: 700;
+    font-size: 3.6rem;
 }
+
 
 .task-description {
   font-size: 1.7rem;
 }
 
 .sub-link {
-  width: 90%;
-  height: 4.6rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
+    width: 85%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column;
+    text-decoration: none;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    transition: all 0.5s;
+    cursor: pointer;
+}
+.sub-link:hover{
+    transform:rotateZ(-10deg);
 }
 
-button {
-  padding: 10px 40px !important;
-  font-size: 1.4rem !important;
+.subtask-container{
+    width:100%;
+    height:16vh !important;
+    height:fit-content;
+    display:flex;
+    justify-content: center;
+    align-items:center;
 }
+
+.btn-sub-container{
+    width:100%;
+    height:4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+
+
+
+  
+

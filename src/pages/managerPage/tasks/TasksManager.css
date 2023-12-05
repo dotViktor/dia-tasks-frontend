@@ -1,26 +1,74 @@
+
+.reusable-container{
+  height:65vh;
+}
+.task-list-headline{
+  width:45%;
+  height:10vh;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  background-color: whitesmoke;
+  backdrop-filter: blur(10px );
+  border-radius: 15px;
+  margin-bottom: 1rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+  rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+  rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+.tasks-list-headline h1{
+  font-size: 3.6rem;
+}
 .tasks-list {
-  padding: 20px;
-  width: fit-content;
-  margin: auto;
+  width:100%;
+  height:100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 15px;
+  position: relative;
+
 }
 
+  
 .task-container {
   display: flex;
   align-items: center;
-  margin-bottom: 20px;
-  border: 1px solid black;
   border-radius: 10px;
-  width: 800px;
-  padding: 20px;
+  width:26vw;
+  height:5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: whitesmoke;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+  rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+  rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
-
+.task-container h3{
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .custom-link {
   text-decoration: none;
   color: inherit;
   cursor: pointer;
+  -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+}
+.custom-link:hover{
+  transform:scale(1.07);
+  box-shadow: 0px 9px 30px var(--accent);
 }
 
 /**Button style*/
 .add-task-button {
   text-align: center;
+  width:20vw;
 }
+

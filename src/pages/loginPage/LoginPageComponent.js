@@ -20,6 +20,7 @@ function LoginPage() {
 
   // axios.defaults.withCredentials = true;
   const handleSubmit = (event) => {
+
     event.preventDefault();
     axios
       .post(
@@ -29,7 +30,6 @@ function LoginPage() {
       )
       .then((response) => {
         if (response.status === 202 || 200) {
-          console.log("Congratulation you have access!");
 
           const userToken = response.data.token;
           const decodedToken = jwtDecode(userToken);
@@ -39,11 +39,9 @@ function LoginPage() {
           localStorage.setItem("userName", decodedToken.user.name);
           console.log(decodedToken.user.name);
 
-          if (decodedToken.user.role === "admin") {
-            navigate("/adminScreen");
-          } else {
-            navigate("/clientScreen");
-          }
+          decodedToken.user.role === "admin"
+            ? navigate("/adminScreen")
+            : navigate("/clientScreen");
         } else {
           console.log("Oops! Something went wrong!");
         }
@@ -52,7 +50,7 @@ function LoginPage() {
   };
 
   return (
-    <div className="main-login-container">
+    <div className="main-container">
       <div className="inner-login-container">
         <h1 className="login-title">
           Task.<span className="title-effect">Do</span>
@@ -86,6 +84,7 @@ function LoginPage() {
           </div>
           <br></br>
           <div className="btn-container">
+
             <button type="submit" className="custom-button" smooth="true">
               <span></span>Login
               <i className="fa-solid fa-right-to-bracket"></i>

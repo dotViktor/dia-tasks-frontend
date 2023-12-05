@@ -37,41 +37,47 @@ const UsersManager = () => {
   return (
     <>
       <Navbar path="/navManager" element={<Navbar />} />
-      <div className="user-list">
-        <div className="user-list-managers">
-          <h2>Managers</h2>
-          {users
-            .filter((user) => user.role === "admin")
-            .map((adminUser) => (
-              <User
-                key={adminUser.id}
-                user={adminUser}
-                onClick={() => handleUserClick(adminUser.id)}
-              />
-            ))}
+      <div className="main-container">
+        <div className="user-list">
+          <div className="reusable-container user-list-managers">
+            <div className="users-headline">
+              <h2>Managers</h2>
+            </div>
+            {users
+              .filter((user) => user.role === "admin")
+              .map((adminUser) => (
+                <User
+                  key={adminUser.id}
+                  user={adminUser}
+                  onClick={() => handleUserClick(adminUser.id)}
+                />
+              ))}
+          </div>
+          <div className="reusable-container user-list-employees">
+          <div className="users-headline">
+              <h2>Employees</h2>
+            </div>
+            {users
+              .filter((user) => user.role === "client")
+              .map((clientUser) => (
+                <User
+                  key={clientUser.id}
+                  user={clientUser}
+                  onClick={() => handleUserClick(clientUser.id)}
+                />
+              ))}
+          </div>
         </div>
-        <div className="user-list-employees">
-          <h2>Employees</h2>
-          {users
-            .filter((user) => user.role === "client")
-            .map((clientUser) => (
-              <User
-                key={clientUser.id}
-                user={clientUser}
-                onClick={() => handleUserClick(clientUser.id)}
-              />
-            ))}
-        </div>
+        {showForm && (
+          <div className="modal-overlay">
+            <UsersForm
+              userId={selectedUserId}
+              onClose={handleCloseForm}
+              onRefreshData={handleRefreshData}
+            />
+          </div>
+        )}
       </div>
-      {showForm && (
-        <div className="modal-overlay">
-          <UsersForm
-            userId={selectedUserId}
-            onClose={handleCloseForm}
-            onRefreshData={handleRefreshData}
-          />
-        </div>
-      )}
     </>
   );
 };

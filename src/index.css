@@ -1,20 +1,78 @@
 body {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
     "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  
+}
+h1,h2,h3,p,span,ul,li{
+  padding:0;
+  margin:0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
+
 .title-effect {
   font-family: "Caveat";
   color: var(--accent);
 }
+
+.reusable-container {
+  width: 45%;
+  height: 70%;
+  background-size: 300% 300%;
+  background-image: linear-gradient(-45deg, var(--primary-color) 3%, #30a1e3 25%,#46b0eb 40% , #46c6eb 60%, #05a19a 90%);
+  -webkit-animation: AnimateBG 10s ease infinite;
+          animation: AnimateBG 10s ease infinite;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+@-webkit-keyframes AnimateBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes AnimateBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
+.main-container {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: var(--container-background);
+}
+
+
 
 /**Primary colors*/
 :root {
@@ -25,6 +83,8 @@ code {
   --secondary-color: #171819;
   --accent: #e19d37;
 }
+
+
 /*?To use one of the primary colors: background: var(--primary-color);*/
 
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@500&display=swap");
@@ -36,6 +96,7 @@ code {
     font-family: "Caveat";
   }
 }
+
 .route-div {
   font-family: "Quicksand";
 }
@@ -62,6 +123,7 @@ code {
     rgba(225, 157, 55, 1) 87%
   );
 }
+
 .custom-button span {
   background: linear-gradient(
     110deg,
@@ -75,12 +137,15 @@ code {
   position: absolute;
   left: 0;
   bottom: 0;
-  z-index: -1; /*to move it behind the text*/
+  z-index: -1;
+  /*to move it behind the text*/
   transition: 0.5s;
 }
+
 .custom-button:hover span {
   width: 100%;
 }
+
 .custom-button:hover {
   transition: 0.3s ease-in-out;
   box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);

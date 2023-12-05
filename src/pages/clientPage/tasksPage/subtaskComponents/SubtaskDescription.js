@@ -1,3 +1,4 @@
+
 import React, { useState } from "react";
 import "./SubtaskDescription.css";
 import { useLocation } from "react-router-dom";
@@ -84,15 +85,29 @@ export default function SubtaskDescription() {
   // };
   return (
     <>
-      <Navbar path="/navManager" element={<Navbar />} />
-      <div className="main-client-container">
-        <div className="sub-content-container">
-          <div className="sub-header">
-            <h1>{subtask.title}</h1>
-            <p className="sub-description">{subtask.description}</p>
+       <Navbar path="/navManager" element={<Navbar />} />
+      <div className='main-container'>
+        <div className='sub-form-decoration'>
+        </div>
+
+        <div className='reusable-container'>
+          <div className="sub-form-decoration-2">
           </div>
-          <div className="sub-content">
-            <div>
+          <div className='deco-sub-pin'>
+
+          </div>
+          <div className='deco-sub-plant'>
+
+          </div>
+          <div className='sub-header'>
+            <h1 className='sub-form-title title-effect'>{subtask.title}</h1>
+            <p className='sub-description'>{subtask.description}</p>
+          </div>
+          <div className='sub-content'>
+
+            <div className='image-upload-container'>
+              <div className='img-icon'>
+              </div>
               <button
                 className="custom-button"
                 type="button"
@@ -101,6 +116,7 @@ export default function SubtaskDescription() {
                 <span></span>
                 Add Image
               </button>
+              <p>You can upload images here</p>
             </div>
             {showImageForm && (
               <div className="modal-overlay">
@@ -109,7 +125,8 @@ export default function SubtaskDescription() {
             )}
             <div></div>
 
-            <div>
+            <div className='content-upload-container'>
+              <div className='note-icon'></div>
               <button
                 className="custom-button"
                 type="button"
@@ -118,12 +135,14 @@ export default function SubtaskDescription() {
                 <span></span>
                 Add Note
               </button>
+              <p>You can upload notes here</p>
             </div>
             {showNoteForm && (
               <div className="modal-overlay">
                 <NoteForm onClose={handleCloseNoteForm} />
               </div>
             )}
+
             <div>
               <button className="custom-button" onClick={handleClick}>
                 <span></span>Done
