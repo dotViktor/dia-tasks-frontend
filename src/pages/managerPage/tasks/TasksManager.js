@@ -5,6 +5,8 @@ import { Link } from "react-router-dom";
 import "./TasksManager.css";
 import Navbar from "../componentsForAll/Navbar";
 import { axiosOutHeaders } from "../../..";
+import MainBgEffect from "../../login&RegistrationEffect/MainBgEffect";
+import Snowfall from "react-snowfall";
 
 const TasksManager = () => {
   const [tasks, setTasks] = useState([]);
@@ -24,6 +26,8 @@ const TasksManager = () => {
           <h1>Tasks</h1>
         </div>
         <div className="reusable-container">
+          <Snowfall />
+
           <div className="tasks-list">
             {tasks.map((task) => (
               <Link
@@ -44,6 +48,7 @@ const TasksManager = () => {
           </div>
         </div>
       </div>
+      <MainBgEffect />
     </>
   );
 };

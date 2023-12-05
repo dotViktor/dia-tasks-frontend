@@ -30,8 +30,8 @@ export default function TaskDescription() {
     <>
       <Navbar path="/navManager" element={<Navbar />} />
       <div className="main-container">
-        <Snowfall></Snowfall>
         <div className="reusable-container">
+          <Snowfall></Snowfall>
           <div className="task-content-decoration-2"></div>
 
           <div className="task-header">
@@ -62,22 +62,6 @@ export default function TaskDescription() {
                 )}
               </div>
             ))}
-
-            {/* {subtasks.map((subtask) =>
-            (
-              <div key={subtask.id}>
-                {subtask.isComplete == "1" ? (
-                  <div  className="sub-link"><RenderSubtasks subtask={subtask}/></div>
-                ) : (<Link
-                  key={subtask.id}
-                  to={`/clientScreen/clientTask/${task.id}/${subtask.id}`}
-                  state={subtask}
-                  className="sub-link"
-                >
-                  <RenderSubtasks subtask={subtask} />
-                </Link>)}
-              </div>
-            ))} */}
           </div>
           <div className="btn-sub-container">
             <div className="btn-container">

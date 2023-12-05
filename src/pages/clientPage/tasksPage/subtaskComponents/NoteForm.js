@@ -25,7 +25,7 @@ const NoteForm = ({ onClose }) => {
         }
       })
       .catch((error) => console.log(error));
-    onClose();
+      setPopupOpen(true);
   };
   const closePopup = () => {
     setPopupOpen(false);

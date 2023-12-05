@@ -5,11 +5,14 @@ import React, { useState, useEffect } from "react";
 import { jwtDecode } from "jwt-decode";
 import LoginRegistrationEffect from "../login&RegistrationEffect/LoginRegistrationEffect.js";
 import { axiosOutHeaders } from "../../index.js";
+import Snowfall from "react-snowfall";
+
 
 function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [userName, setUserName] = useState("");
+  const [wrongInput, setWrongInput] = useState(false);  
   const navigate = useNavigate();
 
   //-------------------------
@@ -43,15 +46,18 @@ function LoginPage() {
             ? navigate("/adminScreen")
             : navigate("/clientScreen");
         } else {
-          console.log("Oops! Something went wrong!");
+          
         }
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setWrongInput(true);
+      });
   };
 
   return (
     <div className="main-container">
       <div className="inner-login-container">
+        <Snowfall/>
         <h1 className="login-title">
           Task.<span className="title-effect">Do</span>
         </h1>
@@ -82,6 +88,11 @@ function LoginPage() {
               <i className="bx bx-user"></i>
             </div>
           </div>
+          {wrongInput && (
+            <div className="wrong-input">
+              <p>Wrong username or password</p>
+            </div>
+          )}
           <br></br>
           <div className="btn-container">
 

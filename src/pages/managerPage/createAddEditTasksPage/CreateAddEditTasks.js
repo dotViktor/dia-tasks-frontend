@@ -5,6 +5,8 @@ import "./CreateAddEditTasks.css";
 import SubtaskForm from "../componentsForAll/SubtaskForm";
 import SubtaskEditForm from "../componentsForAll/SubtaskEditForm";
 import Navbar from "../componentsForAll/Navbar.js";
+import MainBgEffect from "../../login&RegistrationEffect/MainBgEffect";
+
 import { axiosOutHeaders } from "../../../index.js";
 
 const CreateAddEditTasks = () => {
@@ -472,6 +474,7 @@ const CreateAddEditTasks = () => {
           />
         </div>
       )}
+      <MainBgEffect/>
     </>
   );
 };

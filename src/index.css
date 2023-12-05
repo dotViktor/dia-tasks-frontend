@@ -27,17 +27,15 @@ li {
 }
 
 .reusable-container {
-  width: 45%;
+  width: 50%;
   height: 70%;
   background-size: 300% 300%;
-  background-image: linear-gradient(
-    -45deg,
-    var(--primary-color) 3%,
-    #30a1e3 25%,
-    #46b0eb 40%,
-    #46c6eb 60%,
-    #05a19a 90%
-  );
+  background: rgb(125, 166, 230);
+  background: linear-gradient(0deg,
+      rgba(125, 166, 230, 0.9444152661064426) 5%,
+      rgba(62, 118, 205, 0.9556197478991597) 30%,
+      rgba(9, 89, 211, 1) 65%);
+  
   -webkit-animation: AnimateBG 10s ease infinite;
   animation: AnimateBG 10s ease infinite;
   border-radius: 15px;

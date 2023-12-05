@@ -5,6 +5,10 @@ import "./UsersManager.css";
 import Navbar from "../componentsForAll/Navbar";
 import UsersForm from "../componentsForAll/UsersForm";
 import { axiosOutHeaders } from "../../..";
+import MainBgEffect from "../../login&RegistrationEffect/MainBgEffect";
+import Snowfall from "react-snowfall";
+
+
 
 const UsersManager = () => {
   const [users, setUsers] = useState([]);
@@ -39,33 +43,40 @@ const UsersManager = () => {
       <Navbar path="/navManager" element={<Navbar />} />
       <div className="main-container">
         <div className="user-list">
-          <div className="reusable-container user-list-managers">
-            <div className="users-headline">
+          <div className="user-list-container">
+            <div className="manager-headline">
               <h2>Managers</h2>
             </div>
-            {users
-              .filter((user) => user.role === "admin")
-              .map((adminUser) => (
-                <User
-                  key={adminUser.id}
-                  user={adminUser}
-                  onClick={() => handleUserClick(adminUser.id)}
-                />
-              ))}
+            <div className="reusable-container user-list-managers">
+              <Snowfall/>
+              {users
+                .filter((user) => user.role === "admin")
+                .map((adminUser) => (
+                  <User
+                    key={adminUser.id}
+                    user={adminUser}
+                    onClick={() => handleUserClick(adminUser.id)}
+                  />
+                ))}
+            </div>
           </div>
-          <div className="reusable-container user-list-employees">
-          <div className="users-headline">
+          <div className="user-list-container">
+          <div className="employees-headline">
               <h2>Employees</h2>
             </div>
-            {users
-              .filter((user) => user.role === "client")
-              .map((clientUser) => (
-                <User
-                  key={clientUser.id}
-                  user={clientUser}
-                  onClick={() => handleUserClick(clientUser.id)}
-                />
-              ))}
+            <div className="reusable-container user-list-employees">
+            <Snowfall/>
+
+              {users
+                .filter((user) => user.role === "client")
+                .map((clientUser) => (
+                  <User
+                    key={clientUser.id}
+                    user={clientUser}
+                    onClick={() => handleUserClick(clientUser.id)}
+                  />
+                ))}
+            </div>
           </div>
         </div>
         {showForm && (
@@ -78,6 +89,8 @@ const UsersManager = () => {
           </div>
         )}
       </div>
+      <MainBgEffect/>
+
     </>
   );
 };

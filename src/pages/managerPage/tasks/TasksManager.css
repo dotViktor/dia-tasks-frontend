@@ -1,6 +1,6 @@
 
 .reusable-container{
-  height:65vh;
+  margin-bottom: 5rem;
 }
 .task-list-headline{
   width:45%;
@@ -22,17 +22,14 @@
 }
 .tasks-list {
   width:100%;
-  height:100%;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
+  max-height: 65vh;
+  overflow-y: auto;
   flex-direction: column;
   border-radius: 15px;
   position: relative;
 
 }
 
-  
 .task-container {
   display: flex;
   align-items: center;

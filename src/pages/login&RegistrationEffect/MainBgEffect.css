@@ -15,7 +15,7 @@
     border-image-slice: 1;
     border-width: 5px;
     filter:blur(0.8px);
-    border-image-source: linear-gradient(to left, var(--primary-color), rgb(0, 187, 255));
+    border-image-source: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
   }
   
   /* Adjust the position of each cube */

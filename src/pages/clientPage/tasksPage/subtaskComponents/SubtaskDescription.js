@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import "./SubtaskDescription.css";
 import { useLocation } from "react-router-dom";
@@ -6,6 +5,9 @@ import Navbar from "../../../managerPage/componentsForAll/Navbar.js";
 import NoteForm from "../subtaskComponents/NoteForm.js";
 import ImageForm from "../subtaskComponents/ImageForm.js";
 import { axiosOutHeaders } from "../../../../index.js";
+import MainBgEffect from "../../../login&RegistrationEffect/MainBgEffect.js";
+import Snowfall from "react-snowfall";
+
 
 export default function SubtaskDescription() {
   const location = useLocation();
@@ -56,60 +58,25 @@ export default function SubtaskDescription() {
   const handleClick = () => {
     window.history.back();
   };
-  // const [selectedImages, setSelectedImages] = useState([]);
-  // const [uploadStatus, setUploadStatus] = useState(null);
-
-  // const handleImageChange = (e) => {
-  //   const files = Array.from(e.target.files);
-  //   setSelectedImages(files);
-  // };
-
-  // const handleUpload = async () => {
-  //   try {
-  //     const formData = new FormData();
-
-  //     selectedImages.forEach((image, index) => {
-  //       formData.append(`image${index + 1}`, image);
-  //     });
-
-  //     const response = await axios.post("http://localhost:7777/upload/to-subtask/1", formData, {
-  //       headers: {
-  //         'Content-Type': 'multipart/form-data',
-  //       },
-  //     });
-
-  //     setUploadStatus(`Upload successful! Response: ${JSON.stringify(response.data)}`);
-  //   } catch (error) {
-  //     setUploadStatus(`Error uploading images: ${error.message}`);
-  //   }
-  // };
   return (
     <>
-       <Navbar path="/navManager" element={<Navbar />} />
-      <div className='main-container'>
-        <div className='sub-form-decoration'>
-        </div>
+      <Navbar path="/navManager" element={<Navbar />} />
+      <div className="main-container">
 
-        <div className='reusable-container'>
-          <div className="sub-form-decoration-2">
+        <div className="reusable-container">
+          <Snowfall/>
+          <div className="sub-form-decoration-2"></div>
+          <div className="deco-sub-pin"></div>
+          <div className="deco-sub-plant"></div>
+          <div className="sub-header">
+            <h1 className="sub-form-title title-effect">{subtask.title}</h1>
+            <p className="sub-description">{subtask.description}</p>
           </div>
-          <div className='deco-sub-pin'>
-
-          </div>
-          <div className='deco-sub-plant'>
-
-          </div>
-          <div className='sub-header'>
-            <h1 className='sub-form-title title-effect'>{subtask.title}</h1>
-            <p className='sub-description'>{subtask.description}</p>
-          </div>
-          <div className='sub-content'>
-
-            <div className='image-upload-container'>
-              <div className='img-icon'>
-              </div>
+          <div className="sub-content">
+            <div className="image-upload-container">
+              <div className="img-icon"></div>
               <button
-                className="custom-button"
+                className="custom-button img-btn"
                 type="button"
                 onClick={handleShowImageForm}
               >
@@ -125,10 +92,10 @@ export default function SubtaskDescription() {
             )}
             <div></div>
 
-            <div className='content-upload-container'>
-              <div className='note-icon'></div>
+            <div className="content-upload-container">
+              <div className="note-icon"></div>
               <button
-                className="custom-button"
+                className="custom-button note-btn"
                 type="button"
                 onClick={handleShowNoteForm}
               >
@@ -143,14 +110,15 @@ export default function SubtaskDescription() {
               </div>
             )}
 
-            <div>
-              <button className="custom-button" onClick={handleClick}>
+            <div >
+              <button className="custom-button done-btn" onClick={handleClick}>
                 <span></span>Done
               </button>
             </div>
           </div>
         </div>
       </div>
+      <MainBgEffect />
     </>
   );
 }

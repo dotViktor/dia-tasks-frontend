@@ -1,6 +1,8 @@
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
+import Snowfall from "react-snowfall";
+
 import { BrowserRouter } from 'react-router-dom';
 import RouteSettings from './routes/RouteSettings.js';
 import CreateAddEditTasks from './pages/managerPage/createAddEditTasksPage/CreateAddEditTasks.js';
