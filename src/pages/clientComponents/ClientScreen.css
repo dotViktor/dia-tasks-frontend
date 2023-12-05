@@ -1,4 +1,3 @@
-
 .main-client-screen-container {
   width: 100%;
   display: flex;
@@ -55,6 +54,9 @@
   gap: 10px;
   padding: 10px;
 }
+.fc-media-screen {
+  width: 90%;
+}
 
 @media screen and (max-width: 950px) {
   .fc-header-toolbar {
@@ -70,18 +72,23 @@
 }
 
 .upcoming-task {
-  border: 3px solid yellow;
+  background-color: var(--accent);
 }
 
 .past-task {
-  border: 3px solid red;
+  background-color: rgb(255, 44, 44);
 }
 
 .complete-task {
-  border: 3px solid green;
+  background-color: rgb(29, 194, 29);
   cursor: default;
 }
 
 .current-task {
-  border: 3px solid white;
+  background-color: var(--primary-color);
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
 }
