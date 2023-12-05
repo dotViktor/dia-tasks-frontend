@@ -9,13 +9,17 @@ body {
   -moz-osx-font-smoothing: grayscale;
   overflow-y: hidden;
   overflow-x: hidden;
-  
 }
-h1,h2,h3,p,span,ul,li{
-  padding:0;
-  margin:0;
+h1,
+h2,
+h3,
+p,
+span,
+ul,
+li {
+  padding: 0;
+  margin: 0;
 }
-
 
 .title-effect {
   font-family: "Caveat";
@@ -26,16 +30,24 @@ h1,h2,h3,p,span,ul,li{
   width: 45%;
   height: 70%;
   background-size: 300% 300%;
-  background-image: linear-gradient(-45deg, var(--primary-color) 3%, #30a1e3 25%,#46b0eb 40% , #46c6eb 60%, #05a19a 90%);
+  background-image: linear-gradient(
+    -45deg,
+    var(--primary-color) 3%,
+    #30a1e3 25%,
+    #46b0eb 40%,
+    #46c6eb 60%,
+    #05a19a 90%
+  );
   -webkit-animation: AnimateBG 10s ease infinite;
-          animation: AnimateBG 10s ease infinite;
+  animation: AnimateBG 10s ease infinite;
   border-radius: 15px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
   flex-direction: column;
   position: relative;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+    rgba(0, 0, 0, 0.22) 0px 10px 10px;
 }
 @-webkit-keyframes AnimateBG {
   0% {
@@ -61,7 +73,6 @@ h1,h2,h3,p,span,ul,li{
   }
 }
 
-
 .main-container {
   height: 100vh;
   width: 100%;
@@ -72,8 +83,6 @@ h1,h2,h3,p,span,ul,li{
   background-color: var(--container-background);
 }
 
-
-
 /**Primary colors*/
 :root {
   --primary-color: #0959d3;
@@ -83,7 +92,6 @@ h1,h2,h3,p,span,ul,li{
   --secondary-color: #171819;
   --accent: #e19d37;
 }
-
 
 /*?To use one of the primary colors: background: var(--primary-color);*/
 
@@ -169,6 +177,8 @@ h1,h2,h3,p,span,ul,li{
 /* Fullcalendar Styles */
 
 .fc-button {
+  font-size: 1.4rem !important;
+  padding: 10px 40px !important;
   background: linear-gradient(
     110deg,
     rgba(225, 157, 55, 1) 26%,

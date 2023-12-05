@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams, useNavigate, useLocation } from "react-router-dom";
 import "./TaskDescription.css";
-import Snowfall from 'react-snowfall'
+import Snowfall from "react-snowfall";
 import MainBgEffect from "../../login&RegistrationEffect/MainBgEffect.js";
 import Navbar from "../../managerPage/componentsForAll/Navbar.js";
-import { useLocation } from "react-router-dom";
 import RenderSubtasks from "../taskComponents/RenderSubtasks.js";
 import axios from "axios";
 import { axiosOutHeaders } from "../../../index.js";
@@ -24,22 +23,16 @@ export default function TaskDescription() {
       .catch((error) => console.error(error));
   }, []);
 
-
-
   const handleClick = () => {
     window.history.back();
   };
   return (
     <>
-     <Navbar path="/navManager" element={<Navbar />} />
+      <Navbar path="/navManager" element={<Navbar />} />
       <div className="main-container">
         <Snowfall></Snowfall>
         <div className="reusable-container">
-         
-
-          <div className="task-content-decoration-2">
-          </div>
-
+          <div className="task-content-decoration-2"></div>
 
           <div className="task-header">
             <div>
@@ -51,22 +44,23 @@ export default function TaskDescription() {
           </div>
 
           <div className="task-content">
-
             {subtasks.map((subtask) => (
               <div className="subtask-container" key={subtask.id}>
                 {subtask.isComplete == "1" ? (
-                  <div className="sub-link"><RenderSubtasks subtask={subtask} /></div>
+                  <div className="sub-link">
+                    <RenderSubtasks subtask={subtask} />
+                  </div>
                 ) : (
                   <Link
                     key={subtask.id}
                     to={`/clientScreen/clientTask/${task.id}/${subtask.id}`}
                     state={subtask}
-                    className="sub-link">
+                    className="sub-link"
+                  >
                     <RenderSubtasks subtask={subtask} />
                   </Link>
                 )}
               </div>
-
             ))}
 
             {/* {subtasks.map((subtask) =>
@@ -100,7 +94,7 @@ export default function TaskDescription() {
           </div>
         </div>
       </div>
-        <MainBgEffect/>
+      <MainBgEffect />
     </>
   );
 }
