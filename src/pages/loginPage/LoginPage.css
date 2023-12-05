@@ -1,5 +1,4 @@
 
-
 .inner-login-container {
   background: rgb(125, 166, 230);
   background: linear-gradient(0deg,
@@ -39,12 +38,12 @@
 .input-login,
 .input-register {
   height: 45px;
-  width: 100%;
+  width: 24rem;
   border: none;
   outline: none;
   border-radius: 30px;
   color: var(--color-text);
-  padding: 0 0 0 42px;
+  padding: 0px 42px;
   background: rgba(255, 255, 255, 0.1);
 }
 
@@ -55,7 +54,6 @@
   transition: all 0.5s;
 }
 
-
 ::-webkit-input-placeholder {
   color: #fff;
 }
@@ -65,48 +63,13 @@
   font-size: 4.4rem;
 }
 
-.login-btn {
-  font-size: 1.4rem;
-  padding: 10px 30px;
-  text-transform: uppercase;
-  text-decoration: none;
-  text-align: center;
-  /* line-height: 2; */
-  color: var(--color-text);
-  letter-spacing: 4px;
-  border-radius: 15px;
-  border: unset;
-  background: rgb(225, 157, 55);
-  -webkit-transition: all 0.5s;
-  -moz-transition: all 0.5s;
-  transition: all 0.5s;
-  font-weight: 600;
-  margin-top: 1rem;
-  background: rgb(225, 157, 55);
-  background: linear-gradient(110deg,
-      rgba(225, 157, 55, 1) 26%,
-      rgba(212, 118, 48, 1) 54%,
-      rgba(193, 79, 13, 1) 87%);
-}
-
-.login-btn:hover {
-  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  transform: translateY(0.25rem);
-  background: linear-gradient(110deg,
-      rgba(193, 79, 13, 1) 26%,
-      rgba(212, 118, 48, 1) 54%,
-      rgba(225, 157, 55, 1) 87%);
-  transform: scale(1.04);
-}
-
-.login-btn:hover .fa-right-to-bracket {
-  transform: rotateY(-360deg);
+.input-fields-div-login {
+  margin-bottom: 50px;
 }
 
 .link-container a:link {
   text-decoration: none;
 }
-
 .sign-up,
 .log-in {
   color: var(--color-text);
@@ -115,7 +78,7 @@
 }
 
 .area {
-  background: var(--bacground-white);
+  background: var(--background-white);
   background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
   width: 100%;
   height: 100%;
@@ -228,4 +191,43 @@
     opacity: 0;
     border-radius: 50%;
   }
+
+}
+
+/**Login button styling (Just in case)*/
+.login-btn {
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+  color: var(--color-text);
+  letter-spacing: 4px;
+  border-radius: 15px;
+  border: unset;
+  background: rgb(225, 157, 55);
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  font-weight: 600;
+  margin-top: 1rem;
+  background: rgb(225, 157, 55);
+  background: linear-gradient(
+    110deg,
+    rgba(225, 157, 55, 1) 26%,
+    rgba(212, 118, 48, 1) 54%,
+    rgba(193, 79, 13, 1) 87%
+  );
+}
+.login-btn:hover {
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  transform: translateY(0.25rem);
+  background: linear-gradient(
+    110deg,
+    rgba(193, 79, 13, 1) 26%,
+    rgba(212, 118, 48, 1) 54%,
+    rgba(225, 157, 55, 1) 87%
+  );
+  transform: scale(1.04);
+}
+.login-btn:hover .fa-right-to-bracket {
+  transform: rotateY(-360deg);
 }

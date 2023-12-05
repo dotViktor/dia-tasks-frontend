@@ -1,4 +1,3 @@
-// UsersManager.js
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import User from "../componentsForAll/UsersInfo";
@@ -25,6 +24,7 @@ const UsersManager = () => {
       .catch((err) => console.error(err));
   }, [refreshKey]);
 
+  //*Handles form visibility
   const handleUserClick = (userId) => {
     setSelectedUserId(userId);
     setShowForm(true);

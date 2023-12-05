@@ -13,18 +13,21 @@ export default function RegistrationPage() {
   const emailRef = useRef();
   const passwordRef = useRef();
 
-    // axios.defaults.withCredentials = true;
-    const navigate = useNavigate();
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        axios.post('http://localhost:7777/users/register', { email, password, name }, axiosOutHeaders)
-            .then(response => {
-                navigate('/login')
-            })
-            .catch(
-                error => console.log(error)
-            )
-    }
+  // axios.defaults.withCredentials = true;
+  const navigate = useNavigate();
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios
+      .post(
+        "http://localhost:7777/users/register",
+        { email, password, name },
+        axiosOutHeaders
+      )
+      .then((response) => {
+        navigate("/login");
+      })
+      .catch((error) => console.log(error));
+  };
 
   return (
     <div className="main-container">
@@ -33,7 +36,7 @@ export default function RegistrationPage() {
           Task.<span className="title-effect">Do</span>
         </h1>
         <form className="form-login" onSubmit={handleSubmit}>
-          <div>
+          <div className="input-fields-div-login">
             <div className="input-field-login">
               <input
                 type="email"
@@ -73,9 +76,8 @@ export default function RegistrationPage() {
             </div>
           </div>
           <br></br>
-          <button type="submit" className="login-btn">
-
-            Register
+          <button type="submit" className="custom-button">
+            <span></span>Register
             <i className="fa-solid fa-right-to-bracket"></i>
           </button>
         </form>

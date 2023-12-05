@@ -104,19 +104,33 @@ h1,h2,h3,p,span,ul,li{
 /**Custom button styling*/
 .custom-button {
   width: 300px;
-  padding: 15px 25px;
+  color: white;
+  padding: 10px 40px;
   text-align: center;
-  border-radius: 25px !important;
+  border-radius: 25px;
   font-weight: bold;
-  border: 2px solid black;
+  border: none;
   background: transparent;
   position: relative;
   overflow: hidden;
   z-index: 1;
+  font-size: 1.4rem;
+  transition: 0.3s ease-in-out;
+  background: linear-gradient(
+    110deg,
+    rgba(193, 79, 13, 1) 26%,
+    rgba(212, 118, 48, 1) 54%,
+    rgba(225, 157, 55, 1) 87%
+  );
 }
 
 .custom-button span {
-  background: black;
+  background: linear-gradient(
+    110deg,
+    rgba(225, 157, 55, 1) 26%,
+    rgba(212, 118, 48, 1) 54%,
+    rgba(193, 79, 13, 1) 87%
+  );
   height: 100%;
   width: 0;
   border-radius: 22px;
@@ -133,8 +147,9 @@ h1,h2,h3,p,span,ul,li{
 }
 
 .custom-button:hover {
-  color: white;
-  transition: 0.5s;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  transform: scale(1.04);
 }
 
 /**Pop-up windows overlay*/
@@ -148,5 +163,31 @@ h1,h2,h3,p,span,ul,li{
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2;
+  z-index: 3;
+}
+
+/* Fullcalendar Styles */
+
+.fc-button {
+  background: linear-gradient(
+    110deg,
+    rgba(225, 157, 55, 1) 26%,
+    rgba(212, 118, 48, 1) 54%,
+    rgba(193, 79, 13, 1) 87%
+  );
+  background-size: 200% 200%;
+  transition: background-position 0.5s;
+}
+.fc-button:hover {
+  background-position: 100% 0;
+}
+.fc-button-active {
+  background: linear-gradient(
+    110deg,
+    rgba(193, 79, 13, 1) 26%,
+    rgba(212, 118, 48, 1) 54%,
+    rgba(225, 157, 55, 1) 87%
+  );
+  background-size: 200% 200%;
+  transition: background-position 0.5s;
 }

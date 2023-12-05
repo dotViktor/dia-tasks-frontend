@@ -1,14 +1,13 @@
-import React, { useState } from 'react'
-import './SubtaskDescription.css';
-import { useLocation } from 'react-router-dom';
-import NavbarClients from '../../navbarClientsFolder/NavbarClients';
-import NoteForm from '../subtaskComponents/NoteForm.js';
-import ImageForm from '../subtaskComponents/ImageForm.js';
-import { axiosOutHeaders } from '../../../../index.js';
 
+import React, { useState } from "react";
+import "./SubtaskDescription.css";
+import { useLocation } from "react-router-dom";
+import Navbar from "../../../managerPage/componentsForAll/Navbar.js";
+import NoteForm from "../subtaskComponents/NoteForm.js";
+import ImageForm from "../subtaskComponents/ImageForm.js";
+import { axiosOutHeaders } from "../../../../index.js";
 
 export default function SubtaskDescription() {
-
   const location = useLocation();
   const subtask = location.state;
   const [showNoteForm, setShowNoteForm] = useState(false);
@@ -21,25 +20,29 @@ export default function SubtaskDescription() {
 
     try {
       // Make an asynchronous request to the server using fetch or axios
-      const response = await fetch('http://localhost:7777/upload/to-subtask/1', {
-        method: 'POST',
-        body: formData,
-      }, axiosOutHeaders);
+      const response = await fetch(
+        "http://localhost:7777/upload/to-subtask/1",
+        {
+          method: "POST",
+          body: formData,
+        },
+        axiosOutHeaders
+      );
 
       // Handle the response as needed
       console.log(response);
     } catch (error) {
       // Handle errors
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
   };
 
   const handleShowImageForm = () => {
     setShowImageForm(true);
-  }
+  };
   const handleCloseImageForm = () => {
-    setShowImageForm(false)
-  }
+    setShowImageForm(false);
+  };
 
   //Subtask form show/hide
   const handleShowNoteForm = () => {
@@ -52,7 +55,7 @@ export default function SubtaskDescription() {
 
   const handleClick = () => {
     window.history.back();
-  }
+  };
   // const [selectedImages, setSelectedImages] = useState([]);
   // const [uploadStatus, setUploadStatus] = useState(null);
 
@@ -82,7 +85,7 @@ export default function SubtaskDescription() {
   // };
   return (
     <>
-      <NavbarClients path="/navClients" ></NavbarClients>
+       <Navbar path="/navManager" element={<Navbar />} />
       <div className='main-container'>
         <div className='sub-form-decoration'>
         </div>
@@ -109,7 +112,6 @@ export default function SubtaskDescription() {
                 className="custom-button"
                 type="button"
                 onClick={handleShowImageForm}
-                id="add-subtask-button"
               >
                 <span></span>
                 Add Image
@@ -118,9 +120,7 @@ export default function SubtaskDescription() {
             </div>
             {showImageForm && (
               <div className="modal-overlay">
-                <ImageForm
-                  onClose={handleCloseImageForm}
-                />
+                <ImageForm onClose={handleCloseImageForm} />
               </div>
             )}
             <div></div>
@@ -131,7 +131,6 @@ export default function SubtaskDescription() {
                 className="custom-button"
                 type="button"
                 onClick={handleShowNoteForm}
-                id="add-subtask-button"
               >
                 <span></span>
                 Add Note
@@ -140,18 +139,18 @@ export default function SubtaskDescription() {
             </div>
             {showNoteForm && (
               <div className="modal-overlay">
-                <NoteForm
-                  onClose={handleCloseNoteForm}
-                />
+                <NoteForm onClose={handleCloseNoteForm} />
               </div>
             )}
-            <div className='sub-btn-box'>
-              <button className='login-btn' onClick={handleClick}>Done</button>
-            </div>
 
+            <div>
+              <button className="custom-button" onClick={handleClick}>
+                <span></span>Done
+              </button>
+            </div>
           </div>
         </div>
       </div>
     </>
-  )
+  );
 }

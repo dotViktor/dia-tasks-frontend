@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import classnames from "classnames";
 import "../users/UsersManager.css";
+import UserImageComponent from "../../globalComponents/UserImageComponent";
+import { axiosOutHeaders } from "../../..";
 
 const UsersForm = ({ userId, onClose, onRefreshData }) => {
   const [userData, setUserData] = useState(null);
@@ -9,24 +10,10 @@ const UsersForm = ({ userId, onClose, onRefreshData }) => {
 
   //*User Component
   const User = ({ user }) => {
-    //*Image initials
-    const initials = user.name
-      .split(" ")
-      .filter(
-        (word, index) =>
-          index === 0 || index === user.name.split(" ").length - 1
-      )
-      .map((word) => word.charAt(0).toUpperCase())
-      .join("");
-
-    const imageClasses = classnames("user-image", {
-      "user-image-smaller-initials": initials.length === 2,
-    });
-
     return (
       <div className="user-information-component" key={user.id}>
         <div>
-          <span className={imageClasses}>{initials}</span>
+          <UserImageComponent user={user} />
         </div>
         <div>
           <strong>Name:</strong> {user.name}
@@ -71,7 +58,8 @@ const UsersForm = ({ userId, onClose, onRefreshData }) => {
       try {
         // Fetch user data
         const userResponse = await axios.get(
-          `http://localhost:7777/users/${userId}`
+          `http://localhost:7777/users/${userId}`,
+          axiosOutHeaders
         );
 
         // Access the first element if the response is an array
@@ -83,7 +71,10 @@ const UsersForm = ({ userId, onClose, onRefreshData }) => {
         console.log(userData);
 
         // Fetch all tasks
-        const tasksResponse = await axios.get("http://localhost:7777/tasks");
+        const tasksResponse = await axios.get(
+          "http://localhost:7777/tasks",
+          axiosOutHeaders
+        );
 
         // Filter tasks based on the user ID
         const tasks = tasksResponse.data.filter((task) =>
@@ -108,7 +99,10 @@ const UsersForm = ({ userId, onClose, onRefreshData }) => {
     );
     if (userId && confirmed) {
       axios
-        .get(`http://localhost:7777/users/${userId}/make-admin`)
+        .get(
+          `http://localhost:7777/users/${userId}/make-admin`,
+          axiosOutHeaders
+        )
         .then(() => {
           console.log("User role updated to admin");
           onRefreshData();
@@ -125,7 +119,10 @@ const UsersForm = ({ userId, onClose, onRefreshData }) => {
     );
     if (userId && confirmed) {
       axios
-        .get(`http://localhost:7777/users/${userId}/make-client`)
+        .get(
+          `http://localhost:7777/users/${userId}/make-client`,
+          axiosOutHeaders
+        )
         .then(() => {
           console.log("User role updated to client");
           onRefreshData();
@@ -142,7 +139,7 @@ const UsersForm = ({ userId, onClose, onRefreshData }) => {
     );
     if (userId && confirmed) {
       axios
-        .delete(`http://localhost:7777/users/${userId}`)
+        .delete(`http://localhost:7777/users/${userId}`, axiosOutHeaders)
         .then(() => {
           console.log("User deleted");
           onRefreshData();
@@ -152,12 +149,24 @@ const UsersForm = ({ userId, onClose, onRefreshData }) => {
     }
   };
 
+  //*Split users name to only show first and last name
+  let firstName = "";
+  let lastName = "";
+  if (userData && userData.name) {
+    const words = userData.name.split(" ");
+    firstName = words[0];
+    lastName = words.length > 1 ? words[words.length - 1] : "";
+  }
+
   return (
     <div className="user-form">
       {userData && (
         <>
           <h2>
-            User Information: <strong>{userData.name}</strong>
+            User Information:{" "}
+            <strong>
+              {firstName} {lastName}
+            </strong>
           </h2>
           <User user={userData} />
           {userData.role === "client" && (

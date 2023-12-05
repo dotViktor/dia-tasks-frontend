@@ -41,12 +41,12 @@
     align-items: center;
 
 }
-.sub-icon-box{
-    width:100%;
-    height:100%;
-    display: flex;
-    justify-content:center;
-    align-items: center;
+.sub-icon-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .sub-title-container{
     width:90%;
@@ -72,4 +72,5 @@
     height:100%;
     color:green;
     margin-top:2.5rem;
+
 }
