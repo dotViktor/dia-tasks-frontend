@@ -104,24 +104,35 @@ export default function Navbar() {
             </div>
             <div className="nav-links-space">
               {user ? (
-                isAdmin && (
-                  <ul className={menuOpen ? "open" : ""}>
-                    <li
-                      className={
-                        isActive("/tasksManager") ? "active-nav-link" : ""
-                      }
-                    >
-                      <NavLink to="/tasksManager">Tasks</NavLink>
-                    </li>
-                    <li
-                      className={
-                        isActive("/usersManager") ? "active-nav-link" : ""
-                      }
-                    >
-                      <NavLink to="/usersManager">Users</NavLink>
-                    </li>
-                  </ul>
-                )
+                <ul className={menuOpen ? "open" : ""}>
+                  {isAdmin && (
+                    <>
+                      <li
+                        className={
+                          isActive("/tasksManager") ? "active-nav-link" : ""
+                        }
+                      >
+                        <NavLink to="/tasksManager">Tasks</NavLink>
+                      </li>
+                      <li
+                        className={
+                          isActive("/usersManager") ? "active-nav-link" : ""
+                        }
+                      >
+                        <NavLink to="/usersManager">Users</NavLink>
+                      </li>
+                    </>
+                  )}
+                  <li
+                    className="hidden-li"
+                    onClick={() => handleUserClick(user.id)}
+                  >
+                    <NavLink>Profile</NavLink>
+                  </li>
+                  <li className="hidden-li" onClick={handleLogOut}>
+                    <NavLink>Log Out</NavLink>
+                  </li>
+                </ul>
               ) : (
                 <button className="custom-button" onClick={handleLogOut}>
                   <span></span>Log In

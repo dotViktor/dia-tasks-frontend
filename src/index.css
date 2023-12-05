@@ -176,7 +176,7 @@ li {
 
 .fc-button {
   font-size: 1.4rem !important;
-  padding: 10px 40px !important;
+  padding: 10px clamp(20px, 5%, 40px) !important;
   background: linear-gradient(
     110deg,
     rgba(225, 157, 55, 1) 26%,

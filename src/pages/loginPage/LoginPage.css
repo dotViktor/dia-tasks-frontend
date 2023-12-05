@@ -1,10 +1,11 @@
-
 .inner-login-container {
   background: rgb(125, 166, 230);
-  background: linear-gradient(0deg,
-      rgba(125, 166, 230, 0.9444152661064426) 5%,
-      rgba(62, 118, 205, 0.9556197478991597) 30%,
-      rgba(9, 89, 211, 1) 65%);
+  background: linear-gradient(
+    0deg,
+    rgba(125, 166, 230, 0.9444152661064426) 5%,
+    rgba(62, 118, 205, 0.9556197478991597) 30%,
+    rgba(9, 89, 211, 1) 65%
+  );
   width: 36rem;
   position: absolute;
   height: 42rem;
@@ -190,7 +191,6 @@
     opacity: 0;
     border-radius: 50%;
   }
-
 }
 
 /**Login button styling (Just in case)*/
@@ -227,6 +227,7 @@
   );
   transform: scale(1.04);
 }
-.custom-button:hover .fa-right-to-bracket {
+
+#login-btn:hover .fa-right-to-bracket {
   transform: rotateY(-360deg);
 }

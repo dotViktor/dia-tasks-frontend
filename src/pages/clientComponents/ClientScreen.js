@@ -13,7 +13,7 @@ import Particles from "../reusables/Particles/Particles.jsx";
 function RenderEventContent({ eventInfo, navigate }) {
   const taskStatus = () => {
     const currentDate = new Date();
-    if (eventInfo.event.extendedProps.isComplete === true) {
+    if (eventInfo.event.extendedProps.isComplete === 1) {
       return "complete-task";
     }
 
@@ -32,7 +32,7 @@ function RenderEventContent({ eventInfo, navigate }) {
   };
 
   const handleNavigate = () => {
-    if (eventInfo.event.extendedProps.isComplete === true) return;
+    if (eventInfo.event.extendedProps.isComplete === 1) return;
     return navigate(
       `/clientScreen/clientTask/${eventInfo.event.extendedProps.id}`,
       {
@@ -98,6 +98,7 @@ const ClientScreen = () => {
       <div className="main-client-screen-container">
         <FullCalendar
           timeZone="EET"
+          eventColor="#ffff"
           plugins={[timeGridPlugin, dayGridPlugin]}
           initialView="timeGridWeek"
           headerToolbar={{
@@ -122,7 +123,6 @@ const ClientScreen = () => {
           height={"85vh"}
           allDaySlot={false}
         />
-
       </div>
     </>
   );

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./SubtaskDescription.css";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import Navbar from "../../../managerPage/componentsForAll/Navbar.js";
 import NoteForm from "../subtaskComponents/NoteForm.js";
 import ImageForm from "../subtaskComponents/ImageForm.js";
@@ -14,30 +14,7 @@ export default function SubtaskDescription() {
   const subtask = location.state;
   const [showNoteForm, setShowNoteForm] = useState(false);
   const [showImageForm, setShowImageForm] = useState(false);
-  const handleSubmit = async (event) => {
-    event.preventDefault(); // Prevent the default form submission behavior
-
-    // Get the form data
-    const formData = new FormData(event.target);
-
-    try {
-      // Make an asynchronous request to the server using fetch or axios
-      const response = await fetch(
-        "http://localhost:7777/upload/to-subtask/1",
-        {
-          method: "POST",
-          body: formData,
-        },
-        axiosOutHeaders
-      );
-
-      // Handle the response as needed
-      console.log(response);
-    } catch (error) {
-      // Handle errors
-      console.error("Error:", error);
-    }
-  };
+  const { subtaskId } = useParams();
 
   const handleShowImageForm = () => {
     setShowImageForm(true);
@@ -65,6 +42,8 @@ export default function SubtaskDescription() {
 
         <div className="reusable-container">
           <Snowfall/>
+
+
           <div className="sub-form-decoration-2"></div>
           <div className="deco-sub-pin"></div>
           <div className="deco-sub-plant"></div>
@@ -106,7 +85,7 @@ export default function SubtaskDescription() {
             </div>
             {showNoteForm && (
               <div className="modal-overlay">
-                <NoteForm onClose={handleCloseNoteForm} />
+                <NoteForm onClose={handleCloseNoteForm} subTaskId={subtaskId} />
               </div>
             )}
 

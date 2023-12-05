@@ -140,10 +140,14 @@ nav .menu span {
   background: #fff;
   border-radius: 0.2rem;
 }
+.hidden-li {
+  display: none;
+}
 
-@media (max-width: 480px) {
+@media (max-width: 660px) {
   nav .menu {
     display: flex;
+    align-self: center;
   }
   nav {
     flex-direction: column;
@@ -158,12 +162,29 @@ nav .menu span {
   nav ul.open {
     display: flex;
   }
-
   nav ul li {
     width: 100%;
     text-align: center;
   }
   nav ul li a {
     margin: 0.2rem 0.5rem;
+  }
+  .title {
+    font-size: 2.5rem;
+    margin-left: 15px;
+  }
+  .user-component-navbar {
+    display: none;
+  }
+  nav {
+    height: fit-content;
+    min-height: 0px;
+  }
+  .nav-links-space {
+    display: block;
+    width: 100%;
+  }
+  .hidden-li {
+    display: block;
   }
 }
