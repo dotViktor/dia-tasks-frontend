@@ -4,7 +4,8 @@ import axios from "axios";
 import { axiosOutHeaders } from "../../../..";
 import Popup from "reactjs-popup";
 
-const NoteForm = ({ onClose }) => {
+const NoteForm = ({ onClose, subTaskId }) => {
+
   const [titleNote, setTitleNote] = useState();
   const [contentNote, setContentNote] = useState();
   const [isPopupOpen, setPopupOpen] = useState(false);
@@ -14,7 +15,7 @@ const NoteForm = ({ onClose }) => {
 
     axios
       .post(
-        "http://localhost:7777/subtasks/1/notes",
+        `http://localhost:7777/subtasks/${subTaskId}/notes`,
         { title: titleNote, content: contentNote },
         axiosOutHeaders
       )
