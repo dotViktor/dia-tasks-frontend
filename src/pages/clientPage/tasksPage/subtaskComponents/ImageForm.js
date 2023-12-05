@@ -21,7 +21,6 @@ export default function ImageForm({ onClose }) {
           ...axiosOutHeaders,
         }
       );
-
       // Handle the response as needed
       console.log(response);
     } catch (error) {

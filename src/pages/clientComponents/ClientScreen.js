@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import "./ClientScreen.css";
-import NavbarClients from "../clientPage/navbarClientsFolder/NavbarClients.js";
-import UserWelcome from "../loginPage/UserWelcome.js";
+import Navbar from "../managerPage/componentsForAll/Navbar.js";
 import { jwtDecode } from "jwt-decode";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -95,7 +94,7 @@ const ClientScreen = () => {
 
   return (
     <>
-      <NavbarClients path="/navClients"></NavbarClients>
+      <Navbar path="/navManager" element={<Navbar />} />
       <div className="main-client-screen-container">
         <FullCalendar
           timeZone="EET"
@@ -123,6 +122,7 @@ const ClientScreen = () => {
           height={"85vh"}
           allDaySlot={false}
         />
+
       </div>
     </>
   );

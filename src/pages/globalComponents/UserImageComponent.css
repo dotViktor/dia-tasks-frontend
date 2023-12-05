@@ -22,3 +22,10 @@
   width: 45px;
   height: 45px;
 }
+
+/**Only apply style if image component is in navbar*/
+.user-profile-style {
+  width: 90px;
+  height: 90px;
+  font-size: 55px;
+}

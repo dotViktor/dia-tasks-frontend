@@ -1,6 +1,10 @@
 .area {
-  background: var(--bacground-white);
-  background: -webkit-linear-gradient(to left, var(--accent), var(--primary-color));
+  background: var(--background-white);
+  background: -webkit-linear-gradient(
+    to left,
+    var(--accent),
+    var(--primary-color)
+  );
   width: 100%;
   height: 100%;
 }
@@ -33,7 +37,6 @@
   background-color: var(--secondary-color) !important;
 }
 
-
 .circles li:nth-child(2) {
   left: 10%;
   width: 20px;
@@ -48,7 +51,6 @@
   height: 20px;
   animation-delay: 4s;
   background-color: var(--secondary-color) !important;
-
 }
 
 .circles li:nth-child(4) {
@@ -72,7 +74,6 @@
   height: 110px;
   animation-delay: 3s;
   background-color: var(--secondary-color) !important;
-
 }
 
 .circles li:nth-child(7) {
@@ -96,7 +97,7 @@
   height: 15px;
   animation-delay: 2s;
   animation-duration: 35s;
-  background-color:var(--secondary-color);
+  background-color: var(--secondary-color);
 }
 
 .circles li:nth-child(10) {
@@ -107,10 +108,7 @@
   animation-duration: 11s;
 }
 
-
-
 @keyframes animate {
-
   0% {
     transform: translateY(0) rotate(0deg);
     opacity: 1;
@@ -122,5 +120,4 @@
     opacity: 0;
     border-radius: 50%;
   }
-
 }

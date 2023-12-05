@@ -1,20 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import "./TaskDescription.css";
-import NavbarClients from "../navbarClientsFolder/NavbarClients";
+import Navbar from "../../managerPage/componentsForAll/Navbar.js";
 import { useLocation } from "react-router-dom";
 import RenderSubtasks from "../taskComponents/RenderSubtasks.js";
 import axios from "axios";
 import { axiosOutHeaders } from "../../../index.js";
-// export default function TaskDescription(){
-//     const {taskId} = useParams();
-
-//     return(
-//         <div>
-//             <ClientScreen taskId={taskId}/>
-//         </div>
-//     )
-// }
 
 export default function TaskDescription() {
   const location = useLocation();
@@ -23,7 +14,7 @@ export default function TaskDescription() {
   const [subtasks, setSubtasks] = useState([]);
   useEffect(() => {
     axios
-      .get(`http://localhost:7777/tasks/${task.id}/subtasks`,axiosOutHeaders)
+      .get(`http://localhost:7777/tasks/${task.id}/subtasks`, axiosOutHeaders)
       .then((response) => {
         setSubtasks(response.data);
       })
@@ -35,9 +26,8 @@ export default function TaskDescription() {
   };
   return (
     <>
-      <NavbarClients path="/navClients"></NavbarClients>
+      <Navbar path="/navManager" element={<Navbar />} />
       <div className="main-client-container">
-        
         <div className="task-content-container">
           <div className="task-header">
             <div>
@@ -61,8 +51,15 @@ export default function TaskDescription() {
             ))}
           </div>
           <div className="btn-sub-container">
-            <div className='btn-container'>
-              <button type="submit" onClick={handleClick} className='login-btn' smooth="true">Done
+            <div className="btn-container">
+              <button
+                type="submit"
+                onClick={handleClick}
+                className="custom-button"
+                smooth="true"
+              >
+                <span></span>
+                Done
               </button>
             </div>
           </div>

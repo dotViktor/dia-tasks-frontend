@@ -1,14 +1,12 @@
-import React, { useState } from 'react'
-import './SubtaskDescription.css';
-import {  useLocation } from 'react-router-dom';
-import NavbarClients from '../../navbarClientsFolder/NavbarClients';
-import NoteForm from '../subtaskComponents/NoteForm.js';
-import ImageForm from '../subtaskComponents/ImageForm.js';
-import { axiosOutHeaders } from '../../../../index.js';
-
+import React, { useState } from "react";
+import "./SubtaskDescription.css";
+import { useLocation } from "react-router-dom";
+import Navbar from "../../../managerPage/componentsForAll/Navbar.js";
+import NoteForm from "../subtaskComponents/NoteForm.js";
+import ImageForm from "../subtaskComponents/ImageForm.js";
+import { axiosOutHeaders } from "../../../../index.js";
 
 export default function SubtaskDescription() {
-
   const location = useLocation();
   const subtask = location.state;
   const [showNoteForm, setShowNoteForm] = useState(false);
@@ -21,25 +19,29 @@ export default function SubtaskDescription() {
 
     try {
       // Make an asynchronous request to the server using fetch or axios
-      const response = await fetch('http://localhost:7777/upload/to-subtask/1', {
-        method: 'POST',
-        body: formData,
-      }, axiosOutHeaders);
+      const response = await fetch(
+        "http://localhost:7777/upload/to-subtask/1",
+        {
+          method: "POST",
+          body: formData,
+        },
+        axiosOutHeaders
+      );
 
       // Handle the response as needed
       console.log(response);
     } catch (error) {
       // Handle errors
-      console.error('Error:', error);
+      console.error("Error:", error);
     }
   };
 
   const handleShowImageForm = () => {
     setShowImageForm(true);
-  }
+  };
   const handleCloseImageForm = () => {
-    setShowImageForm(false)
-  }
+    setShowImageForm(false);
+  };
 
   //Subtask form show/hide
   const handleShowNoteForm = () => {
@@ -52,7 +54,7 @@ export default function SubtaskDescription() {
 
   const handleClick = () => {
     window.history.back();
-  }
+  };
   // const [selectedImages, setSelectedImages] = useState([]);
   // const [uploadStatus, setUploadStatus] = useState(null);
 
@@ -82,32 +84,27 @@ export default function SubtaskDescription() {
   // };
   return (
     <>
-      <NavbarClients path="/navClients" ></NavbarClients>
-      <div className='main-client-container'>
-        <div className='sub-content-container'>
-          <div className='sub-header'>
+      <Navbar path="/navManager" element={<Navbar />} />
+      <div className="main-client-container">
+        <div className="sub-content-container">
+          <div className="sub-header">
             <h1>{subtask.title}</h1>
-            <p className='sub-description'>{subtask.description}</p>
+            <p className="sub-description">{subtask.description}</p>
           </div>
-          <div className='sub-content'>
-           
+          <div className="sub-content">
             <div>
               <button
                 className="custom-button"
                 type="button"
                 onClick={handleShowImageForm}
-                id="add-subtask-button"
               >
                 <span></span>
                 Add Image
               </button>
-
             </div>
             {showImageForm && (
               <div className="modal-overlay">
-                <ImageForm
-                  onClose={handleCloseImageForm}
-                />
+                <ImageForm onClose={handleCloseImageForm} />
               </div>
             )}
             <div></div>
@@ -117,27 +114,24 @@ export default function SubtaskDescription() {
                 className="custom-button"
                 type="button"
                 onClick={handleShowNoteForm}
-                id="add-subtask-button"
               >
                 <span></span>
                 Add Note
               </button>
-
             </div>
             {showNoteForm && (
               <div className="modal-overlay">
-                <NoteForm
-                  onClose={handleCloseNoteForm}
-                />
+                <NoteForm onClose={handleCloseNoteForm} />
               </div>
             )}
             <div>
-              <button className='btn btn-primary' onClick={handleClick}>Done</button>
+              <button className="custom-button" onClick={handleClick}>
+                <span></span>Done
+              </button>
             </div>
-
           </div>
         </div>
       </div>
     </>
-  )
+  );
 }

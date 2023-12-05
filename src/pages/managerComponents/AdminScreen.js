@@ -2,12 +2,10 @@ import React, { useState, useEffect } from "react";
 import "../managerComponents/AdminScreen.css";
 import axios from "axios";
 import Navbar from "../managerPage/componentsForAll/Navbar";
-
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import { useNavigate } from "react-router-dom";
-import UserWelcome from "../loginPage/UserWelcome";
 import { axiosOutHeaders } from "../..";
 import Particles from "../reusables/Particles/Particles";
 

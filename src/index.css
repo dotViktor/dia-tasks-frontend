@@ -20,7 +20,7 @@ code {
 :root {
   --primary-color: #0959d3;
   --background-dark: #010409;
-  --bacground-white: #bed2f0;
+  --background-white: #bed2f0;
   --color-text: #dce8fa;
   --secondary-color: #171819;
   --accent: #e19d37;
@@ -44,15 +44,17 @@ code {
 .custom-button {
   width: 300px;
   color: white;
-  padding: 15px 25px;
+  padding: 10px 40px;
   text-align: center;
-  border-radius: 25px !important;
+  border-radius: 25px;
   font-weight: bold;
   border: none;
   background: transparent;
   position: relative;
   overflow: hidden;
   z-index: 1;
+  font-size: 1.4rem;
+  transition: 0.3s ease-in-out;
   background: linear-gradient(
     110deg,
     rgba(193, 79, 13, 1) 26%,
@@ -80,7 +82,9 @@ code {
   width: 100%;
 }
 .custom-button:hover {
-  transition: 0.5s;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  transform: scale(1.04);
 }
 
 /**Pop-up windows overlay*/
@@ -94,7 +98,7 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 2;
+  z-index: 3;
 }
 
 /* Fullcalendar Styles */

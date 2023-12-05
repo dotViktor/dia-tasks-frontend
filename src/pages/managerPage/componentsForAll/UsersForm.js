@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import classnames from "classnames";
 import "../users/UsersManager.css";
 import UserImageComponent from "../../globalComponents/UserImageComponent";
 import { axiosOutHeaders } from "../../..";
@@ -150,12 +149,24 @@ const UsersForm = ({ userId, onClose, onRefreshData }) => {
     }
   };
 
+  //*Split users name to only show first and last name
+  let firstName = "";
+  let lastName = "";
+  if (userData && userData.name) {
+    const words = userData.name.split(" ");
+    firstName = words[0];
+    lastName = words.length > 1 ? words[words.length - 1] : "";
+  }
+
   return (
     <div className="user-form">
       {userData && (
         <>
           <h2>
-            User Information: <strong>{userData.name}</strong>
+            User Information:{" "}
+            <strong>
+              {firstName} {lastName}
+            </strong>
           </h2>
           <User user={userData} />
           {userData.role === "client" && (
