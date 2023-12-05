@@ -83,6 +83,7 @@ const NoteForm = ({ onClose }) => {
               background: "green",
               color: "white",
               borderRadius: "15px",
+              padding: "5px 10px",
             }}
             onClick={closePopup}
           >

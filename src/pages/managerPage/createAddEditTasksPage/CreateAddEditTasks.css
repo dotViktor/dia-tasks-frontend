@@ -162,6 +162,7 @@ form textarea {
 }
 
 .subtask-form-buttons {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   margin-top: 1.5vh;

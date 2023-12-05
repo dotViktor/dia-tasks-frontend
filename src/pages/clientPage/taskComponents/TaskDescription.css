@@ -23,7 +23,7 @@
 
 .task-content {
   padding-top: 37px;
-  width: 650px;
+  width: 90%;
   height: 60%;
   display: flex;
   flex-direction: row;
@@ -57,7 +57,7 @@
 }
 
 .subtask-container {
-  width: 50% !important;
+  width: calc(50% - 10px) !important;
   width: 100%;
   height: 16vh !important;
   height: fit-content;
