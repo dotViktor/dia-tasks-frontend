@@ -5,7 +5,6 @@ import { axiosOutHeaders } from "../../../..";
 import Popup from "reactjs-popup";
 
 const NoteForm = ({ onClose, subTaskId }) => {
-
   const [titleNote, setTitleNote] = useState();
   const [contentNote, setContentNote] = useState();
   const [isPopupOpen, setPopupOpen] = useState(false);
@@ -25,8 +24,7 @@ const NoteForm = ({ onClose, subTaskId }) => {
         }
       })
       .catch((error) => console.log(error));
-      setPopupOpen(true);
-
+    setPopupOpen(true);
   };
   const closePopup = () => {
     setPopupOpen(false);
@@ -40,6 +38,7 @@ const NoteForm = ({ onClose, subTaskId }) => {
         <label>
           Note Title:
           <input
+            required
             type="text"
             name="titleNote"
             onChange={(e) => setTitleNote(e.target.value)}
@@ -47,6 +46,7 @@ const NoteForm = ({ onClose, subTaskId }) => {
         </label>
         <label>Note Content:</label>
         <textarea
+          required
           name="contentNote"
           type="text"
           onChange={(e) => setContentNote(e.target.value)}
