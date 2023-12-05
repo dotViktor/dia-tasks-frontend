@@ -20,7 +20,6 @@ function LoginPage() {
 
   // axios.defaults.withCredentials = true;
   const handleSubmit = (event) => {
-
     event.preventDefault();
     axios
       .post(
@@ -30,7 +29,6 @@ function LoginPage() {
       )
       .then((response) => {
         if (response.status === 202 || 200) {
-
           const userToken = response.data.token;
           const decodedToken = jwtDecode(userToken);
 
@@ -84,8 +82,12 @@ function LoginPage() {
           </div>
           <br></br>
           <div className="btn-container">
-
-            <button type="submit" className="custom-button" smooth="true">
+            <button
+              id="login-btn"
+              type="submit"
+              className="custom-button"
+              smooth="true"
+            >
               <span></span>Login
               <i className="fa-solid fa-right-to-bracket"></i>
             </button>

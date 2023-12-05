@@ -1,16 +1,15 @@
-
-.task-content-decoration-2{
-    background-image:url("/public/Images/calendar.png");
-    background-position: center;
-    background-size:cover;
-    background-repeat: no-repeat;
-    height:4.5rem;
-    width:4.5rem;
-    border-radius: 2px solid black;
-    position:absolute;
-    top:-2vh;
-    left:-1vw;
-    transform:rotateZ(-10deg);
+.task-content-decoration-2 {
+  background-image: url("/public/Images/calendar.png");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 4.5rem;
+  width: 4.5rem;
+  border-radius: 2px solid black;
+  position: absolute;
+  top: -2vh;
+  left: -1vw;
+  transform: rotateZ(-10deg);
 }
 .task-header {
   width: 100%;
@@ -23,62 +22,56 @@
 }
 
 .task-content {
-    padding-top:1rem;
-    width: 90%;
-    height: 60%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: start;    
-    flex-direction: row;
+  padding-top: 37px;
+  width: 90%;
+  height: 60%;
+  display: flex;
+  flex-direction: row;
+  overflow: auto;
+  flex-wrap: wrap;
 }
-
 
 .task-title {
-    font-size: 3.6rem;
+  font-size: 3.6rem;
 }
-
 
 .task-description {
   font-size: 1.7rem;
 }
 
 .sub-link {
-    width: 85%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction:column;
-    text-decoration: none;
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    transition: all 0.5s;
-    cursor: pointer;
+  width: 85%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-decoration: none;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+  cursor: pointer;
 }
-.sub-link:hover{
-    transform:rotateZ(-10deg);
-}
-
-.subtask-container{
-    width:100%;
-    height:16vh !important;
-    height:fit-content;
-    display:flex;
-    justify-content: center;
-    align-items:center;
+.sub-link:hover {
+  transform: rotateZ(-10deg);
 }
 
-.btn-sub-container{
-    width:100%;
-    height:4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 1rem;
+.subtask-container {
+  width: calc(50% - 10px) !important;
+  width: 100%;
+  height: 16vh !important;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 40px;
 }
 
-
-
-
-  
-
+.btn-sub-container {
+  width: 100%;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}

@@ -5,6 +5,7 @@ import { axiosOutHeaders } from "../../../..";
 import Popup from "reactjs-popup";
 
 const NoteForm = ({ onClose, subTaskId }) => {
+
   const [titleNote, setTitleNote] = useState();
   const [contentNote, setContentNote] = useState();
   const [isPopupOpen, setPopupOpen] = useState(false);
@@ -24,7 +25,7 @@ const NoteForm = ({ onClose, subTaskId }) => {
         }
       })
       .catch((error) => console.log(error));
-    onClose();
+    setPopupOpen(true);
   };
   const closePopup = () => {
     setPopupOpen(false);
@@ -83,6 +84,7 @@ const NoteForm = ({ onClose, subTaskId }) => {
               background: "green",
               color: "white",
               borderRadius: "15px",
+              padding: "5px 10px",
             }}
             onClick={closePopup}
           >

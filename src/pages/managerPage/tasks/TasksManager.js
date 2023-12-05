@@ -25,15 +25,17 @@ const TasksManager = () => {
         </div>
         <div className="reusable-container">
           <div className="tasks-list">
-            {tasks.map((task) => (
-              <Link
-                key={task.id}
-                to={`/createAddEditTasks?id=${task.id}`}
-                className="custom-link"
-              >
-                <Task task={task} />
-              </Link>
-            ))}
+            {tasks
+              .filter((task) => !task.isComplete)
+              .map((task) => (
+                <Link
+                  key={task.id}
+                  to={`/createAddEditTasks?id=${task.id}`}
+                  className="custom-link"
+                >
+                  <Task task={task} />
+                </Link>
+              ))}
             <div className="add-task-button">
               <Link to="/createAddEditTasks" className="custom-link">
                 <button className="custom-button">
