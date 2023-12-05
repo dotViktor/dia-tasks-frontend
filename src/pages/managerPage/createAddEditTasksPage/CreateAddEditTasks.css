@@ -2,6 +2,7 @@
 .add-edit-tasks-form {
   padding: 3vh;
   height: calc(100vh - 68px); /* 68px is the height of the navbar */
+  opacity: 0.96;
 }
 .form-data {
   display: flex;

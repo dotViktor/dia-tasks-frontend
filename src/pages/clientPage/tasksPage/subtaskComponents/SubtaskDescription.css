@@ -1,17 +1,4 @@
-.sub-form-decoration {
-  background-image: url("/public/Images/daily-tasks.png");
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  height: 20vh;
-  width: 12vw;
-  border-radius: 2px solid black;
-  position: absolute;
-  bottom: 12vh;
-  right: 19vw;
-  transform: rotateZ(5deg);
-  z-index: 1;
-}
+
 .sub-form-decoration-2 {
   background-image: url("/public/Images/calendar.png");
   background-position: center;
@@ -52,23 +39,9 @@
 .sub-description {
   font-size: 1.5rem;
 }
-.image-upload-container {
-  width: 40%;
-  height: 28%;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-direction: column;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
-  border-radius: 15px;
-  background: whitesmoke;
-  position: relative;
-}
-.content-upload-container {
-  width: 40%;
-  height: 28%;
+.image-upload-container, .content-upload-container {
+  width: 50%;
+  height: 34%;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -99,6 +72,13 @@
   color: white;
   border: unset;
 }
+
+.subtask-form-buttons {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 .upload-img-btn {
   width: 70%;
 }
@@ -164,4 +144,10 @@
   background-position: center;
   background-repeat: no-repeat;
   transform: rotateZ(-10deg);
+}
+.note-btn,.img-btn{
+  width:14rem;
+}
+.done-btn{
+  margin-top:1rem;
 }

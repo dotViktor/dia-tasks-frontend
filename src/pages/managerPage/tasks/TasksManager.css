@@ -1,3 +1,8 @@
+
+.reusable-container{
+  margin-bottom: 5rem;
+}
+
 .task-list-headline {
   width: 45vw;
   height: 10vh;

@@ -25,7 +25,8 @@ const NoteForm = ({ onClose, subTaskId }) => {
         }
       })
       .catch((error) => console.log(error));
-    setPopupOpen(true);
+      setPopupOpen(true);
+
   };
   const closePopup = () => {
     setPopupOpen(false);
