@@ -76,7 +76,7 @@ export default function RegistrationPage() {
             </div>
           </div>
           <br></br>
-          <button type="submit" className="custom-button">
+          <button id="login-btn" type="submit" className="custom-button">
             <span></span>Register
             <i className="fa-solid fa-right-to-bracket"></i>
           </button>
