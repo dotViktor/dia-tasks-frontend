@@ -80,29 +80,7 @@
   background: whitesmoke;
   position: relative;
 }
-.subtask-form {
-  background-color: var(--background-white);
-  height: 30vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.subtask-form form {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-.subtask-form form label {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 70%;
-  flex-direction: column;
-}
+
 .form-content {
   height: 100%;
   width: 100%;
@@ -123,13 +101,6 @@
 }
 .upload-img-btn {
   width: 70%;
-}
-.subtask-form-buttons {
-  width: 70%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
 }
 .form-content #image-box {
   height: 4rem;
