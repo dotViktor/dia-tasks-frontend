@@ -19,6 +19,7 @@
   text-overflow: ellipsis;
   cursor: pointer;
   overflow-y: auto;
+  color: white;
 }
 .client-task-container > h1 {
   font-size: 1.6rem;

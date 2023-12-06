@@ -127,7 +127,7 @@ form textarea {
 }
 
 .subtasks-scrollable-container {
-  max-height: 32.9vh;
+  max-height: 20vh;
   overflow-y: auto;
 }
 
