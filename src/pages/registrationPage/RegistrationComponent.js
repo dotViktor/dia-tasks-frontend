@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import "../loginPage/LoginPage.css";
 import LoginRegistrationEffect from "../login&RegistrationEffect/LoginRegistrationEffect";
 import { axiosOutHeaders } from "../..";
+import Snowfall from "react-snowfall";
+
 
 export default function RegistrationPage() {
   const [email, setEmail] = useState();
@@ -31,7 +33,8 @@ export default function RegistrationPage() {
 
   return (
     <div className="main-container">
-      <div className="inner-login-container">
+      <div className="main-container">
+        <Snowfall />
         <h1 className="login-title">
           Task.<span className="title-effect">Do</span>
         </h1>
