@@ -33,8 +33,8 @@ export default function RegistrationPage() {
 
   return (
     <div className="main-container">
-      <div className="main-container">
-        <Snowfall />
+      <div className="inner-login-container">
+        <Snowfall/>
         <h1 className="login-title">
           Task.<span className="title-effect">Do</span>
         </h1>
